@@ -1,0 +1,31 @@
+
+<breadcrumb></breadcrumb>
+
+<div class="row">
+	<button class="button azul" data-ng-click="go('/cadastros/consulta/tipo/novo')">NOVO CADASTRO</button>
+</div>
+
+<div class="row">
+	<input type="text" name="busca" placeholder="Pesquise aqui." ng-model="searchText">
+</div>
+
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>TIPO CONSULTA</th>
+				<th>AÇÕES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="tipo in tipos | filter:searchText">
+				<td>{{tipo.idTipoConsulta}}</td>
+				<td>{{tipo.nome}}</td>
+				<td ng-show="tipo.idTipoConsulta" class="table-actions">
+					<button class="button vermelho editar" data-ng-click="go('cadastros/consulta/tipo/editar/' + tipo.idTipoConsulta)">EDITAR</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

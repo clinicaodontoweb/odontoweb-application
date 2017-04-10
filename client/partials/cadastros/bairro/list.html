@@ -1,0 +1,31 @@
+
+<breadcrumb></breadcrumb>
+
+<div class="row">
+	<button class="button azul" data-ng-click="go('/cadastros/bairro/novo')">NOVO CADASTRO</button>
+</div>
+
+<div class="row">
+	<input type="text" name="busca" placeholder="Pesquise aqui. Ex: centro" ng-model="searchText">
+</div>
+
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>BAIRRO</th>
+				<th>AÇÕES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="bairro in bairros | filter:searchText">
+				<td>{{bairro.idBairro}}</td>
+				<td>{{bairro.nome}}</td>
+				<td ng-show="bairro.idBairro" class="table-actions">
+					<button class="button vermelho editar" data-ng-click="go('cadastros/bairro/editar/' + bairro.idBairro)">EDITAR</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

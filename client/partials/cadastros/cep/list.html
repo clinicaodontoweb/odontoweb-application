@@ -1,0 +1,31 @@
+
+<breadcrumb></breadcrumb>
+
+<div class="row">
+	<button class="button azul" data-ng-click="go('/cadastros/cep/novo')">NOVO CADASTRO</button>
+</div>
+
+<div class="row">
+	<input type="text" name="busca" placeholder="Pesquise aqui. Ex: XXXXX-XX" ng-model="searchText">
+</div>
+
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>CEP</th>
+				<th>AÇÕES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="cep in ceps | filter:searchText">
+				<td>{{cep.idCep}}</td>
+				<td>{{cep.cep}}</td>
+				<td ng-show="cep.idCep" class="table-actions">
+					<button class="button vermelho editar" data-ng-click="go('cadastros/cep/editar/' + cep.idCep)">EDITAR</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

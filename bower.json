@@ -1,0 +1,27 @@
+{
+  "name": "odontoweb-application",
+  "description": "odontoweb application",
+  "main": "index.js",
+  "authors": [
+    "Andre Nunes"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-route": "^1.6.3",
+    "angular-resource": "^1.6.3",
+    "angular-jwt": "^0.1.9",
+    "restangular": "^1.6.1",
+    "bootstrap": "^3.3.7",
+    "moment": "^2.18.0",
+    "angular-bootstrap-calendar": "^0.28.3"
+  }
+}

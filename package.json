@@ -1,0 +1,42 @@
+{
+  "name": "odontoweb-application",
+  "version": "1.0.0",
+  "description": "odontoweb application",
+  "main": "client/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install && gulp default",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clinicaodontoweb/odontoweb-application.git"
+  },
+  "keywords": [
+    "angularjs",
+    "node"
+  ],
+  "author": "Andre Nunes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clinicaodontoweb/odontoweb-application/issues"
+  },
+  "homepage": "https://github.com/clinicaodontoweb/odontoweb-application#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.9",
+    "request": "^2.81.0",
+    "run-sequence": "^1.2.2"
+  },
+  "engines": {
+    "node": "4.4.7"
+  }
+}

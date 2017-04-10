@@ -1,0 +1,28 @@
+<breadcrumb></breadcrumb>
+
+<div class="row">
+	<div class="small-12 mediun-12 large-8 small-centered columns no-padding">
+		<form name="estadoForm" ng-submit="editar(estadoForm.$valid)" novalidate>
+			<div class="row">
+		    	<div class="small-12 columns">
+			    	<label>Estado
+						<input type="text" name="estado" placeholder="ex: Rio Grande do Sul" ng-model="estado.nome" required ng-class="{'input-error' : estadoForm.estado.$invalid && !estadoForm.estado.$pristine }" />
+						<p ng-show="estadoForm.estado.$invalid && !estadoForm.estado.$pristine" class="label-error">UF é obrigatório.</p>
+			    	</label>
+		    	</div>
+		    </div>	
+	    	<div class="row">
+		    	<div class="small-12 columns">
+			    	<label>UF
+						<select name="sigla" id="siglaSelected" ng-options="option.sigla for option in siglas track by option.sigla" ng-model="estado.sigla"></select>
+			    	</label>
+		    	</div>
+		  	</div>
+		  	<div class="row form-action">
+			    <div class="small-12 columns">
+			    	<button type="submit" class="button azul" ng-disabled="estadoForm.$invalid">CADASTRAR</button>
+			    </div>
+		  	</div>
+		</form>
+	</div>
+</div>

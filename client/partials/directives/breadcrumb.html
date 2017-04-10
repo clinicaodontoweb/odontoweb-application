@@ -1,0 +1,11 @@
+<div class="row">
+	<button class="button verde float-left" data-ng-click="back()">VOLTAR</button>
+	<nav role="navigation">
+	  <ul class="breadcrumbs">
+	    <li ng-repeat="path in paths">
+	    	<a href="#/{{path}}" ng-hide="$last">{{path}}</a>
+	    	<span ng-show="$last">{{path}}</span>
+		</li>
+	  </ul>
+	</nav>
+</div>

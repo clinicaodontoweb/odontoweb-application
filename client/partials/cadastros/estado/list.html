@@ -1,0 +1,33 @@
+
+<breadcrumb></breadcrumb>
+
+<div class="row">
+	<button class="button azul" data-ng-click="go('/cadastros/estado/novo')">NOVO CADASTRO</button>
+</div>
+
+<div class="row">
+	<input type="text" name="busca" placeholder="Pesquise aqui. Ex: Rio Grande do Sul" ng-model="searchText">
+</div>
+
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>ESTADO</th>
+				<th>UF</th>
+				<th>AÇÕES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="estado in estados | filter:searchText">
+				<td>{{estado.idEstado}}</td>
+				<td>{{estado.nome}}</td>
+				<td>{{estado.sigla.sigla}}</td>
+				<td ng-show="estado.idEstado" class="table-actions">
+					<button class="button vermelho editar" data-ng-click="go('cadastros/estado/editar/' + estado.idEstado)">EDITAR</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

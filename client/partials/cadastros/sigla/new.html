@@ -1,0 +1,21 @@
+<breadcrumb></breadcrumb>
+
+<div class="row">
+	<div class="small-12 mediun-12 large-8 small-centered columns no-padding">
+		<form name="siglaForm" ng-submit="save(siglaForm.$valid)" novalidate>
+			<div class="row">
+		    	<div class="small-12 columns">
+			    	<label>UF
+						<input type="text" name="uf" placeholder="ex: RS, SC" ng-model="sigla.sigla" required ng-class="{'input-error' : siglaForm.uf.$invalid && !siglaForm.uf.$pristine }" />
+						<p ng-show="siglaForm.uf.$invalid && !siglaForm.uf.$pristine" class="label-error">UF é obrigatório.</p>
+			    	</label>
+		    	</div>
+		  	</div>
+		  	<div class="row form-action">
+			    <div class="small-12 columns">
+			    	<button type="submit" class="button azul" ng-disabled="siglaForm.$invalid">CADASTRAR</button>
+			    </div>
+		  	</div>
+		</form>
+	</div>
+</div>
