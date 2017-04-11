@@ -11,6 +11,24 @@
 </head>
 <body data-ng-app="OdontowebApp">
 	
+	<!-- MENU TOPO -->
+	<div id="topbar-wrapper" class="float-left">
+		<div id="logo-wrapper" class="float-left hidden-xs">
+			<div id="logo" class="float-left"></div>
+			<h6 class="float-left">ODONTOWEB</h6>
+		</div>
+		<div id="clinica-wrapper" class="col-sm-4 col-md-3 float-left hidden-xs" data-ng-show="showElement()">
+			<div data-ng-controller="ClinicaController">
+				<select name="clinica" id="clinicaSelected" data-ng-options="option.nome for option in me.clinicas track by option.nome" data-ng-model="clinicaSelected" data-ng-change="changeTenant()"></select>
+			</div>
+		</div>
+		<div id="user-wrapper" class="float-right" data-ng-controller="AuthenticationController">
+			<span class="user-name float-left" data-ng-show="showElement()">{{userName()}}</span>
+			<button type="button" class="btn button vermelho float-left" data-ng-click="logout()" data-ng-show="showElement()">SAIR</button>
+			<button type="button" class="btn button azul float-left" data-ng-click="go('/login')" data-ng-show="!showElement()">ENTRAR</button>
+		</div>
+	</div>
+
 	<!-- CONTEUDO -->
 	<div id="content-wrapper" data-ng-view></div>
 

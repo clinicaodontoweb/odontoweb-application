@@ -6,10 +6,6 @@ app.run(['$rootScope', '$location', 'AuthorizationService', function($rootScope,
         }
     });
 
-    $rootScope.$on("$viewContentLoaded", function(event){
-        $('#content-wrapper').height($(window).height() - 120);
-    });
-
     $rootScope.userName = function(){ 
     	return AuthorizationService.getUserName();
     };

@@ -10,8 +10,6 @@ var path 			= require('path');
 
 var depsFolder		= 'bower_components/'
 
-
-
 gulp.task('default', function(callback){
 	runSequence('deps-js', 'deps-css', 'app-js', 'app-css');
 });
@@ -25,6 +23,7 @@ gulp.task('deps-js', function (){
 	return gulp.src([depsFolder + 'lodash/lodash.js',
 					depsFolder + 'jquery/dist/jquery.js',
 					depsFolder + 'moment/moment.js',
+					depsFolder + 'moment/locale/pt-br.js',
 					depsFolder + 'angular/angular.js',
 					depsFolder + 'angular-route/angular-route.js',
 					depsFolder + 'angular-resource/angular-resource.js',

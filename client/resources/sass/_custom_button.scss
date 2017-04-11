@@ -1,0 +1,43 @@
+@mixin button($color){
+	border: 1px solid $color;
+	background-color: $color;
+	color: #FFF;
+	font-size: 10pt;
+
+}
+
+.button{
+	@include button($font-color);
+
+	&.azul{
+		@include button($base-color);
+
+		&:hover{
+			background-color: #036296;
+		}
+	}
+
+	&.verde{
+		@include button(#63ddcb);
+
+		&:hover{
+			background-color: #5cbaac;
+		}
+	}
+
+	&.vermelho{
+		@include button(#e0001a);
+
+		&.editar{
+			background-color: #e0001a;
+			padding: 11px;
+		    color: #FFF;
+		    font-size: 9pt;
+		    margin: 0;
+
+		    &:hover{
+		    	background-color: #bf0114;
+		    } 
+		}
+	}
+}
