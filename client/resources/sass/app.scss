@@ -113,6 +113,10 @@ form{
         padding: 6px;
         cursor: pointer;
     }
+
+    .navbar-nav > li > a{
+        line-height: 40px;
+    }
 }
 .menu > li > a > i {
     margin-right: 25px;
