@@ -5,6 +5,7 @@ var path			=	require('path');
 var port 			=	process.env.PORT || 8000;
 
 app.use('/public', express.static('./client/public/'));
+app.use('/fonts', express.static('./client/public/fonts/'));
 app.use('/partials', express.static('./client/partials/'));
 
 app.use(bodyParser.json());
