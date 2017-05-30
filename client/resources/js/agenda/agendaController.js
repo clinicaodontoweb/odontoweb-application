@@ -1,22 +1,62 @@
-app.controller('AgendaController', ['$scope', function($scope){
+app.controller('AgendaController', ['$scope', 'alert', function($scope, alert){
 	
-  moment.locale('pt-br');
   $scope.calendarView = 'month';
 	$scope.viewDate = new Date();
 	$scope.events = [
       {
-        title: 'André',
+        title: 'André Nunes',
+        paciente: {
+          nome: 'André Nunes',
+          email: 'andre@gmail.com',
+          telefone: 85905497
+        },
+        procedimento: 'Consulta',
+        convenio: 'Unimed',
         startsAt: moment().startOf('day').add(13, 'hours').toDate(),
         endsAt: moment().startOf('day').add(13, 'hours').add(30, 'minutes').toDate(),
+        status: 'Confirmada',
+        statusClass: 'list-group-item-info',
+        color: {
+          primary: '#31708f',
+          secondary: '#d9edf7'
+        }
       }, {
-        title: 'Fernando',
+        title: 'Fernando da Rosa',
+        paciente: {
+          nome: 'Fernando da Rosa',
+          email: 'fernando@gmail.com',
+          telefone: 85905497
+        },
+        procedimento: 'Limpeza',
+        convenio: 'Itáu',
         startsAt: moment().startOf('week').add(7, 'hours').toDate(),
         endsAt: moment().startOf('week').add(7, 'hours').add(30, 'minutes').toDate(),
+        status: 'Atendido',
+        statusClass: 'list-group-item-success',
+        color: {
+          primary: '#3c763d',
+          secondary: '#dff0d8'
+        }
       }, {
-        title: 'Paulo',
+        title: 'Paulo Ricardo',
+        paciente: {
+          nome: 'Paulo Ricardo',
+          email: 'paulo@gmail.com',
+          telefone: 85905497
+        },
+        procedimento: 'Consulta',
+        convenio: 'Unimed',
         startsAt: moment().startOf('day').add(7, 'hours').toDate(),
         endsAt: moment().startOf('day').add(7, 'hours').add(30, 'minutes').toDate(),
+        status: 'Cancelado',
+        statusClass: 'list-group-item-danger',
+        color: {
+          primary: '#a94442',
+          secondary: '#f2dede'
+        }
       }
     ];
-	
+  $scope.eventClicked = function(event){
+    alert.show(event);
+  }
 }]);

@@ -11,7 +11,7 @@ var path 			= require('path');
 var depsFolder		= 'bower_components/'
 
 gulp.task('default', function(callback){
-	runSequence('deps-js', 'deps-css', 'app-js', 'app-css');
+	runSequence('deps-js', 'deps-css', 'app-js', 'app-css', 'copy-fonts');
 });
 
 gulp.task('watch', function(){
@@ -30,7 +30,9 @@ gulp.task('deps-js', function (){
 					depsFolder + 'angular-jwt/dist/angular-jwt.js',
 					depsFolder + 'restangular/dist/restangular.js',
 					depsFolder + 'bootstrap/dist/js/bootstrap.js',
-					depsFolder + 'angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js'
+					depsFolder + 'angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js',
+					depsFolder + 'angular-bootstrap/ui-bootstrap-tpls.js',
+					depsFolder + 'angular-bootstrap/ui-bootstrap.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
 			.pipe(gulp.dest('client/public'))
@@ -41,7 +43,8 @@ gulp.task('deps-js', function (){
 
 gulp.task('deps-css', function (){
 	return gulp.src([depsFolder + 'bootstrap/dist/css/bootstrap.css',
-					depsFolder + 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css'
+					depsFolder + 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css',
+					depsFolder + 'angular-bootstrap/ui-bootstrap-csp.css'
 					])
 			.pipe(concat('odontoweb-deps.css'))
 			.pipe(gulp.dest('client/public'))
@@ -67,4 +70,10 @@ gulp.task('app-css', function (){
 			.pipe(cssmin())
 			.pipe(rename({suffix: '.min'}))
 			.pipe(gulp.dest('client/public'));
+});
+
+
+gulp.task('copy-fonts', function (){
+	return gulp.src([depsFolder + 'bootstrap/dist/fonts/*.*'])
+			.pipe(gulp.dest('client/public/fonts'));
 });

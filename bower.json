@@ -22,6 +22,7 @@
     "restangular": "^1.6.1",
     "bootstrap": "^3.3.7",
     "moment": "^2.18.0",
-    "angular-bootstrap-calendar": "^0.28.3"
+    "angular-bootstrap-calendar": "^0.28.3",
+    "angular-bootstrap": "^2.5.0"
   }
 }
