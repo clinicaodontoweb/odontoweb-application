@@ -1,0 +1,21 @@
+<breadcrumb></breadcrumb>
+
+<div class="row">
+	<div class="small-12 mediun-12 large-8 small-centered columns no-padding">
+		<form name="bairroForm" ng-submit="save(bairroForm.$valid)" novalidate>
+			<div class="row">
+		    	<div class="small-12 columns">
+			    	<label>Bairro
+						<input type="text" name="nome" placeholder="ex: Centro, Moinhos" ng-model="bairro.nome" required ng-class="{'input-error' : bairroForm.nome.$invalid && !bairroForm.nome.$pristine }" />
+						<p ng-show="bairroForm.nome.$invalid && !bairroForm.nome.$pristine" class="label-error">Nome do bairro é obrigatório.</p>
+			    	</label>
+		    	</div>
+		  	</div>
+		  	<div class="row form-action">
+			    <div class="small-12 columns">
+			    	<button type="submit" class="button azul" ng-disabled="bairroForm.$invalid">CADASTRAR</button>
+			    </div>
+		  	</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<breadcrumb></breadcrumb>
+
+<div class="row">
+	<div class="small-12 mediun-12 large-8 small-centered columns no-padding">
+		<form name="cepForm" ng-submit="editar(cepForm.$valid)" novalidate>
+			<div class="row">
+		    	<div class="small-12 columns">
+			    	<label>CEP
+						<input type="text" name="cep" placeholder="ex: XXXXX-XX" ng-model="cep.cep" required ng-class="{'input-error' : cepForm.cep.$invalid && !cepForm.cep.$pristine }" />
+						<p ng-show="cepForm.cep.$invalid && !cepForm.cep.$pristine" class="label-error">CEP é obrigatório.</p>
+			    	</label>
+		    	</div>
+		  	</div>
+		  	<div class="row form-action">
+			    <div class="small-12 columns">
+			    	<button type="submit" class="button azul" ng-disabled="cepForm.$invalid">CADASTRAR</button>
+			    </div>
+		  	</div>
+		</form>
+	</div>
+</div>

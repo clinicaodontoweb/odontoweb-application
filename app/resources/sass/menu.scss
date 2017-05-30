@@ -1,0 +1,45 @@
+@import 'custom_variables';
+
+#menu-wrapper{
+    margin-left:30px;
+    margin-top: 15px;
+    float:left;
+}
+.side-navigation {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    left: 0;
+    background-color: $base-color;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    
+    a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #FFF;
+        display: block;
+        transition: 0.3s
+    }
+
+    .close-menu-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+}
+
+.side-navigation a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+    .side-navigation {padding-top: 15px;}
+    .side-navigation a {font-size: 18px;}
+}
