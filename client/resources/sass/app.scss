@@ -235,24 +235,22 @@ table{
 }
 
 .avatar-consulta {
-    background-color: #f5f5f5;
     border: 1px solid #ccc;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     float: none;
     margin: 10px auto;
     border-radius: 50%;
 
     span{
         color: #ccc;
-        font-size: 20pt;
-        margin: 0px auto;
-        height: 80px;
-        float: left;
+        font-size: 24pt;
+        margin: 0 auto;
+        line-height: 100px;
+        width: 100%;
         display: block;
-        line-height: 70px;
-        width: 80px;
         text-align: center;
+        font-weight: 400;
     }
 }
 

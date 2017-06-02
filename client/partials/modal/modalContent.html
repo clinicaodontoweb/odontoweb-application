@@ -4,7 +4,7 @@
 <div class="modal-body">
 
   <div class="avatar-consulta">
-    <span>AN</span>
+    <span>{{vm.event.paciente.nome | showFirstLetters}}</span>
   </div>
   <p class="consulta-nome"><b>{{vm.event.paciente.nome}}</b></p>
   <p class="consulta-detalhes">{{vm.event.paciente.email}} | (51) {{vm.event.paciente.telefone}}</p>
