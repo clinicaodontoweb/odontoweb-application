@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bower install && gulp default",
-    "start": "node server"
+    "dev": "gulp serve"
   },
   "repository": {
     "type": "git",
@@ -39,5 +39,9 @@
   },
   "engines": {
     "node": "4.4.7"
+  },
+  "devDependencies": {
+    "gulp-nodemon": "^2.2.1",
+    "nodemon": "^1.11.0"
   }
 }

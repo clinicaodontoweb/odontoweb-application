@@ -5,6 +5,7 @@ var sass			= require('gulp-sass');
 var cssmin			= require('gulp-cssmin');
 var watch			= require('gulp-watch');
 var rename			= require('gulp-rename');
+var nodemon			= require('gulp-nodemon');
 var runSequence		= require('run-sequence');
 var path 			= require('path');
 
@@ -17,6 +18,16 @@ gulp.task('default', function(callback){
 gulp.task('watch', function(){
 	gulp.watch('client/resources/js/**/*.js', ['app-js']);
 	gulp.watch('client/resources/sass/**/*.scss', ['app-css']);
+});
+
+gulp.task('serve', ['watch'], function(){
+	return nodemon({
+		script: 'server.js',
+		ignore: 'client/*'
+	})
+	.on('restart', function(){
+		console.log('restarted');
+	});
 });
 
 gulp.task('deps-js', function (){
