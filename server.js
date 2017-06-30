@@ -5,10 +5,11 @@ var path = require('path');
 var port = process.env.PORT || 8000;
 
 //client-app
-app.use('/public', express.static('./client/public/'));
-app.use('/fonts', express.static('./client/public/fonts/'));
-app.use('/partials', express.static('./client/partials/'));
-app.use(require('./server/src/routes'));
+app.use(express.static('./dist/'));
+app.use('/partials', express.static('./dist/app/'));
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

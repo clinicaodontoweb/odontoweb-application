@@ -12,12 +12,14 @@ var path 			= require('path');
 var depsFolder		= 'bower_components/'
 
 gulp.task('default', function(callback){
-	runSequence('deps-js', 'deps-css', 'app-js', 'app-css', 'copy-fonts');
+	runSequence('deps-js', 'deps-css', 'app-js', 'app-css', 'copy-html', 'copy-img');
 });
 
 gulp.task('watch', function(){
-	gulp.watch('client/resources/js/**/*.js', ['app-js']);
-	gulp.watch('client/resources/sass/**/*.scss', ['app-css']);
+	gulp.watch('client/**/*.js', ['app-js']);
+	gulp.watch('client/**/*.html', ['copy-html']);
+	gulp.watch('client/assets/sass/**/*.scss', ['app-css']);
+	gulp.watch('client/assets/img/**/*.*', ['copy-img']);
 });
 
 gulp.task('serve', ['watch'], function(){
@@ -46,10 +48,10 @@ gulp.task('deps-js', function (){
 					depsFolder + 'angular-bootstrap/ui-bootstrap.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
-			.pipe(gulp.dest('client/public'))
+			.pipe(gulp.dest('dist'))
 			.pipe(uglify())
 			.pipe(rename({suffix: '.min'}))
-			.pipe(gulp.dest('client/public'));
+			.pipe(gulp.dest('dist'));
 });
 
 gulp.task('deps-css', function (){
@@ -58,33 +60,37 @@ gulp.task('deps-css', function (){
 					depsFolder + 'angular-bootstrap/ui-bootstrap-csp.css'
 					])
 			.pipe(concat('odontoweb-deps.css'))
-			.pipe(gulp.dest('client/public'))
+			.pipe(gulp.dest('dist'))
 			.pipe(cssmin())
 			.pipe(rename({suffix: '.min'}))
-			.pipe(gulp.dest('client/public'));
+			.pipe(gulp.dest('dist'));
 });
 
 gulp.task('app-js', function (){
-	return gulp.src(['client/resources/js/**/*.js'])
+	return gulp.src(['client/app/**/*.js'])
 			.pipe(concat('odontoweb-app.js'))
-			.pipe(gulp.dest('client/public'))
+			.pipe(gulp.dest('dist'))
 			.pipe(uglify())
 			.pipe(rename({suffix: '.min'}))
-			.pipe(gulp.dest('client/public'));
+			.pipe(gulp.dest('dist'));
 });
 
 gulp.task('app-css', function (){
-	return gulp.src(['client/resources/sass/**/*.scss'])
+	return gulp.src(['client/assets/sass/**/*.scss'])
 			.pipe(sass())
 			.pipe(concat('odontoweb-app.css'))
-			.pipe(gulp.dest('client/public'))
+			.pipe(gulp.dest('dist'))
 			.pipe(cssmin())
 			.pipe(rename({suffix: '.min'}))
-			.pipe(gulp.dest('client/public'));
+			.pipe(gulp.dest('dist'));
 });
 
+gulp.task('copy-img', function (){
+	return gulp.src('client/assets/img/**/*.*')
+			.pipe(gulp.dest('dist/img'));
+});
 
-gulp.task('copy-fonts', function (){
-	return gulp.src([depsFolder + 'bootstrap/dist/fonts/*.*'])
-			.pipe(gulp.dest('client/public/fonts'));
+gulp.task('copy-html', function (){
+	return gulp.src('client/**/*.html')
+			.pipe(gulp.dest('dist'));
 });
