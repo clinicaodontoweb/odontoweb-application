@@ -41,6 +41,7 @@
     "node": "4.4.7"
   },
   "devDependencies": {
+    "gulp-clean": "^0.3.2",
     "gulp-nodemon": "^2.2.1",
     "nodemon": "^1.11.0"
   }

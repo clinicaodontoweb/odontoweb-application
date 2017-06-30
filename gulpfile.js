@@ -6,13 +6,14 @@ var cssmin			= require('gulp-cssmin');
 var watch			= require('gulp-watch');
 var rename			= require('gulp-rename');
 var nodemon			= require('gulp-nodemon');
+var clean			= require('gulp-clean');
 var runSequence		= require('run-sequence');
 var path 			= require('path');
 
 var depsFolder		= 'bower_components/'
 
 gulp.task('default', function(callback){
-	runSequence('deps-js', 'deps-css', 'app-js', 'app-css', 'copy-html', 'copy-img');
+	runSequence('clean-dist-folder', 'deps-js', 'deps-css', 'app-js', 'app-css', 'copy-html', 'copy-img');
 });
 
 gulp.task('watch', function(){
@@ -30,6 +31,11 @@ gulp.task('serve', ['watch'], function(){
 	.on('restart', function(){
 		console.log('restarted');
 	});
+});
+
+gulp.task('clean-dist-folder', () => {
+    return gulp.src("./dist/", {read: false})
+                .pipe(clean());
 });
 
 gulp.task('deps-js', function (){
