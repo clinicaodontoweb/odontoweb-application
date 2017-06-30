@@ -8,6 +8,7 @@ function buildRequest(method, url, req) {
 		method: method,
 		json: true,
 		body: req.body,
+		qs: req.query,
 		headers: {
 			'X-AUTH-TOKEN': req.get('X-AUTH-TOKEN')
 		}
