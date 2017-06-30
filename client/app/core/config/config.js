@@ -18,10 +18,8 @@
 		//routes
 	 	$routeProvider
 			.when('/', {redirectTo: '/agenda'})
-			.when('/agenda', {templateUrl: 'partials/agenda/index.html', controller: 'AgendaController', controllerAs: 'vm'})
-			.when('/pacientes', {templateUrl: 'partials/pacientes/index.html', controller: 'PacientesController', controllerAs: 'vm'})
+			.when('/agenda', {templateUrl: 'partials/agenda/agenda.view.html', controller: 'AgendaController', controllerAs: 'vm'})
 			.when('/cadastros', {templateUrl: 'partials/cadastros/index.html', controller: 'CadastrosController', controllerAs: 'vm'})
-			.when('/configuracoes', {templateUrl: 'partials/configuracoes/index.html', controller: 'ConfiguracoesController', controllerAs: 'vm'})
 			.when('/login', {templateUrl: 'partials/authentication/login.html', controller: 'AuthenticationController', controllerAs: 'vm'})
 			.when('/cadastros/bairro', {templateUrl: 'partials/cadastros/bairro/list.html', controller: 'ListarBairroController', controllerAs: 'vm'})
 			.when('/cadastros/bairro/novo', {templateUrl: 'partials/cadastros/bairro/new.html', controller: 'CadastrarBairroController', controllerAs: 'vm'})
