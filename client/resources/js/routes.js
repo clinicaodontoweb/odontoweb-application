@@ -2,7 +2,7 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
 {
 	$routeProvider
 		.when('/', {redirectTo: '/agenda'})
-		.when('/agenda', {templateUrl: 'partials/agenda/index.html', controller: 'AgendaController'})
+		.when('/agenda', {templateUrl: 'partials/agenda/index.html', controller: 'AgendaController', controllerAs: 'vm'})
 		.when('/pacientes', {templateUrl: 'partials/pacientes/index.html', controller: 'PacientesController'})
 		.when('/cadastros', {templateUrl: 'partials/cadastros/index.html', controller: 'CadastrosController'})
 		.when('/configuracoes', {templateUrl: 'partials/configuracoes/index.html', controller: 'ConfiguracoesController'})

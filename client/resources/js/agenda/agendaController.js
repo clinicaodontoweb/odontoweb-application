@@ -1,4 +1,33 @@
-app.controller('AgendaController', ['$scope', 'alert', function($scope, alert){
+(function() {
+    'use strict';
+
+    angular
+        .module('OdontowebApp')
+        .controller('AgendaController', AgendaController);
+
+    AgendaController.$inject = ['prossionalservice'];
+
+    function AgendaController(prossionalservice) {
+        var vm = this;
+        vm.profissionais = [];
+        vm.getProfissionais = getProfissionais;
+
+        activate();
+
+        function activate() {
+          getProfissionais();
+        }
+
+        function getProfissionais() {
+          return prossionalservice.listaTodosProfissionais().then(function(profissionais) {
+            vm.profissionais = profissionais;
+            return vm.profissionais;
+          });
+        }
+    }
+})();
+
+/*app.controller('AgendaController', ['$scope', 'alert', function($scope, alert){
 	
   $scope.calendarView = 'month';
 	$scope.viewDate = new Date();
@@ -59,4 +88,4 @@ app.controller('AgendaController', ['$scope', 'alert', function($scope, alert){
   $scope.eventClicked = function(event){
     alert.show(event);
   }
-}]);
+}]);*/
