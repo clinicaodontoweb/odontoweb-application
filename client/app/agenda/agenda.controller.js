@@ -25,6 +25,8 @@
         return ApiService.listaTodasEntidades(entidades.profissional).then(function(profissionais) {
           vm.profissionais = profissionais;
           return vm.profissionais;
+        }, function(response) {
+          console.log("Error with status code", response.status);
         });
       }
 
@@ -32,11 +34,17 @@
         return ApiService.listaTodasEntidades_two_id(entidades.evento, entidades.profissional, 1, {dataInicio: 1462935600472, dataFim: 1463021999472}).then(function(eventos) {
           vm.eventos = eventos;
           return vm.eventos;
+        }, function(response) {
+          console.log("Error with status code", response.status);
         });
       }
 
       function eventClicked(event) {
         alert(event);
+      }
+
+      function logger(err){
+        console.log(err);
       }
 
     }

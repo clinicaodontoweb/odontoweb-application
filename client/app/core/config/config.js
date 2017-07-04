@@ -20,7 +20,7 @@
 			.when('/', {redirectTo: '/agenda'})
 			.when('/agenda', {templateUrl: 'partials/agenda/agenda.view.html', controller: 'AgendaController', controllerAs: 'vm'})
 			.when('/cadastros', {templateUrl: 'partials/cadastros/index.html', controller: 'CadastrosController', controllerAs: 'vm'})
-			.when('/login', {templateUrl: 'partials/authentication/login.html', controller: 'AuthenticationController', controllerAs: 'vm'})
+			.when('/login', {templateUrl: 'partials/login/login.view.html', controller: 'LoginController', controllerAs: 'vm'})
 			.when('/cadastros/bairro', {templateUrl: 'partials/cadastros/bairro/list.html', controller: 'ListarBairroController', controllerAs: 'vm'})
 			.when('/cadastros/bairro/novo', {templateUrl: 'partials/cadastros/bairro/new.html', controller: 'CadastrarBairroController', controllerAs: 'vm'})
 			.when('/cadastros/bairro/editar/:id', {templateUrl: 'partials/cadastros/bairro/edit.html', controller: 'EditarBairroController', controllerAs: 'vm'})

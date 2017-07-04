@@ -5,32 +5,22 @@
         .module('OdontowebApp')
         .run(Run);
 
-    Run.$inject = ['$rootScope', '$location', 'AuthorizationService'];
+    Run.$inject = ['$rootScope', '$location', 'AutenticacaoService'];
 
-    function Run($rootScope, $location, AuthorizationService) {
+    function Run($rootScope, $location, AutenticacaoService) {
         
         $rootScope.$on("$routeChangeStart", routeChangeStart);
-        $rootScope.userName = userName;
-        $rootScope.isLogged = isLogged;
-        $rootScope.showElement = showElement;
+        $rootScope.isLoggedIn = isLoggedIn;
         $rootScope.go = go;
 
         function routeChangeStart(event, nextRoute, currentRoute) {
-            if(!nextRoute.$$route.hasOwnProperty('requireLogin') && !AuthorizationService.isLogged()) {
+            if(!nextRoute.$$route.hasOwnProperty('requireLogin') && !AutenticacaoService.isLogged()) {
                 $location.path("/login");
             }
         }
 
-        function userName() { 
-            return AuthorizationService.getUserName();
-        }
-
-        function isLogged() { 
-            return AuthorizationService.isLogged();
-        }
-
-        function showElement() {
-            return AuthorizationService.isLogged();
+        function isLoggedIn() {
+            return AutenticacaoService.isLogged();
         }
 
         function go(path) {
