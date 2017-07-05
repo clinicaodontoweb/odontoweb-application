@@ -5,14 +5,16 @@
         .module('OdontowebApp')
         .controller('AgendaController', AgendaController);
 
-    AgendaController.$inject = ['ApiService', 'entidades'];
+    AgendaController.$inject = ['ApiService', 'entidades', '$uibModal'];
 
-    function AgendaController(ApiService, entidades) {
+    function AgendaController(ApiService, entidades, $uibModal) {
       var vm = this;
       vm.profissionais = [];
       vm.eventos = [];
       vm.calendarView = 'month';
       vm.eventClicked = eventClicked;
+      vm.cadastrarEvento = cadastrarEvento;
+      vm.visualizarEvento = visualizarEvento;
 
       activate();
 
@@ -43,8 +45,24 @@
         alert(event);
       }
 
-      function logger(err){
-        console.log(err);
+      function cadastrarEvento(){
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: 'partials/agenda/agendamento/agendamento-novo.view.html',
+          size: 'lg',
+          controller: 'AgendamentoController',
+          controllerAs: 'vm'
+        });
+      }
+
+      function visualizarEvento(){
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: 'partials/agenda/agendamento/agendamento-detalhes.view.html',
+          size: 'lg',
+          controller: 'AgendamentoController',
+          controllerAs: 'vm'
+        });
       }
 
     }
