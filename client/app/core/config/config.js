@@ -5,9 +5,14 @@
 		.module('OdontowebApp')
 		.config(config);
 
-	config.$inject = ['$routeProvider', '$httpProvider', 'RestangularProvider'];
+	config.$inject = ['$routeProvider', '$httpProvider', 'RestangularProvider', 'calendarConfig'];
 
-	function config($routeProvider, $httpProvider, RestangularProvider) {
+	function config($routeProvider, $httpProvider, RestangularProvider, calendarConfig) {
+
+		//calendar config
+		calendarConfig.allDateFormats.moment.date.hour = 'HH:mm';
+		calendarConfig.dateFormatter = 'moment';
+		calendarConfig.showTimesOnWeekView = true;
 
 		//base url api
 		RestangularProvider.setBaseUrl('/api/v1');

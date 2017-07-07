@@ -5,11 +5,12 @@
         .module('OdontowebApp')
         .controller('AgendamentoController', AgendamentoController);
 
-    //AgendamentoController.$inject = ['dependencies'];
+    AgendamentoController.$inject = ['event'];
 
-    function AgendamentoController() {
+    function AgendamentoController(event) {
         var vm = this;
         vm.title = "andre";
+        vm.event = event;
 
         activate();
 

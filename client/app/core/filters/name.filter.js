@@ -9,6 +9,9 @@
         return showFirstLetters;
 
         function showFirstLetters(name) {
+            if(name === "")
+                return name;
+
         	var res = "";
         	var nameArray = name.split(" ");
         	nameArray.forEach(function(nome){

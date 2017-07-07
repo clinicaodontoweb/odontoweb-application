@@ -12,9 +12,13 @@
       vm.profissionais = [];
       vm.eventos = [];
       vm.calendarView = 'month';
-      vm.eventClicked = eventClicked;
+      vm.viewDate = new Date();
+      vm.cellIsOpen = false;
       vm.cadastrarEvento = cadastrarEvento;
       vm.visualizarEvento = visualizarEvento;
+      vm.viewChange = viewChange;
+      vm.dataInicio = moment().startOf('month').valueOf();
+      vm.dataFim = moment().endOf('month').valueOf();
 
       activate();
 
@@ -33,16 +37,12 @@
       }
 
       function getEventos() {
-        return ApiService.listaTodasEntidades_two_id(entidades.evento, entidades.profissional, 1, {dataInicio: 1462935600472, dataFim: 1463021999472}).then(function(eventos) {
-          vm.eventos = eventos;
+        return ApiService.listaTodasEntidades_two_id(entidades.evento, entidades.profissional, 1, {dataInicio: vm.dataInicio, dataFim: vm.dataFim}).then(function(eventos) {
+          vm.eventos = buildCalendar(eventos);
           return vm.eventos;
         }, function(response) {
           console.log("Error with status code", response.status);
         });
-      }
-
-      function eventClicked(event) {
-        alert(event);
       }
 
       function cadastrarEvento(){
@@ -55,14 +55,54 @@
         });
       }
 
-      function visualizarEvento(){
+      function visualizarEvento(event){
         var modalInstance = $uibModal.open({
           animation: true,
           templateUrl: 'partials/agenda/agendamento/agendamento-detalhes.view.html',
           size: 'lg',
           controller: 'AgendamentoController',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          resolve: {
+            event: function () {
+             return event;
+            }
+          }
         });
+      }
+
+      function buildCalendar(eventosResponse) {
+        var eventos = [];
+        eventosResponse.forEach(function(evento) { 
+          eventos.push(buildEvento(evento));
+        });
+
+        return eventos;
+      }
+
+      function buildEvento(evento) {
+        return {
+          title: evento.pacienteResponse.nome,
+          paciente: {
+            nome: evento.pacienteResponse.nome,
+            email: evento.pacienteResponse.contatoResponse.email,
+            telefone: evento.pacienteResponse.contatoResponse.telefones[0].numero
+          },
+          procedimento: evento.tipoConsultaResponse.nome,
+          convenio: (evento.pacienteResponse.convenioResponse) ? evento.pacienteResponse.convenioResponse.nome : 'PARTICULAR',
+          startsAt: new Date(evento.ano, evento.mes, evento.dia, evento.horaInicio, evento.minutoInicio),
+          endsAt: new Date(evento.ano, evento.mes, evento.dia, evento.horaFim, evento.minutoFim),
+          status: evento.statusEvento,
+          statusClass: 'list-group-item-info',
+          color: {
+            primary: '#31708f',
+            secondary: '#d9edf7'
+          }
+        }
+      }
+
+      function viewChange(calendarDate, calendarNextView) {
+        console.log(calendarDate);
+        console.log(calendarNextView);
       }
 
     }

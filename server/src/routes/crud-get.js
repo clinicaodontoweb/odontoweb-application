@@ -9,7 +9,7 @@ var url = require('../helpers/urlHelper').agendaService;
 router.get('/:entidade', function (req, res) {
 	var entidade = req.params.entidade;
 	var options = requestBuilder.buildRequest('GET', url + entidade, req);
-	
+
 	request(options, response);
 
 	function response(error, response, body) {
@@ -35,7 +35,7 @@ router.get('/:entidade/:entidade2/:id([0-9])', function (req, res) {
 	var id = req.params.id;
 	var entidade = req.params.entidade;
 	var entidade2 = req.params.entidade2;
-	var options = requestBuilder.buildRequest('GET', url + entidade + '/' + entidade2 + '/' + id + '/evento', req);
+	var options = requestBuilder.buildRequest('GET', url + entidade + '/' + entidade2 + '/' + id, req);
 	
 	request(options, response);
 
