@@ -13,13 +13,13 @@ var path 			= require('path');
 var depsFolder		= 'bower_components/'
 
 gulp.task('default', function(callback){
-	runSequence('clean-dist-folder', 'deps-js', 'deps-css', 'app-js', 'app-css', 'copy-html', 'copy-img');
+	runSequence('clean-dist-folder', 'deps-js', 'deps-css', 'app-js', 'app-css', 'copy-html', 'copy-img', 'copy-fonts');
 });
 
 gulp.task('watch', function(){
 	gulp.watch('client/**/*.js', ['app-js']);
 	gulp.watch('client/**/*.html', ['copy-html']);
-	gulp.watch('client/assets/sass/**/*.scss', ['app-css']);
+	gulp.watch('client/**/*.scss', ['app-css']);
 	gulp.watch('client/assets/img/**/*.*', ['copy-img']);
 });
 
@@ -99,4 +99,9 @@ gulp.task('copy-img', function (){
 gulp.task('copy-html', function (){
 	return gulp.src('client/**/*.html')
 			.pipe(gulp.dest('dist'));
+});
+
+gulp.task('copy-fonts', function (){
+	return gulp.src([depsFolder + 'bootstrap/dist/fonts/*.*'])
+			.pipe(gulp.dest('dist/fonts'));
 });
