@@ -9,7 +9,6 @@ body, html{
     width: 100%;
     padding: 0;
     margin: 0;
-    overflow: hidden;
     font-weight: 300;
 }
 input[type=text], select{
@@ -125,10 +124,9 @@ form{
 #content-wrapper{
     width: 100%;
     position: relative;
-    padding: 30px;
     border-top: 1px solid #d4d4d4;
     overflow-y: auto;
-    max-height: 600px;
+    margin-bottom: 80px;
 }
 
 .cadastros-list{
@@ -280,4 +278,62 @@ table{
 mwl-calendar .cal-slide-content {
     background: #95a5a6;
     box-shadow: none;
+}
+
+.busca-profissionais-container {
+    
+    .form-group {
+        padding: 0px 10px 10px 10px;
+        margin: 0;
+
+        > .form-control-feedback {
+            right: 10px;
+        }
+    }
+}
+
+.lista-profissionais-agenda{
+    list-style-type:  none;
+    padding: 10px;
+    margin: 0;
+
+    > li {
+        height: 40px;    
+        width: 100%;
+        cursor: pointer;
+        line-height: 40px;
+        padding-left: 10px;
+        font-size: 9pt;
+        text-transform: uppercase;
+
+        > span {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            border-left: 2px solid $base-color;
+            padding-left: 8px;
+        }
+        
+    }
+
+    > li.profissional--ativo {
+        font-weight: bold;
+        color: $base-color;
+        border-left: 2px solid $base-color;
+
+        &:hover {
+            padding-left: 10px;
+        }
+    }
+
+    > li.vazio {
+        border: none;
+    }
+}
+
+.calendar-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0;
 }

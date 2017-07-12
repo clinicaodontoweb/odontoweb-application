@@ -10,39 +10,48 @@
     function AgendaController(ApiService, entidades, $uibModal) {
       var vm = this;
       vm.profissionais = [];
+      vm.profissionalAtivo = {};
       vm.eventos = [];
       vm.calendarView = 'month';
       vm.viewDate = new Date();
+      vm.viewChange = viewChange;
       vm.cellIsOpen = false;
       vm.cadastrarEvento = cadastrarEvento;
       vm.visualizarEvento = visualizarEvento;
-      vm.viewChange = viewChange;
-      vm.dataInicio = moment().startOf('month').valueOf();
-      vm.dataFim = moment().endOf('month').valueOf();
+      vm.atualizarAgenda = atualizarAgenda;
+      vm.data = {
+        dataInicio: moment().startOf('month').valueOf(),
+        dataFim: moment().endOf('month').valueOf()
+      };
 
       activate();
 
       function activate() {
-        getProfissionais();
-        getEventos();
+        getProfissionais().then(getEventos);
       }
 
       function getProfissionais() {
-        return ApiService.listaTodasEntidades(entidades.profissional).then(function(profissionais) {
-          vm.profissionais = profissionais;
-          return vm.profissionais;
-        }, function(response) {
-          console.log("Error with status code", response.status);
-        });
+        return ApiService
+                  .listaTodasEntidades(entidades.profissional)
+                  .then(function(profissionais) {
+                    vm.profissionais = profissionais;
+                    vm.profissionalAtivo = profissionais[0]
+                    return vm.profissionalAtivo;
+                  });
       }
 
-      function getEventos() {
-        return ApiService.listaTodasEntidades_two_id(entidades.evento, entidades.profissional, 1, {dataInicio: vm.dataInicio, dataFim: vm.dataFim}).then(function(eventos) {
-          vm.eventos = buildCalendar(eventos);
-          return vm.eventos;
-        }, function(response) {
-          console.log("Error with status code", response.status);
-        });
+      function getEventos(profissional) {
+        return ApiService
+                  .listaTodasEntidades_two_id(entidades.evento, entidades.profissional, profissional.idProfissional, vm.data)
+                  .then(function(eventos) {
+                    vm.eventos = buildCalendar(eventos);
+                    return vm.eventos;
+                  });
+      }
+
+      function atualizarAgenda(profissional) {
+        vm.profissionalAtivo = profissional;
+        getEventos(profissional);
       }
 
       function cadastrarEvento(){
@@ -72,7 +81,7 @@
 
       function buildCalendar(eventosResponse) {
         var eventos = [];
-        eventosResponse.forEach(function(evento) { 
+        eventosResponse.forEach(function(evento) {
           eventos.push(buildEvento(evento));
         });
 
@@ -85,12 +94,12 @@
           paciente: {
             nome: evento.pacienteResponse.nome,
             email: evento.pacienteResponse.contatoResponse.email,
-            telefone: evento.pacienteResponse.contatoResponse.telefones[0].numero
+            telefone: (evento.pacienteResponse.contatoResponse.telefones.length > 0) ? evento.pacienteResponse.contatoResponse.telefones[0].numero : null
           },
           procedimento: evento.tipoConsultaResponse.nome,
           convenio: (evento.pacienteResponse.convenioResponse) ? evento.pacienteResponse.convenioResponse.nome : 'PARTICULAR',
-          startsAt: new Date(evento.ano, evento.mes, evento.dia, evento.horaInicio, evento.minutoInicio),
-          endsAt: new Date(evento.ano, evento.mes, evento.dia, evento.horaFim, evento.minutoFim),
+          startsAt: new Date(evento.dataInicio),
+          endsAt: new Date(evento.dataFim),
           status: evento.statusEvento,
           statusClass: 'list-group-item-info',
           color: {

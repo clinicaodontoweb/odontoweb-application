@@ -13,6 +13,7 @@
 		calendarConfig.allDateFormats.moment.date.hour = 'HH:mm';
 		calendarConfig.dateFormatter = 'moment';
 		calendarConfig.showTimesOnWeekView = true;
+		calendarConfig.i18nStrings.weekNumber = 'Semana {week}';
 
 		//base url api
 		RestangularProvider.setBaseUrl('/api/v1');
