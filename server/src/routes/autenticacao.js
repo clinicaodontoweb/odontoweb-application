@@ -8,7 +8,7 @@ var url = require('../helpers/urlHelper').autenticacaoService;
 
 router.post('/', function (req, res) {
 	var options = requestBuilder.buildRequest('POST', url + 'auth', req);
-	console.log(options);		
+
 	request(options, response);
 
 	function response(error, response, body) {
