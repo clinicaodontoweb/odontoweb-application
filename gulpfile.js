@@ -23,14 +23,20 @@ gulp.task('watch', function(){
 	gulp.watch('client/assets/img/**/*.*', ['copy-img']);
 });
 
-gulp.task('serve', ['watch'], function(){
-	return nodemon({
+gulp.task('serve', function(){
+	var stream =  nodemon({
 		script: 'server.js',
 		ignore: 'client/*'
 	})
-	.on('restart', function(){
-		console.log('restarted');
-	});
+
+	stream
+		.on('restart', function(){
+			console.log('Server Restarted!\n');
+		})
+		.on('crash', function() {
+		    console.error('Application has crashed!\n')
+			stream.emit('restart', 2)
+		})
 });
 
 gulp.task('clean-dist-folder', () => {
