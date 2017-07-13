@@ -1,0 +1,6 @@
+{
+	"servicos": {
+		"agenda": "https://localhost:3334/agenda-service/",
+		"autenticacao": "https://localhost:8001/autenticacao-service/"
+	}
+}

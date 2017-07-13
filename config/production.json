@@ -1,0 +1,6 @@
+{
+	"servicos": {
+		"agenda": "https://agenda-service.herokuapp.com/agenda-service/",
+		"autenticacao": "https://autenticacao-service.herokuapp.com/autenticacao-service/"
+	}
+}

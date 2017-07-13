@@ -1,10 +1,11 @@
+var config = require('config');
 var request	= require('request');
 var requestBuilder = require('../helpers/requestOptionsBuilder');
 var responseBuilder = require('../helpers/responseBuilder');
 var express = require('express');
 var router = express.Router();
 
-var url = require('../helpers/urlHelper').agendaService;
+var url = config.get('servicos.agenda');
 
 router.put('/:entidade/:id([0-9])', function (req, res) {
 	var id = req.params.id;

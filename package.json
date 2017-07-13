@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bower install && gulp default",
-    "dev": "gulp serve",
-    "start": "forever start --minUptime 1000 --spinSleepTime 1000 server.js",
-    "stop": "forever stop server.js"
+    "dev": "cross-env NODE_ENV=development gulp serve",
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
@@ -27,20 +26,22 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "bower": "^1.8.0",
+    "config": "^1.26.1",
+    "cross-env": "^5.0.1",
     "express": "^4.14.0",
     "forever": "^0.15.3",
-    "request": "^2.81.0",
-    "gulp-clean": "^0.3.2",
-    "gulp-nodemon": "^2.2.1",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
     "gulp-imagemin": "^3.0.3",
+    "gulp-nodemon": "^2.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.9",
     "nodemon": "^1.11.0",
+    "request": "^2.81.0",
     "run-sequence": "^1.2.2"
   },
   "engines": {

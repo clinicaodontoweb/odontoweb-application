@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 8001;
 
 //client-app
 app.use(express.static('./dist/'));

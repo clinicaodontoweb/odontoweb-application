@@ -2,7 +2,6 @@ var request	= require('request');
 var requestBuilder = require('../helpers/requestOptionsBuilder');
 var express = require('express');
 var router = express.Router();
-var url = require('../helpers/urlHelper').agendaService;
 
 router.use(require('../helpers/tokenValidation'));
 
