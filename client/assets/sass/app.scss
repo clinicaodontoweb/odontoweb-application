@@ -329,6 +329,9 @@ mwl-calendar .cal-slide-content {
 
     > li.vazio {
         border: none;
+        height: auto;
+        line-height: 15px;
+        padding: 0;
     }
 }
 
@@ -336,13 +339,9 @@ mwl-calendar .cal-slide-content {
     padding-left: 30px;
     padding-right: 30px;
     margin: 0;
+	
+}
 
-	mwl-calendar span[data-cal-date] {
-	    width: 100%;
-	    height: 100%;
-	    text-align: right;
-	    padding-right: 5px;
-	    padding-top: 5px;
-	    cursor: pointer;
-	}
+mwl-calendar span[data-cal-date] {
+    cursor: pointer;
 }

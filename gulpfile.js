@@ -23,7 +23,7 @@ gulp.task('watch', function(){
 	gulp.watch('client/assets/img/**/*.*', ['copy-img']);
 });
 
-gulp.task('serve', function(){
+gulp.task('serve', ['watch'], function(){
 	var stream =  nodemon({
 		script: 'server.js',
 		ignore: 'client/*'
