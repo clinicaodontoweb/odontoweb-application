@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('OdontowebApp')
+        .module('odontoweb.core')
         .filter('showFirstLetters', filter);
 
     function filter() {

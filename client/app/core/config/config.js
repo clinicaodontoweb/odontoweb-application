@@ -2,7 +2,7 @@
     'use strict';
 	
 	angular
-		.module('OdontowebApp')
+		.module('odontoweb.core')
 		.config(config);
 
 	config.$inject = ['$routeProvider', '$httpProvider', 'RestangularProvider', 'calendarConfig'];

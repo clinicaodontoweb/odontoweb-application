@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('OdontowebApp')
+        .module('odontoweb.core')
         .factory('AutenticacaoService', AutenticacaoService);
 
     AutenticacaoService.$inject = ['Restangular', '$window', 'jwtHelper'];

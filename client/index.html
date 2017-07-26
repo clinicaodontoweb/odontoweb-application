@@ -9,20 +9,20 @@
 
 	<title>OdontoWeb: Sistema para gerenciamento de clínicas odontológicas</title>
 </head>
-<body data-ng-app="OdontowebApp">
+<body data-ng-app="odontoweb">
 
 	<!-- MENU TOPO -->
-	<div id="topbar-wrapper" class="float-left">
-		<div id="logo-wrapper" class="float-left">
-			<div id="logo" class="float-left"></div>
-			<h6 class="float-left hidden-xs">ODONTOWEB</h6>
+	<div class="topbar">
+		<div class="">
+			<div class=""></div>
+			<h6 class="">ODONTOWEB</h6>
 		</div>
 		<div ow-tenant-select data-ng-if="isLoggedIn()"></div>
 		<div ow-user data-ng-if="isLoggedIn()"></div>
 	</div>
 
 	<!-- CONTEUDO -->
-	<div id="content-wrapper" data-ng-view class="container"></div>
+	<div data-ng-view class="container"></div>
 
 	<script src="odontoweb-deps.js"></script>
 	<script src="odontoweb-app.js"></script>

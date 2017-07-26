@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('OdontowebApp')
+        .module('odontoweb.core')
         .factory('TokenInterceptor', TokenInterceptor);
 
     TokenInterceptor.$inject = ['$q', '$window'];

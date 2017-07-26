@@ -2,7 +2,7 @@
     'use strict';
     
     angular
-        .module('OdontowebApp')
+        .module('odontoweb.core')
         .run(Run);
 
     Run.$inject = ['$rootScope', '$location', 'AutenticacaoService'];

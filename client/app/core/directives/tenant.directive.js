@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('OdontowebApp')
+        .module('odontoweb.core')
         .directive('owTenantSelect', tenantSelect);
 
     function tenantSelect() {

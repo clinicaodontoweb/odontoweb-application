@@ -79,7 +79,7 @@ gulp.task('deps-css', function (){
 });
 
 gulp.task('app-js', function (){
-	return gulp.src(['client/app/**/*.js'])
+	return gulp.src(['client/app/**/*module*.js', 'client/app/**/*.js'])
 			.pipe(concat('odontoweb-app.js'))
 			.pipe(gulp.dest('dist'))
 			.pipe(uglify())
@@ -92,7 +92,7 @@ gulp.task('app-css', function (){
 			.pipe(sass())
 			.pipe(gulp.dest('dist'))
 			.pipe(cssmin())
-			.pipe(rename({suffix: '.min'}))
+			.pipe(rename({basename: 'odontoweb-app', suffix: '.min'}))
 			.pipe(gulp.dest('dist'));
 });
 
