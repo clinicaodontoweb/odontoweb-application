@@ -88,9 +88,8 @@ gulp.task('app-js', function (){
 });
 
 gulp.task('app-css', function (){
-	return gulp.src(['client/assets/sass/**/*.scss'])
+	return gulp.src(['client/assets/sass/app.scss'])
 			.pipe(sass())
-			.pipe(concat('odontoweb-app.css'))
 			.pipe(gulp.dest('dist'))
 			.pipe(cssmin())
 			.pipe(rename({suffix: '.min'}))

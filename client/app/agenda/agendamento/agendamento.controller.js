@@ -5,17 +5,15 @@
         .module('OdontowebApp')
         .controller('AgendamentoController', AgendamentoController);
 
-    AgendamentoController.$inject = ['event'];
+    AgendamentoController.$inject = ['model'];
 
-    function AgendamentoController(event) {
+    function AgendamentoController(model) {
         var vm = this;
         vm.title = "andre";
-        vm.event = event;
+        vm.data = model.data;
+        vm.profissional = model.profissional;
 
-        activate();
-
-        function activate() {}
-
+        console.log(model);
         
     }
 })();

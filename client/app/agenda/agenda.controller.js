@@ -17,17 +17,19 @@
       vm.viewChange = viewChange;
       vm.cellIsOpen = false;
       vm.cadastrarEvento = cadastrarEvento;
+      vm.selecionarData = selecionarData;
       vm.visualizarEvento = visualizarEvento;
       vm.atualizarAgenda = atualizarAgenda;
       vm.data = {
         dataInicio: moment().startOf('month').valueOf(),
         dataFim: moment().endOf('month').valueOf()
       };
+      vm.dataSelecionada = moment();
 
       activate();
 
       function activate() {
-        getProfissionais().then(getEventos);
+        //getProfissionais().then(getEventos);
       }
 
       function getProfissionais() {
@@ -52,16 +54,6 @@
       function atualizarAgenda(profissional) {
         vm.profissionalAtivo = profissional;
         getEventos(profissional);
-      }
-
-      function cadastrarEvento(){
-        var modalInstance = $uibModal.open({
-          animation: true,
-          templateUrl: 'partials/agenda/agendamento/agendamento-novo.view.html',
-          size: 'lg',
-          controller: 'AgendamentoController',
-          controllerAs: 'vm'
-        });
       }
 
       function visualizarEvento(event){
@@ -108,6 +100,29 @@
           }
         }
       }
+      
+      function selecionarData(date) {
+        vm.dataSelecionada = date;
+        cadastrarEvento(vm.dataSelecionada);
+      }
+
+      function cadastrarEvento(data){
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: 'partials/agenda/agendamento/agendamento-novo.view.html',
+          size: 'lg',
+          controller: 'AgendamentoController',
+          controllerAs: 'vm',
+          resolve: {
+            model: function () {
+             return {
+               data: data,
+               profissional: vm.profissionalAtivo
+              };
+            }
+          }
+        });
+      }
 
       function viewChange(calendarDate, calendarNextView) {
         console.log(calendarDate);
@@ -116,66 +131,3 @@
 
     }
 })();
-
-/*app.controller('AgendaController', ['$scope', 'alert', function($scope, alert){
-	
-  $scope.calendarView = 'month';
-	$scope.viewDate = new Date();
-	$scope.events = [
-      {
-        title: 'André Nunes',
-        paciente: {
-          nome: 'André Nunes',
-          email: 'andre@gmail.com',
-          telefone: 85905497
-        },
-        procedimento: 'Consulta',
-        convenio: 'Unimed',
-        startsAt: moment().startOf('day').add(13, 'hours').toDate(),
-        endsAt: moment().startOf('day').add(13, 'hours').add(30, 'minutes').toDate(),
-        status: 'Confirmada',
-        statusClass: 'list-group-item-info',
-        color: {
-          primary: '#31708f',
-          secondary: '#d9edf7'
-        }
-      }, {
-        title: 'Fernando da Rosa',
-        paciente: {
-          nome: 'Fernando da Rosa',
-          email: 'fernando@gmail.com',
-          telefone: 85905497
-        },
-        procedimento: 'Limpeza',
-        convenio: 'Itáu',
-        startsAt: moment().startOf('week').add(7, 'hours').toDate(),
-        endsAt: moment().startOf('week').add(7, 'hours').add(30, 'minutes').toDate(),
-        status: 'Atendido',
-        statusClass: 'list-group-item-success',
-        color: {
-          primary: '#3c763d',
-          secondary: '#dff0d8'
-        }
-      }, {
-        title: 'Paulo Ricardo',
-        paciente: {
-          nome: 'Paulo Ricardo',
-          email: 'paulo@gmail.com',
-          telefone: 85905497
-        },
-        procedimento: 'Consulta',
-        convenio: 'Unimed',
-        startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-        endsAt: moment().startOf('day').add(7, 'hours').add(30, 'minutes').toDate(),
-        status: 'Cancelado',
-        statusClass: 'list-group-item-danger',
-        color: {
-          primary: '#a94442',
-          secondary: '#f2dede'
-        }
-      }
-    ];
-  $scope.eventClicked = function(event){
-    alert.show(event);
-  }
-}]);*/
