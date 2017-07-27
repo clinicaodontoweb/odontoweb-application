@@ -11,9 +11,9 @@
 
 		//routes
 	 	$routeProvider
-			.when('/cadastro/profissional', {
-                templateUrl: 'partials/modulos/cadastro/profissional/profissional.novo.html',
-                controller: 'ProfissionalController', 
+			.when('/cadastro/dentista', {
+                templateUrl: 'partials/modulos/cadastro/dentista/dentista.novo.html',
+                controller: 'DentistaController', 
                 controllerAs: 'vm'
             });
 			

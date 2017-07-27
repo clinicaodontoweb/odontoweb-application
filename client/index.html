@@ -12,17 +12,17 @@
 <body data-ng-app="odontoweb">
 
 	<!-- MENU TOPO -->
-	<div class="topbar">
-		<div class="">
-			<div class=""></div>
-			<h6 class="">ODONTOWEB</h6>
+	<div id="topbar-wrapper" class="float-left">
+		<div id="logo-wrapper" class="float-left hidden-xs">
+			<div id="logo" class="float-left"></div>
+			<h6 class="float-left">ODONTOWEB</h6>
 		</div>
 		<div ow-tenant-select data-ng-if="isLoggedIn()"></div>
 		<div ow-user data-ng-if="isLoggedIn()"></div>
 	</div>
 
 	<!-- CONTEUDO -->
-	<div data-ng-view class="container"></div>
+	<div id="content-wrapper" data-ng-view></div>
 
 	<script src="odontoweb-deps.js"></script>
 	<script src="odontoweb-app.js"></script>

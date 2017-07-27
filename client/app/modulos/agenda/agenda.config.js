@@ -12,7 +12,7 @@
 		//routes
 	 	$routeProvider
 			.when('/agenda', {
-                templateUrl: 'partials/agenda/agenda.view.html', 
+                templateUrl: 'partials/modulos/agenda/agenda.view.html', 
                 controller: 'AgendaController', 
                 controllerAs: 'vm'
             });

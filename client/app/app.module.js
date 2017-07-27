@@ -9,6 +9,8 @@
         'restangular',
         'mwl.calendar',
         'angular-jwt',
+        'ui.bootstrap.modal',
+        'ui.bootstrap.tpls',
 
         /* modulos */
         'odontoweb.agenda',
