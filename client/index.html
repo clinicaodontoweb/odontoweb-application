@@ -11,18 +11,32 @@
 </head>
 <body data-ng-app="odontoweb">
 
-	<!-- MENU TOPO -->
-	<div id="topbar-wrapper" class="float-left">
-		<div id="logo-wrapper" class="float-left hidden-xs">
-			<div id="logo" class="float-left"></div>
-			<h6 class="float-left">ODONTOWEB</h6>
+	<div class="container-fluid">
+		
+		<div class="topbar row">
+			<div class="col-xs-1">
+				<button type="button"> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="col-xs-10">
+				<div class="topbar__logo center-block">
+					<div class="topbar__logo-company"></div>
+				</div>
+			</div>
+			<div class="col-xs-1">
+				
+			</div>
+			<!-- <div ow-tenant-select data-ng-if="isLoggedIn()"></div>
+			<div ow-user data-ng-if="isLoggedIn()"></div> -->
 		</div>
-		<div ow-tenant-select data-ng-if="isLoggedIn()"></div>
-		<div ow-user data-ng-if="isLoggedIn()"></div>
-	</div>
 
-	<!-- CONTEUDO -->
-	<div id="content-wrapper" data-ng-view></div>
+		
+		<div data-ng-view></div>
+
+	</div>
 
 	<script src="odontoweb-deps.js"></script>
 	<script src="odontoweb-app.js"></script>

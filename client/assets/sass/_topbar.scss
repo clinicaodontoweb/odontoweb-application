@@ -1,0 +1,16 @@
+.topbar {
+    background: $gray-color;
+    height: 60px;
+
+    &__logo {
+        width: 100px;
+
+        &-company {
+            @include image('logo_color.png');
+            width: 32px;
+            height: 38px;
+            display: block;
+            margin-top: 10px;
+        }
+    }
+}

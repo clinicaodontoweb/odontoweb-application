@@ -1,33 +1,13 @@
-
-
-<!-- 
-
 <div class="row">
-	<div class="col-xs-8">
-		<form name="profissional-form" ng-submit="cadastrar(profissional-form.$valid)" novalidate>
-			<div class="row">
-		    	<div class="small-12 columns">
-			    	<label>Cidade
-						<input type="text" name="cidade" placeholder="ex: Porto Alegre" ng-model="cidade.nome" required ng-class="{'input-error' : profissional-form.cidade.$invalid && !profissional-form.cidade.$pristine }" />
-						<p ng-show="profissional-form.cidade.$invalid && !profissional-form.cidade.$pristine" class="label-error">Nome da cidade é obrigatório.</p>
-			    	</label>
-		    	</div>
-		  	</div>
-		  	<div class="row">
-		    	<div class="small-12 columns">
-			    	<label>Estado
-						<select name="estado" id="estadoSelected" ng-options="option.nome for option in estados" ng-model="cidade.estado" required ng-class="{'input-error' : profissional-form.estado.$invalid && !profissional-form.estado.$pristine }">
-							<option value="">Selecione um estado</option>
-						</select>
-						<p ng-show="profissional-form.estado.$invalid && !profissional-form.estado.$pristine" class="label-error">Estado é obrigatório.</p>
-			    	</label>
-		    	</div>
-		  	</div>
-		  	<div class="row form-action">
-			    <div class="small-12 columns">
-			    	<button type="submit" class="button verde" ng-disabled="profissional-form.$invalid">SALVAR</button>
-			    </div>
-		  	</div>
+	<div class="col-xs-8 center-block">
+		<form action="#" name="form" data-ng-submit="vm.cadastrar(form.$valid)" novalidate>
+			
+			<label>Nome
+				<input type="text" name="nome" placeholder="Nome do dentista" data-ng-model="vm.dentista.nome" required data-ng-class="{'input-error' : form.nome.$invalid && !form.nome.$pristine }" />
+				<p data-ng-show="form.nome.$invalid && !form.nome.$pristine" class="label-error">Nome é obrigatório.</p>
+			</label>
+			
+			<button type="submit" class="button verde" data-ng-disabled="form.$invalid">SALVAR</button>
 		</form>
 	</div>
-</div> -->
+</div>
