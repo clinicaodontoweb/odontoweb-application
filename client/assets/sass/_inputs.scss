@@ -1,22 +1,12 @@
-input[type=text], select{
-    border-radius: 4px;
-    color: $font-color;
-    font-weight: 500;
-    font-size: 15px;
+.form-control {
+    background: $white-color;
     box-shadow: none;
-    margin-bottom: 5px;
+    border: 1px solid $gray-dark-color;
+    height: 45px;
 
-    option{
-        height: 20px;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        border: 1px solid $blue-light-color;
     }
-}
-input[type=text]:focus{
-    border: 1px solid $base-color;
-    box-shadow: none;
-}
-input.ng-dirty.ng-valid-parse.ng-empty.ng-invalid.ng-invalid-required.input-error.ng-touched{
-    border: 1px solid red;
-}
-.label-error{
-    color: red;
 }

@@ -1,6 +1,8 @@
 .topbar {
-    background: $gray-color;
+    background: $white-color;
+    border-bottom: 1px solid $gray-dark-color;
     height: 60px;
+    margin-bottom: 30px;
 
     &__logo {
         width: 100px;
@@ -13,4 +15,32 @@
             margin-top: 10px;
         }
     }
+
+    &__menu {
+        position: relative;
+        float: left;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        padding: 9px 10px;
+        margin: 8px 0px;
+        background: transparent;
+
+        &:hover {
+            background-color: $gray-light-color;
+            border-color: $gray-light-color;
+        }
+
+        &-icon {
+            display: block;
+            width: 22px;
+            height: 2px;
+            border-radius: 1px;
+            background-color: $blue-light-color;
+        }
+    }
+}
+
+.topbar__menu-icon+.topbar__menu-icon {
+    margin-top: 4px;
 }

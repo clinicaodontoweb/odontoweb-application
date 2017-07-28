@@ -3,14 +3,15 @@
 	background-color: $color;
 	color: #FFF;
 	font-size: 10pt;
-
+	float: right;
+	padding: 10px 18px;
 }
 
 .button{
 	@include button($font-color);
 
 	&.azul{
-		@include button($base-color);
+		@include button($blue-light-color);
 
 		&:hover{
 			background-color: #036296;
