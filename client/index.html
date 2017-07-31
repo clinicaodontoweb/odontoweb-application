@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="odontoweb-deps.min.css">
 	<link rel="stylesheet" href="odontoweb-app.min.css">
@@ -13,26 +13,8 @@
 
 	<div class="container-fluid">
 		
-		<div class="topbar row">
-			<div class="col-xs-1">
-				<button type="button" class="topbar__menu"> 
-					<span class="topbar__menu-icon"></span>
-					<span class="topbar__menu-icon"></span>
-					<span class="topbar__menu-icon"></span>
-				</button>
-			</div>
-			<div class="col-xs-10">
-				<div class="topbar__logo center-block">
-					<div class="topbar__logo-company"></div>
-				</div>
-			</div>
-			<div class="col-xs-1">
-				
-			</div>
-			<!-- <div ow-tenant-select data-ng-if="isLoggedIn()"></div>
-			<div ow-user data-ng-if="isLoggedIn()"></div> -->
-		</div>
-
+		<ow-topbar></ow-topbar>
+		<ow-menu-user></ow-menu-user>
 		
 		<div data-ng-view></div>
 

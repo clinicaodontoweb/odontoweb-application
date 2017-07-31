@@ -14,31 +14,24 @@
 		@include button($blue-light-color);
 
 		&:hover{
-			background-color: #036296;
+			background-color: $blue-color;
 		}
 	}
 
 	&.verde{
-		@include button(#63ddcb);
+		@include button($green-color);
 
 		&:hover{
-			background-color: #5cbaac;
+			background-color: $green-light-color;
 		}
 	}
 
 	&.vermelho{
-		@include button(#e0001a);
+		@include button($red-color);
 
-		&.editar{
-			background-color: #e0001a;
-			padding: 11px;
-		    color: #FFF;
-		    font-size: 9pt;
-		    margin: 0;
-
-		    &:hover{
-		    	background-color: #bf0114;
-		    } 
-		}
+		&:hover{
+			background-color: $red-light-color;
+		} 
+		
 	}
 }

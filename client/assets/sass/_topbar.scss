@@ -1,18 +1,18 @@
 .topbar {
     background: $white-color;
     border-bottom: 1px solid $gray-dark-color;
-    height: 60px;
+    height: $topbar-height;
     margin-bottom: 30px;
 
     &__logo {
-        width: 100px;
+        width: auto;
 
         &-company {
             @include image('logo_color.png');
             width: 32px;
             height: 38px;
             display: block;
-            margin-top: 10px;
+            margin: 10px auto;
         }
     }
 
@@ -23,7 +23,7 @@
         border: 1px solid transparent;
         border-radius: 4px;
         padding: 9px 10px;
-        margin: 8px 0px;
+        margin: 12px 0 0px 10px;
         background: transparent;
 
         &:hover {
@@ -39,6 +39,49 @@
             background-color: $blue-light-color;
         }
     }
+
+    &__profile {
+        height: $topbar-height;
+
+        &-details {
+            float: right;
+            width: auto;
+            height: 100%;
+            
+            &-user {
+                padding-top: 10px;
+            }
+
+            &-user, &-tenant {
+                width: 100%;
+                display: block;
+                height: $topbar-height / 2;
+                text-align: right;
+                padding-right: 10px;
+            }
+        }
+        
+        & > i {
+            float: right;
+            width: auto;
+            display: block;
+            height: 100%;
+            padding-top: 12px;
+            font-size: 24pt;
+            border-left: 1px solid $gray-color;
+            color: $blue-color;
+            
+            &:hover {
+                border-left: 1px solid $gray-dark-color;
+                border-bottom: 1px solid $gray-dark-color;
+                background-color: $gray-light-color;
+                cursor: pointer;
+            }
+        }
+
+
+    }
+
 }
 
 .topbar__menu-icon+.topbar__menu-icon {

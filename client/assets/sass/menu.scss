@@ -1,0 +1,102 @@
+.menu-user {
+    background: $white-color;
+    height: auto;
+    width: 0px;
+    display: none;
+    position: absolute;
+    top: $topbar-height;
+    bottom: 0;
+    right: 0;
+    z-index: 900;
+    border-left: 1px solid $gray-dark-color;
+    transition: 0.5s;
+
+    &__profile {
+        height: 60px;
+        width: 100%;
+        border-bottom: 1px solid $gray-dark-color;
+
+        & > i {
+            font-size: 23pt;
+            float: left;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-top: 15px;
+
+        }
+
+        & > i.settings {
+            float: right;
+            margin: 15px 0;
+            color: $blue-color;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &-user {
+            margin-top: 10px;
+            float: left;
+            text-align: left;
+        }
+
+
+    }
+
+    &__clinicas {
+
+        h6 {
+            font-size: 10pt;
+            border-bottom: 1px solid $gray-dark-color;
+            padding: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            & > i {
+                float: left;
+                margin-top: -7px;
+                margin-left: 3px;
+                margin-right: 15px;
+            }
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                line-height: 35px;
+                margin: 0;
+                padding-left: 15px;
+                border-left: 2px solid $white-color;
+                text-transform: uppercase;
+                font-size: 9pt;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $blue-color;
+                    border-left: 2px solid $blue-color;
+                    background-color: $gray-light-color;
+                }
+
+                &.ativo {
+                    color: $blue-color;
+                    border-left: 2px solid $blue-color;
+                }
+            }
+        }
+    }
+    
+    &__logout {
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+        padding: 10px;
+
+        & > button {
+            width: 100%;
+        }
+    }
+}
