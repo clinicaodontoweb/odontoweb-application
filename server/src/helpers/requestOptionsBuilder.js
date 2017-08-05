@@ -3,7 +3,7 @@ module.exports = {
 }
 
 function buildRequest(method, url, req) {
-	return {
+	var request = {
 		url: url,
 		method: method,
 		json: true,
@@ -13,4 +13,9 @@ function buildRequest(method, url, req) {
 			'X-AUTH-TOKEN': req.get('X-AUTH-TOKEN')
 		}
 	}
+
+	if(!req.get('X-AUTH-TOKEN'))
+		delete request.headers
+
+	return request;
 }
