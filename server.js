@@ -7,9 +7,6 @@ var port = process.env.PORT || 8000;
 //client-app
 app.use(express.static('./dist/'));
 app.use('/partials', express.static('./dist/app/'));
-app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
-});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
