@@ -2,9 +2,13 @@
 	border: 1px solid $color;
 	background-color: $color;
 	color: #FFF;
-	font-size: 10pt;
+	font-size: 9pt;
 	float: right;
-	padding: 10px 18px;
+	padding: 12px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 .button{

@@ -3,11 +3,10 @@
 		<form action="#" name="form" data-ng-submit="vm.cadastrar(form.$valid)" novalidate>
 			
 			<label>Nome
-				<input type="text" name="nome" placeholder="Nome do dentista" data-ng-model="vm.dentista.nome" required data-ng-class="{'input-error' : form.nome.$invalid && !form.nome.$pristine }" />
-				<p data-ng-show="form.nome.$invalid && !form.nome.$pristine" class="label-error">Nome é obrigatório.</p>
+				<input type="text" name="nome" class="form-control" placeholder="Nome do dentista" data-ng-model="vm.dentista.nome" required/>
 			</label>
 			
-			<button type="submit" class="button verde" data-ng-disabled="form.$invalid">SALVAR</button>
+			<button type="submit" class="button verde" data-ng-disabled="form.$invalid">cadastrar</button>
 		</form>
 	</div>
 </div>
