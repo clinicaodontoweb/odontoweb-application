@@ -2,3 +2,4 @@
 **/bower_components
 **/*.out
 dist/
+.vscode/
