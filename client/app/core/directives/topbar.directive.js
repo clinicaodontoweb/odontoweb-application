@@ -32,7 +32,7 @@
           document.querySelector(".menu-user").style.width = 0;
           setTimeout(function() {
             document.querySelector(".menu-user").style.display = 'none';
-          }, 500);
+          }, 200);
           event.target.innerText = 'keyboard_arrow_down';
         }
       }
