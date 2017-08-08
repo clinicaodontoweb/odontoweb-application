@@ -13,10 +13,14 @@
 
 	<div class="container-fluid">
 		
-		<ow-topbar></ow-topbar>
-		<ow-menu-user></ow-menu-user>
+		<div data-ng-controller="ProfileController as vm">
+			<ow-topbar tenant="vm.tenantSelected"></ow-topbar>
+			<ow-menu-user tenant="vm.tenantSelected" tenants="vm.tenants" usuario="vm.user" sair="vm.logout" trocar="vm.changeTenant"></ow-menu-user>
+		</div>
 		
-		<div data-ng-view class="content"></div>
+		<div data-ng-view class="content">
+			
+		</div>
 
 	</div>
 

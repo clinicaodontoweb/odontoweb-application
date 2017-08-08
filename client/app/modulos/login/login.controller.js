@@ -5,9 +5,9 @@
         .module('odontoweb.login')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['AutenticacaoService', '$location'];
+    LoginController.$inject = ['AutenticacaoService', '$location', '$rootScope'];
 
-    function LoginController(AutenticacaoService, $location) {
+    function LoginController(AutenticacaoService, $location, $rootScope) {
         var vm = this;
         vm.title = 'Acesso ao Sistema';
         vm.subTitle	= "Preencha os dados de seu login para acessar o sistema.";
@@ -19,6 +19,7 @@
 			if(validateLoginForm()) {
 				AutenticacaoService.login(vm.user).then(function(data) {
 					AutenticacaoService.saveToken(data.token);
+					$rootScope.$broadcast("login");
 					$location.path("/");
 				},function(status, data) {
 					vm.erro = true;

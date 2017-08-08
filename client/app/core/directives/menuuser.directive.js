@@ -9,10 +9,25 @@
     
    var directive = {
       restrict: 'E',
-      templateUrl: 'partials/core/directives/menuuser.directive.html'
+      templateUrl: 'partials/core/directives/menuuser.directive.html',
+      scope: {
+        tenants: '=',
+        tenant: '=',
+        usuario: '=',
+        sair: '=',
+        trocar: '='
+      },
+      controller: MenuUserController,
+      controllerAs: 'vm'
     };
 
     return directive;
     
   }
+
+  function MenuUserController() {
+    var vm = this;
+  }
+
+
 })();

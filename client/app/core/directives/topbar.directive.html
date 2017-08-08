@@ -1,6 +1,6 @@
 <div class="topbar row no-gutter">
     <div class="col-xs-2 col-sm-5">
-        <button type="button" class="topbar__menu" data-ng-if="isLoggedIn()"> 
+        <button type="button" class="topbar__menu" data-ng-if="vm.isLoggedIn()"> 
             <span class="topbar__menu-icon"></span>
             <span class="topbar__menu-icon"></span>
             <span class="topbar__menu-icon"></span>
@@ -12,11 +12,11 @@
         </div>
     </div>
     <div class="col-xs-10 col-sm-5">
-        <div class="topbar__profile" data-ng-if="isLoggedIn()">
-            <i class="material-icons" data-ng-click="vm.toggleMenu($event)">keyboard_arrow_down</i>
+        <div class="topbar__profile" data-ng-if="vm.isLoggedIn()">
+            <i class="material-icons" data-ng-click="vm.toggleMenu()" id="topbar__profile-btn">keyboard_arrow_down</i>
             <div class="topbar__profile-details">
                 <span class="topbar__profile-details-user"><b>Acessando dados da clínica</b></span>
-                <span class="topbar__profile-details-tenant">Clínica Sorrifácil</span>
+                <span class="topbar__profile-details-tenant">{{tenant.nome}}</span>
             </div>
         </div>
     </div>
