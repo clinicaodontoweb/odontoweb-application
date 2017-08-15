@@ -10,23 +10,20 @@
    var directive = {
       restrict: 'E',
       templateUrl: 'partials/core/directives/menuuser.directive.html',
-      scope: {
-        tenants: '=',
-        tenant: '=',
-        usuario: '=',
-        sair: '=',
-        trocar: '='
-      },
       controller: MenuUserController,
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      bindToController: true
     };
 
     return directive;
     
   }
 
-  function MenuUserController() {
+  MenuUserController.$inject = ['$localStorage'];
+
+  function MenuUserController($localStorage) {
     var vm = this;
+    vm.$storage = $localStorage;
   }
 
 

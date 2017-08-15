@@ -5,9 +5,9 @@
         .module('odontoweb.core')
         .factory('AutenticacaoService', AutenticacaoService);
 
-    AutenticacaoService.$inject = ['Restangular', '$window', 'jwtHelper'];
+    AutenticacaoService.$inject = ['Restangular', '$localStorage', 'jwtHelper'];
 
-    function AutenticacaoService(Restangular, $window, jwtHelper) {
+    function AutenticacaoService(Restangular, $localStorage, jwtHelper) {
         //base
         var auth = Restangular.all('auth');
 
@@ -16,12 +16,14 @@
             login: login,
             me: me,
             isLogged: isLogged,
-            getUserNameFromToken: getUserNameFromToken,
             getTenantFromToken: getTenantFromToken,
             changeTenant: changeTenant,
-            updateToken: updateToken,
-            deleteToken: deleteToken,
-            saveToken: saveToken
+            clearStorage: clearStorage,
+            getCurrentUser: getCurrentUser,
+            getCurrentTenant: getCurrentTenant,
+            saveToken: saveToken,
+            saveCurrentTenant: saveCurrentTenant,
+            saveCurrentUser: saveCurrentUser
         };
 
         return service;
@@ -35,35 +37,45 @@
         }
 
         function isLogged() {
-            return ($window.sessionStorage.token == undefined) ? false : true;
-        }
-        
-        function getUserNameFromToken() { 
-            return ($window.sessionStorage.token != undefined) ? jwtHelper.decodeToken($window.sessionStorage.token).sub : ''; 
+            return ($localStorage.token == undefined) ? false : true;
         }
         
         function getTenantFromToken() { 
-            return ($window.sessionStorage.token != undefined) ? jwtHelper.decodeToken($window.sessionStorage.token).tenant : '';
+            return ($localStorage.token != undefined) ? jwtHelper.decodeToken($localStorage.token).tenant : '';
+        }
+
+        function getCurrentUser() { 
+            return ($localStorage.currentUser != undefined) ? $localStorage.currentUser : null;
+        }
+        
+        function getCurrentTenant() { 
+            return ($localStorage.currentTenant != undefined) ? $localStorage.currentTenant : null;
         }
 
         function changeTenant(idClinica) {
             return auth.one('tenant').one('update', idClinica).get();
         }
 
-        function updateToken(token) {
-            if(token){
-                $window.sessionStorage.token = token;
+        function saveToken(value) {
+            if(value){
+                $localStorage.token = value;
             }
         }
 
-        function deleteToken() {
-            delete $window.sessionStorage.token;
+        function saveCurrentUser(value) {
+            if(value){
+                $localStorage.currentUser = value;
+            }
         }
 
-        function saveToken(token) {
-            if(token){
-                $window.sessionStorage.token = token;
+        function saveCurrentTenant(value) {
+            if(value){
+                $localStorage.currentTenant = value;
             }
+        }
+
+        function clearStorage() {
+            $localStorage.$reset();
         }
     }
 

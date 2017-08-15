@@ -5,9 +5,9 @@
 		.module('odontoweb.core')
 		.config(config);
 
-	config.$inject = ['$routeProvider', '$httpProvider', 'RestangularProvider', 'calendarConfig'];
+	config.$inject = ['$routeProvider', '$httpProvider', 'RestangularProvider', 'calendarConfig', '$localStorageProvider'];
 
-	function config($routeProvider, $httpProvider, RestangularProvider, calendarConfig) {
+	function config($routeProvider, $httpProvider, RestangularProvider, calendarConfig, $localStorageProvider) {
 
 		//calendar config
 		calendarConfig.allDateFormats.moment.date.hour = 'HH:mm';
@@ -20,6 +20,9 @@
 
 		//token interceptor
 		$httpProvider.interceptors.push('TokenInterceptor');
+
+		//storage prefix
+		$localStorageProvider.setKeyPrefix('ow-');
 
 		//routes
 	 	$routeProvider

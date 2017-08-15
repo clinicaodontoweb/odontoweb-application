@@ -5,9 +5,9 @@
         .module('odontoweb.agenda')
         .controller('AgendaController', AgendaController);
 
-    AgendaController.$inject = ['ApiService', 'entidades', '$uibModal'];
+    AgendaController.$inject = ['ApiService', 'entidades', '$uibModal', '$rootScope'];
 
-    function AgendaController(ApiService, entidades, $uibModal) {
+    function AgendaController(ApiService, entidades, $uibModal, $rootScope) {
       var vm = this;
       vm.profissionais = [];
       vm.profissionalAtivo = {};
@@ -29,7 +29,7 @@
       activate();
 
       function activate() {
-        //getProfissionais().then(getEventos);
+        getProfissionais().then(getEventos);
       }
 
       function getProfissionais() {

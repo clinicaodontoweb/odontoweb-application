@@ -57,7 +57,8 @@ gulp.task('deps-js', function (){
 					depsFolder + 'bootstrap/dist/js/bootstrap.js',
 					depsFolder + 'angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js',
 					depsFolder + 'angular-bootstrap/ui-bootstrap-tpls.js',
-					depsFolder + 'angular-bootstrap/ui-bootstrap.js'
+					depsFolder + 'angular-bootstrap/ui-bootstrap.js',
+					depsFolder + 'ngstorage/ngStorage.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
 			.pipe(gulp.dest('dist'))

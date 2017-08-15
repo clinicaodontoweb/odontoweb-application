@@ -14,7 +14,8 @@
 			.when('/agenda', {
                 templateUrl: 'partials/modulos/agenda/agenda.view.html', 
                 controller: 'AgendaController', 
-				controllerAs: 'vm'
+				controllerAs: 'vm',
+				requireLogin: true
             });
 			
 	}

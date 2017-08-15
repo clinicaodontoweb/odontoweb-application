@@ -3,7 +3,7 @@
         <i class="material-icons">person_outline</i>
         <div class="menu-user__profile-user">
             <b>Bem vindo,</b><br> 
-            {{usuario.nome}}
+            {{vm.$storage.currentUser.nome}}
         </div>
         <i class="material-icons settings">more_vert</i>
     </div>
@@ -13,10 +13,10 @@
             Suas Clínicas
         </h6>
         <ul>
-            <li data-ng-repeat="t in tenants" data-ng-class="{'ativo': t.cnpj == tenant.cnpj}" data-ng-click="trocar(t.id)">{{t.nome}}</li>
+            <li data-ng-repeat="tenant in vm.$storage.currentUser.clinicas" data-ng-class="{'ativo': tenant.cnpj == vm.$storage.currentTenant.cnpj}" data-ng-click="changeTenant(tenant.id)">{{tenant.nome}}</li>
         </ul>
-    </div>
+    </div> 
     <div class="menu-user__logout">
-        <button class="btn button vermelho" ng-click="sair()">SAIR</button>
+        <button class="btn button vermelho" data-ng-click="logout()">SAIR</button>
     </div>
 </div>

@@ -5,9 +5,9 @@
         .module('odontoweb.core')
         .factory('TokenInterceptor', TokenInterceptor);
 
-    TokenInterceptor.$inject = ['$q', '$window'];
+    TokenInterceptor.$inject = ['$q', '$localStorage'];
 
-    function TokenInterceptor($q, $window) {
+    function TokenInterceptor($q, $localStorage) {
         return {
             request: request,
             response: response,
@@ -18,8 +18,8 @@
         function request(config) {
             config.headers = config.headers || {};
 
-            if ($window.sessionStorage.token) {
-                config.headers['X-Auth-Token'] = $window.sessionStorage.token;
+            if ($localStorage.token) {
+                config.headers['X-Auth-Token'] = $localStorage.token;
             }
 
             return config;
