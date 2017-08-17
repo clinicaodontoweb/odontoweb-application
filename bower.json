@@ -24,6 +24,7 @@
     "moment": "^2.18.0",
     "angular-bootstrap-calendar": "^0.28.3",
     "angular-bootstrap": "^2.5.0",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "toastr": "^2.1.3"
   }
 }

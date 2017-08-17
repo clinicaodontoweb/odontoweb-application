@@ -58,7 +58,8 @@ gulp.task('deps-js', function (){
 					depsFolder + 'angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js',
 					depsFolder + 'angular-bootstrap/ui-bootstrap-tpls.js',
 					depsFolder + 'angular-bootstrap/ui-bootstrap.js',
-					depsFolder + 'ngstorage/ngStorage.js'
+					depsFolder + 'ngstorage/ngStorage.js',
+					depsFolder + 'toastr/toastr.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
 			.pipe(gulp.dest('dist'))
@@ -70,7 +71,8 @@ gulp.task('deps-js', function (){
 gulp.task('deps-css', function (){
 	return gulp.src([depsFolder + 'bootstrap/dist/css/bootstrap.css',
 					depsFolder + 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css',
-					depsFolder + 'angular-bootstrap/ui-bootstrap-csp.css'
+					depsFolder + 'angular-bootstrap/ui-bootstrap-csp.css',
+					depsFolder + 'toastr/toastr.css'
 					])
 			.pipe(concat('odontoweb-deps.css'))
 			.pipe(gulp.dest('dist'))

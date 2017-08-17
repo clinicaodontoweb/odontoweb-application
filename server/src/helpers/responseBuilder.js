@@ -3,10 +3,15 @@ module.exports = {
 }
 
 function buildResponse(error, response, body, res) {
-	if (!error && response.statusCode == 200) {
+	if (!error && response.statusCode) {
+		res.status(response.statusCode);
 		res.json(body);
 	}else{
-		res.status((error.code === 'ECONNREFUSED') ? 500 : error.code);
-		res.json({error: 'Não foi possível conectar com o serviço!!!'});
+		if(error && error.code === 'ECONNREFUSED') {
+			res.status(500);
+			res.json({error: 'Não foi possível conectar com o serviço!!!'});
+		}else {
+			res.status(error.code);
+		}
 	}
 }

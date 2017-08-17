@@ -13,10 +13,12 @@
 		vm.erro = false;
 		vm.login = login;
 
-        function login() {
-			autenticar()
-				.then(getProfile)
-				.then(redirect);
+        function login(isValid) {
+			if (isValid) {
+				autenticar()
+					.then(getProfile, loginError)
+					.then(redirect);
+			}
 		}
 
 		function autenticar() {
@@ -26,6 +28,10 @@
 							AutenticacaoService.saveToken(data.token);
 							return data.token;
 						});
+		}
+					
+		function loginError(error) {
+			toastr.error(error.data.mensagem, 'Login falhou!');
 		}
 			
 		function getProfile() {
@@ -46,7 +52,8 @@
 			return null;
 		}
 
-		function redirect() {
+		function redirect(usuario) {
+			toastr.success(usuario.nome, 'Bem vindo!');
 			$rootScope.$broadcast("loginSuccess");
 			$location.path("/");
 		}

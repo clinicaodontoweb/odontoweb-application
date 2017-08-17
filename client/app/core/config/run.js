@@ -35,6 +35,7 @@
         }
 
         function logoutSuccess() {
+            toastr.success('Volte sempre', 'Sessão finalizada!');
             toggleMenu();
             $location.path("/");
         }
