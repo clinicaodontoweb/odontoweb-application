@@ -10,7 +10,7 @@
     function apiservice(Restangular) {
         var service = {
             listaTodasEntidades: listaTodasEntidades,
-            listaTodasEntidades_two_id: listaTodasEntidades_two_id
+            listaTodasEntidades_two_id: listaTodasEntidades_two_id,
         };
 
         return service;

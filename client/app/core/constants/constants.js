@@ -8,7 +8,10 @@
     function Entidades() {
     	return {
 	        profissional: "profissional",
-        	evento: "evento"
+			evento: "evento",
+			usuario: "usuario",
+			dentista: "dentista",
+			clinica: "clinica"
 	    }
     }
 

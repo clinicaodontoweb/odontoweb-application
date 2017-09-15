@@ -53,7 +53,7 @@
 		}
 
 		function redirect(usuario) {
-			toastr.success(usuario.nome, 'Bem vindo!');
+			toastr.success(usuario.email, 'Bem vindo!');
 			$rootScope.$broadcast("loginSuccess");
 			$location.path("/");
 		}

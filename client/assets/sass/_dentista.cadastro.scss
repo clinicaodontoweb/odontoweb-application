@@ -1,0 +1,20 @@
+.clinicas-list-form {
+    font-weight: 500;
+    width: 100%;
+    float: left;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+        font-weight: bold;
+    }
+
+    & > input {
+        margin-right: 10px;
+    }
+}
+
+.clinicas-list-title {
+    font-size: 18px;
+    margin-top: 15px;
+}

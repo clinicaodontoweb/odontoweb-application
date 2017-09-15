@@ -14,7 +14,8 @@
 			.when('/cadastro/dentista', {
                 templateUrl: 'partials/modulos/cadastro/dentista/dentista.novo.html',
                 controller: 'DentistaController', 
-                controllerAs: 'vm'
+				controllerAs: 'vm',
+				requireAdmin: true
             });
 			
 	}

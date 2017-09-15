@@ -48,6 +48,9 @@
 			.when('/', {
 				redirectTo: '/agenda'
 			})
+			.when('/negado', {
+				templateUrl: 'acesso_negado.html'
+			})
 			.otherwise({
 				templateUrl: '404.html'
 			});

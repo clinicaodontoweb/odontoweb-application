@@ -21,6 +21,9 @@
             if(nextRoute.$$route.hasOwnProperty('requireLogin') && !AutenticacaoService.isLogged()) {
                 $location.path("/login");
             }
+            else if(nextRoute.$$route.hasOwnProperty('requireAdmin') && !AutenticacaoService.getCurrentUser().admin) {
+                $location.path("/negado");
+            }
         }
 
         function isLoggedIn() {

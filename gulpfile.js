@@ -59,7 +59,8 @@ gulp.task('deps-js', function (){
 					depsFolder + 'angular-bootstrap/ui-bootstrap-tpls.js',
 					depsFolder + 'angular-bootstrap/ui-bootstrap.js',
 					depsFolder + 'ngstorage/ngStorage.js',
-					depsFolder + 'toastr/toastr.js'
+					depsFolder + 'toastr/toastr.js',
+					depsFolder + 'checklist-model/checklist-model.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
 			.pipe(gulp.dest('dist'))
