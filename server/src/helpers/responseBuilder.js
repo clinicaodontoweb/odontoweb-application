@@ -5,7 +5,12 @@ module.exports = {
 function buildResponse(error, response, body, res) {
 	if (!error && response.statusCode) {
 		res.status(response.statusCode);
-		res.json(body);
+		if(response.statusCode === 201)
+			res.json({message: 'created'});
+		else
+			res.json(body);
+
+		
 	}else{
 		if(error && error.code === 'ECONNREFUSED') {
 			res.status(500);

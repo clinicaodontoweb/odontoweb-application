@@ -5,12 +5,15 @@
         .module('odontoweb.cadastro')
         .controller('DentistaController', DentistaController);
 
-    DentistaController.$inject = ['DentistaService', 'entidades', '$uibModal'];
+    DentistaController.$inject = ['DentistaService', 'entidades', '$uibModal', '$scope'];
 
-    function DentistaController(DentistaService, entidades, $uibModal) {
+    function DentistaController(DentistaService, entidades, $uibModal, $scope) {
         var vm = this;
+        vm.toggle = toggle;
         vm.cadastrar = cadastrar;
-        vm.dentista = {};
+        vm.dentista = {
+            clinicas: []
+        };
         vm.request = {};
         vm.clinicas = []
 
@@ -34,8 +37,10 @@
                 vm.request = buildRequestModel();
                 DentistaService.salvar(vm.request)
                     .then(function(dados) {
-                        toastr.success(request.nome, 'Cadastrado com sucesso!');
+                        toastr.success(vm.request.nome, 'Cadastrado com sucesso!');
                         vm.dentista = {};
+                        $scope.dentistaForm.$setUntouched();
+                        $scope.dentistaForm.$setPristine();
                     },function(error) {
                         toastr.error(error.data.mensagem, 'Erro ao cadastrar!');
                     });
@@ -52,12 +57,21 @@
                 usuarioRequest: {
                     email: vm.dentista.email,
                     senha: vm.dentista.senha,
-                    admin: vm.dentista.isAdmin,
+                    admin: (vm.dentista.isAdmin) ? vm.dentista.isAdmin : false,
                     clinicas: vm.dentista.clinicas
                 }
             }
         }
 
+        function toggle(item, list) {
+            var idx = list.indexOf(item);
+            if (idx > -1) {
+              list.splice(idx, 1);
+            }
+            else {
+              list.push(item);
+            }
+        };
 
     }
 })();

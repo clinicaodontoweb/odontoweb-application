@@ -1,71 +1,79 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
 		<form name="dentistaForm" ng-submit="vm.cadastrar(dentistaForm.$valid)" novalidate>
-			<div class="col-xs-12 col-sm-6">
-				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.nome.$invalid && !dentistaForm.nome.$pristine }">
-					<label>Nome</label>
-					<input type="text" name="nome" class="form-control" placeholder="Fulano de tal" ng-model="vm.dentista.nome" required/>
-				</div>
+			<div class="col-xs-12">
+				<h5 class="clinicas-list-title"><strong>Dados do profissional!</strong></h5>
 			</div>
 			<div class="col-xs-6">
-				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.email.$invalid && !dentistaForm.email.$pristine }">
+				<md-input-container class="md-block">
+					<label>Nome Completo</label>
+					<input required ng-model="vm.dentista.nome">
+				</md-input-container>
+			</div>
+			<div class="col-xs-6">
+				<md-input-container class="md-block">
 					<label>Email</label>
-					<input type="email" name="email" class="form-control" placeholder="email@email.com" ng-model="vm.dentista.email" required/>
-				</div>
+					<input required type="email" name="email" ng-model="vm.dentista.email"
+							minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+			
+					<div ng-messages="dentistaForm.email.$error" role="alert">
+						<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+							Seu email deve conter entre 10 e 100 caracteres e ser um email válido.
+						</div>
+					</div>
+				</md-input-container>
 			</div>
-			<div class="col-xs-6">
-				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.senha.$invalid && !dentistaForm.senha.$pristine }">
+			<div class="col-xs-4">
+				<md-input-container class="md-block">
 					<label>Senha</label>
-					<input type="password" name="senha" class="form-control" placeholder="123456" ng-model="vm.dentista.senha" required/>
-				</div>
+					<input type="password" required ng-model="vm.dentista.senha">
+				</md-input-container>
 			</div>
-			<div class="col-xs-6">
-				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.genero.$invalid && !dentistaForm.genero.$pristine }">
+			<div class="col-xs-4">
+				<md-input-container class="md-block">
 					<label>Genêro</label>
-					<select type="text" name="genero" class="form-control" ng-model="vm.dentista.genero" required>
-						<option value="">Genêro</option>
-						<option value="Masculino">Masculino</option>
-						<option value="Feminino">Feminino</option>
-					</select>
-				</div>
+					<md-select ng-model="vm.dentista.genero">
+						<md-option value="Masculino">Masculino</md-option>
+						<md-option value="Feminino">Feminino</md-option>
+					</md-select>
+				</md-input-container>
 			</div>
-			<div class="col-xs-6">
-				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.conselho.$invalid && !dentistaForm.conselho.$pristine }">
-					<label>Conselho</label>
-					<input type="text" name="conselho" class="form-control" placeholder="" ng-model="vm.dentista.conselho" required/>
-				</div>
+			<div class="col-xs-4">
+				<md-input-container class="md-block">
+					<label>Nro. Conselho</label>
+					<input name="conselho" ng-model="vm.dentista.conselho" required>
+				</md-input-container>
 			</div>
-			<div class="col-xs-6">
-				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.registro.$invalid && !dentistaForm.registro.$pristine }">
-					<label>Registro</label>
-					<input type="text" name="registro" class="form-control" placeholder="" ng-model="vm.dentista.registro" required/>
-				</div>
+			<div class="col-xs-4">
+				<md-input-container class="md-block">
+					<label>Nro. Registro</label>
+					<input name="registro" ng-model="vm.dentista.registro" required>
+				</md-input-container>
 			</div>
-			<div class="col-xs-6">
-				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.codigoBrasileiroOcupacao.$invalid && !dentistaForm.codigoBrasileiroOcupacao.$pristine }">
-					<label>Código da ocupação</label>
-					<input type="text" name="codigoOcupacao" class="form-control" placeholder="" ng-model="vm.dentista.codigoOcupacao"/>
-				</div>
+			<div class="col-xs-4">
+				<md-input-container class="md-block">
+					<label>Nro. Ocupação</label>
+					<input name="ocupacao" ng-model="vm.dentista.codigoOcupacao" required>
+				</md-input-container>
 			</div>
-			<div class="col-xs-6">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" ng-model="vm.dentista.isAdmin">Administrador do sistema?
-					</label>
-				</div>
+			<div class="col-xs-4">
+				<md-input-container class="md-block">
+					<md-checkbox name="admin" ng-model="vm.dentista.isAdmin">
+						Administrador do sistema?
+					</md-checkbox>
+				</md-input-container>
 			</div>
 			<div class="col-xs-12">
 				<h5 class="clinicas-list-title"><strong>Selecione as clinicas que atende!</strong></h5>
-				<label data-ng-repeat="clinica in vm.clinicas" class="clinicas-list-form">
-					<input type="checkbox" checklist-model="vm.dentista.clinicas" checklist-value="clinica.id"> {{clinica.nome}}
-				</label>
+				<md-input-container class="md-block">
+					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica.id, vm.dentista.clinicas)"> 
+					{{clinica.nome}}
+					</md-switch>
+				</md-input-container>
 			</div>
 			<div class="col-xs-12">
-				<pre>{{vm.request | json}}</pre>
+				<md-button type="submit" class="md-raised md-primary" ng-disabled="dentistaForm.$invalid">CADASTRAR</md-button>
 			</div>
-			<div class="col-xs-12">	
-				<button type="submit" class="btn button azul" ng-disabled="dentistaForm.$invalid">CADASTRAR</button>
-			</div>	
 		</form>
 	</div>
 </div>

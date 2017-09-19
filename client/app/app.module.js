@@ -10,6 +10,7 @@
         'ui.bootstrap.modal',
         'ui.bootstrap.tpls',
         'ngStorage',
+        'ngMaterial',
 
         /* modulos */
         'odontoweb.agenda',
