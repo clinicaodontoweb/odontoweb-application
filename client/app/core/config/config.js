@@ -8,7 +8,8 @@
 	core.config(httpConfig);
 	core.config(storageConfig);	
 	core.config(routerConfig);	
-	core.config(toastrConfig);	
+	core.config(toastrConfig);
+	//core.config(materialConfig);
 
 	calendarConfig.$inject = ['calendarConfig'];
 
@@ -62,6 +63,16 @@
 		toastr.options.progressBar = true;
 		toastr.options.hideMethod = 'slideUp';
 		toastr.options.closeMethod = 'slideUp';
+	}
+
+	materialConfig.$inject = ['$mdThemingProvider'];
+
+	function materialConfig($mdThemingProvider) {
+
+		$mdThemingProvider.definePallete('odontowebTheme', {
+			'50': '42f492'
+		});
+		$mdThemingProvider.theme('default').primaryPalette('odontowebTheme');
 	}
 
 })();

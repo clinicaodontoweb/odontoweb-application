@@ -60,4 +60,15 @@ router.post('/dentista', function (req, res) {
 
 });
 
+router.post('/recepcionista', function (req, res) {
+	var options = requestBuilder.buildRequest('POST', url + 'recepcionista', req);
+
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+
+});
+
 module.exports = router;

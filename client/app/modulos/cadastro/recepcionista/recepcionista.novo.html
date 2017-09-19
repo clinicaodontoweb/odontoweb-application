@@ -1,0 +1,70 @@
+<div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <form name="recepcionistaForm" ng-submit="vm.cadastrar(recepcionistaForm.$valid)" novalidate>
+                <div class="col-xs-12">
+                    <h5 class="clinicas-list-title"><strong>Dados do Recepcionista</strong></h5>
+                </div>
+                <div class="col-xs-6">
+                    <md-input-container class="md-block">
+                        <label>Nome Completo</label>
+                        <input required ng-model="vm.recepcionista.nome">
+                    </md-input-container>
+                </div>
+                <div class="col-xs-6">
+                    <md-input-container class="md-block">
+                        <label>Email</label>
+                        <input required type="email" name="email" ng-model="vm.recepcionista.email"
+                                minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                
+                        <div ng-messages="recepcionistaForm.email.$error" role="alert">
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Seu email deve conter entre 10 e 100 caracteres e ser um email válido.
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="col-xs-4">
+                    <md-input-container class="md-block">
+                        <label>Senha</label>
+                        <input type="password" required ng-model="vm.recepcionista.senha">
+                    </md-input-container>
+                </div>
+                <div class="col-xs-4">
+                    <md-input-container class="md-block">
+                        <label>Genêro</label>
+                        <md-select ng-model="vm.recepcionista.genero">
+                            <md-option value="Masculino">Masculino</md-option>
+                            <md-option value="Feminino">Feminino</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="col-xs-4">
+                    <md-input-container class="md-block">
+                        <md-checkbox name="admin" ng-model="vm.recepcionista.isAdmin">
+                            Administrador do sistema?
+                        </md-checkbox>
+                    </md-input-container>
+                </div>
+                <div class="col-xs-12">
+                    <h5 class="clinicas-list-title"><strong>Selecione as clinicas que atende!</strong></h5>
+                    <md-input-container class="md-block">
+                        <md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica.id, vm.recepcionista.clinicas)"> 
+                        {{clinica.nome}}
+                        </md-switch>
+                    </md-input-container>
+                </div>
+                <div class="col-xs-12">
+                    <h5 class="clinicas-list-title"><strong>Selecione os dentistas que atende!</strong></h5>
+                    <md-input-container class="md-block">
+                        <md-switch class="md-primary" name="dentista" ng-repeat="dentista in vm.dentistas" ng-click="vm.toggle(dentista.idDentista, vm.recepcionista.dentistas)"> 
+                        {{dentista.nome}} - {{dentista.conselho}} - {{dentista.registo}}
+                        </md-switch>
+                    </md-input-container>
+                </div>
+                <pre>{{vm.recepcionista}}</pre>
+                <div class="col-xs-12">
+                    <md-button type="submit" class="md-raised md-primary" ng-disabled="recepcionistaForm.$invalid">CADASTRAR</md-button>
+                </div>
+            </form>
+        </div>
+    </div>

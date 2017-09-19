@@ -60,7 +60,6 @@ gulp.task('deps-js', function (){
 					depsFolder + 'angular-bootstrap/ui-bootstrap.js',
 					depsFolder + 'ngstorage/ngStorage.js',
 					depsFolder + 'toastr/toastr.js',
-					depsFolder + 'checklist-model/checklist-model.js',
 					depsFolder + 'angular-aria/angular-aria.js',
 					depsFolder + 'angular-animate/angular-animate.js',
 					depsFolder + 'angular-material/angular-material.js'

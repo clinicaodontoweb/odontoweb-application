@@ -1,6 +1,6 @@
 (function() {
     'use strict';
 
-    angular.module('odontoweb.cadastro', ["checklist-model"]);
+    angular.module('odontoweb.cadastro', []);
     
 })();
