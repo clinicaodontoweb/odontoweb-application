@@ -16,6 +16,12 @@
                 controller: 'RecepcionistaController', 
 				controllerAs: 'vm',
 				requireAdmin: true
+			})
+			.when('/cadastro/recepcionista/lista', {
+                templateUrl: 'partials/modulos/cadastro/recepcionista/recepcionista.lista.html',
+                controller: 'RecepcionistaController', 
+				controllerAs: 'vm',
+				requireAdmin: true
             });
 			
 	}

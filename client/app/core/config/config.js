@@ -63,6 +63,10 @@
 		toastr.options.progressBar = true;
 		toastr.options.hideMethod = 'slideUp';
 		toastr.options.closeMethod = 'slideUp';
+		toastr.options.closeButton = true;
+		toastr.options.closeMethod = 'fadeOut';
+		toastr.options.closeDuration = 300;
+		toastr.options.closeEasing = 'swing';
 	}
 
 	materialConfig.$inject = ['$mdThemingProvider'];

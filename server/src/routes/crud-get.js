@@ -38,6 +38,9 @@ router.get('/:entidade/:entidade2/:id([0-9])', function (req, res) {
 	var entidade2 = req.params.entidade2;
 	var options = requestBuilder.buildRequest('GET', url + entidade + '/' + entidade2 + '/' + id, req);
 	
+	// LOG REQUEST URL
+	console.log(options.url);
+
 	request(options, response);
 
 	function response(error, response, body) {

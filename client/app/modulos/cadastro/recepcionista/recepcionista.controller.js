@@ -5,9 +5,9 @@
         .module('odontoweb.cadastro')
         .controller('RecepcionistaController', RecepcionistaController);
 
-    RecepcionistaController.$inject = ['DentistaService', 'RecepcionistaService', 'entidades', '$uibModal', '$scope'];
+    RecepcionistaController.$inject = ['DentistaService', 'RecepcionistaService', '$scope'];
 
-    function RecepcionistaController(DentistaService, RecepcionistaService, entidades, $uibModal, $scope) {
+    function RecepcionistaController(DentistaService, RecepcionistaService, $scope) {
         var vm = this;
         vm.toggle = toggle;
         vm.cadastrar = cadastrar;

@@ -18,11 +18,14 @@
     return directive;
   }
 
-  TopBarController.$inject = ['$localStorage'];
+  TopBarController.$inject = ['$localStorage', '$rootScope'];
 
-  function TopBarController($localStorage) {
+  function TopBarController($localStorage, $rootScope) {
     var vm = this;
     vm.$storage = $localStorage;
+
+    // menu overlay toggle
+    document.querySelector(".overlay-menu").addEventListener('click', $rootScope.toggleMenu);
   }
 
 })();

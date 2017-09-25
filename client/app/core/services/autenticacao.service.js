@@ -23,7 +23,8 @@
             getCurrentTenant: getCurrentTenant,
             saveToken: saveToken,
             saveCurrentTenant: saveCurrentTenant,
-            saveCurrentUser: saveCurrentUser
+            saveCurrentUser: saveCurrentUser,
+            isDentista: isDentista
         };
 
         return service;
@@ -76,6 +77,10 @@
 
         function clearStorage() {
             $localStorage.$reset();
+        }
+
+        function isDentista() {
+            return ($localStorage.currentUser != undefined && $localStorage.currentUser.tipoProfissional === "Dentista") ? true : false;
         }
     }
 

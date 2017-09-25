@@ -11,7 +11,8 @@
 			evento: "evento",
 			usuario: "usuario",
 			dentista: "dentista",
-			clinica: "clinica"
+			clinica: "clinica",
+			recepcinista: "recepcionista"
 	    }
     }
 

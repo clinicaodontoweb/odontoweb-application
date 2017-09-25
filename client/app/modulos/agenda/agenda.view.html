@@ -1,19 +1,18 @@
 <div class="row" id="calendarContainer">
-	
-	<div class="col-md-2 busca-profissionais-container">
+	<div class="col-md-2 busca-dentistas-container" data-ng-if="vm.dentistas.length">
 		
 		<div class="form-group has-feedback">
-		  <input type="text" class="form-control" name="busca-profissional" data-ng-model="busca.nome" placeholder="Profissionais">
+		  <input type="text" class="form-control" name="busca-profissional" data-ng-model="busca.nome" placeholder="Dentistas">
 		  <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
 		</div>
 
-		<ul class="lista-profissionais-agenda">
-			<li data-ng-repeat="profissional in vm.profissionais | filter:busca:strict as resultados" data-ng-class="{'profissional--ativo': vm.profissionalAtivo == profissional}" data-ng-click="vm.atualizarAgenda(profissional)">
+		<ul class="lista-dentistas-agenda">
+			<li data-ng-repeat="dentista in vm.dentistas | filter:busca:strict as resultados" data-ng-class="{'dentista--ativo': vm.dentistaAtivo == dentista}" data-ng-click="vm.atualizarAgenda(dentista)">
 				<span class="glyphicon glyphicon-user"></span> 
-				{{profissional.nome}}
+				{{dentista.nome}}
 			</li>
 			<li data-ng-if="resultados.length == 0" class="vazio">
-		  		<strong>Nenhum profissional encontrado...</strong>
+		  		<strong>Nenhum dentista encontrado...</strong>
 			</li>
 		</ul>
 

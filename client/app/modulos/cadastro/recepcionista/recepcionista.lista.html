@@ -1,0 +1,22 @@
+<section>
+    <table class="table table-hover"> 
+        <thead> 
+            <tr> 
+                <th>#</th> 
+                <th>First Name</th> 
+                <th>Last Name</th> 
+                <th>Username</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            <tr data-ng-repeat="recepcionista in vm.recepcionistas"> 
+                <th scope="row">{{recepcionista.id}}</th> 
+                <td>{{recepcionista.nome}}</td> 
+                <td>{{recepcionista}}</td>
+                <td>@mdo</td> 
+            </tr> 
+        </tbody> 
+    </table>
+</section>
+
+<pre>{{vm.recepcionistas | json}}</pre>

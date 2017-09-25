@@ -18,7 +18,7 @@
         $rootScope.changeTenant = changeTenant;
 
         function routeChangeStart(event, nextRoute, currentRoute) {
-            if(nextRoute.$$route.hasOwnProperty('requireLogin') && !AutenticacaoService.isLogged()) {
+            if(!AutenticacaoService.isLogged()) {
                 $location.path("/login");
             }
             else if(nextRoute.$$route.hasOwnProperty('requireAdmin') && !AutenticacaoService.getCurrentUser().admin) {
@@ -58,7 +58,11 @@
         }
 
         function toggleMenu() {
-            document.querySelector(".menu-user").classList.toggle('show');
+            var menu = document.querySelector(".menu-user");
+            var overlay = document.querySelector(".overlay-menu");
+            
+            overlay.classList.toggle('show');
+            menu.classList.toggle('show');
         }
 
         function updateSelectedTenant() {

@@ -6,14 +6,14 @@
             <span class="topbar__menu-icon"></span>
         </button>
     </div>
-    <div class="col-xs-2 col-sm-2">
+    <div class="col-xs-2 col-sm-2 hidden-xs">
         <div class="topbar__logo">
             <div class="topbar__logo-company"></div>
         </div>
     </div>
-    <div class="col-xs-8 col-sm-5">
+    <div class="col-xs-10 col-sm-5">
         <div class="topbar__profile" data-ng-if="isLoggedIn()">
-            <i class="material-icons" data-ng-click="toggleMenu()">keyboard_arrow_down</i>
+            <i class="material-icons" id="btnMenu" data-ng-click="toggleMenu()">keyboard_arrow_down</i>
             <div class="topbar__profile-details">
                 <span class="topbar__profile-details-user"><b>Acessando dados da clínica</b></span>
                 <span class="topbar__profile-details-tenant">{{vm.$storage.currentTenant.nome}}</span>
@@ -21,3 +21,4 @@
         </div>
     </div>
 </div>
+<div class="overlay-menu"></div>

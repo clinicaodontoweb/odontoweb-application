@@ -49,6 +49,17 @@ router.get('/clinicas', function (req, res) {
 	}
 });
 
+router.get('/dentista/:cnpj', function (req, res) {
+	var cnpj = req.params.cnpj;
+	var options = requestBuilder.buildRequest('GET', url + 'dentista/clinica/' + cnpj, req);
+		
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+});
+
 router.post('/dentista', function (req, res) {
 	var options = requestBuilder.buildRequest('POST', url + 'dentista', req);
 
