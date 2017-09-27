@@ -7,7 +7,7 @@
 		</div>
 
 		<ul class="lista-dentistas-agenda">
-			<li data-ng-repeat="dentista in vm.dentistas | filter:busca:strict as resultados" data-ng-class="{'dentista--ativo': vm.dentistaAtivo == dentista}" data-ng-click="vm.atualizarAgenda(dentista)">
+			<li data-ng-repeat="dentista in vm.dentistas | filter:busca:strict as resultados" data-ng-class="{'dentista--ativo': vm.dentistaAtivo == dentista}" data-ng-click="vm.atualizarAgendaByDentista(dentista)">
 				<span class="glyphicon glyphicon-user"></span> 
 				{{dentista.nome}}
 			</li>
@@ -21,38 +21,26 @@
 	<div class="col-md-10 calendar-container">
 		<div class="row">
 			<div class="btn-group">
-				<button
-					class="btn btn-primary"
-					mwl-date-modifier
-					date="vm.viewDate"
-					decrement="vm.calendarView">
+				<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" data-ng-click="vm.navigateCalendar()">
 		      		Anterior
 		    	</button>
-				<button
-					class="btn btn-primary"
-					mwl-date-modifier
-					date="vm.viewDate"
-					set-to-today>
+				<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" set-to-today data-ng-click="vm.navigateCalendar()">
 					Hoje
 				</button>
-				<button
-					class="btn btn-primary"
-					mwl-date-modifier
-					date="vm.viewDate"
-					increment="vm.calendarView">
+				<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" data-ng-click="vm.navigateCalendar()">
 					Próximo
 				</button>
 			</div>
 			
 			<div class="btn-group">
-				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'year'}" ng-model="vm.calendarView" ng-click="vm.calendarView = 'year'">Ano</label>
-				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'month'}" ng-model="vm.calendarView" ng-click="vm.calendarView = 'month'">Mês</label>
-				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'week'}" ng-model="vm.calendarView" ng-click="vm.calendarView = 'week'">Semana</label>
-				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'day'}" ng-model="vm.calendarView" ng-click="vm.calendarView = 'day'">Dia</label>
+				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'year'}" data-ng-click="vm.navigateCalendar('year')">Ano</label>
+				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'month'}" data-ng-click="vm.navigateCalendar('month')">Mês</label>
+				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'week'}" data-ng-click="vm.navigateCalendar('week')">Semana</label>
+				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'day'}" data-ng-click="vm.navigateCalendar('day')">Dia</label>
 			</div>
 			
 			<div class="btn-group pull-right">
-				<button class="btn btn-success" data-ng-click="vm.cadastrarEvento(vm.dataSelecionada)">
+				<button class="btn btn-success" data-ng-click="vm.cadastrarEvento()">
 					<span class="glyphicon glyphicon-plus"></span>
 					Agendar
 				</button>
@@ -61,20 +49,19 @@
 		</div>
 
 		<div class="row text-center">
-			<h3>{{vm.calendarTitle}}</h3>
+			<h3>{{vm.viewTitle}}</h3>
 		</div>
 
 		<div class="row">
 			<mwl-calendar
 			    view="vm.calendarView"
-			    view-date="vm.viewDate"
-			    view-title="vm.calendarTitle"
+				view-date="vm.viewDate"
+				view-title="vm.viewTitle"
 			    events="vm.eventos"
-				on-event-click="vm.visualizarEvento(calendarEvent)"
-				on-timespan-click="vm.selecionarData(calendarDate)"
-			    on-view-change-click="vm.viewChange(calendarDate, calendarNextView)"
 			    cell-is-open="vm.cellIsOpen"
-			    day-view-split="15">
+				day-view-split="15"
+				on-event-click="vm.visualizarEvento(calendarEvent)"
+				on-date-range-select="vm.cadastrarEvento(calendarRangeStartDate, calendarRangeEndDate)">
 			</mwl-calendar>
 		</div>
 

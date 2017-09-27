@@ -5,20 +5,22 @@
         .module('odontoweb.agenda')
         .controller('AgendaController', AgendaController);
 
-    AgendaController.$inject = ['AutenticacaoService', 'ClinicaService', 'ApiService', 'entidades'];
+    AgendaController.$inject = ['AutenticacaoService', 'ClinicaService', 'ApiService', 'entidades', '$uibModal'];
 
-    function AgendaController(AutenticacaoService, ClinicaService, ApiService, entidades) {
+    function AgendaController(AutenticacaoService, ClinicaService, ApiService, entidades, $uibModal) {
       var vm = this;
-      vm.data = {
-        dataInicio: moment().startOf('month').valueOf(),
-        dataFim: moment().endOf('month').valueOf()
-      };
-      vm.eventos = [];
-      vm.calendarView = 'month';
-      vm.viewDate = new Date();
+      vm.dataInicio = moment().startOf('month').valueOf();
+      vm.dataFim = moment().endOf('month').valueOf();
+      vm.viewDate = moment();
+      vm.calendarView = 'week';
       vm.cellIsOpen = false;
+      vm.navigateCalendar = navigateCalendar;
+      vm.atualizarAgendaByDentista = atualizarAgendaByDentista;
+      vm.cadastrarEvento = cadastrarEvento;
+      vm.visualizarEvento = visualizarEvento;
+      vm.eventos = [];
       vm.dentistas = [];
-      vm.atualizarAgenda = atualizarAgenda;
+      vm.dentistaAtivo = {};
 
       activate();
 
@@ -29,41 +31,136 @@
           loadRecepcionistaData()
       }
 
+      /*
+      * Busca todos os eventos do dentista ativo
+      */
       function loadDentistaData() {
-        var email = AutenticacaoService.getCurrentUser().email;
-        getEventosByDentista(email);
+        getEventosByDentista(resolveUsuarioHash(), vm.dataInicio, vn.dataFim);
       }
 
+      /*
+      * Busca todos os dentistas para a recepcionista logada
+      * busca os eventos para o dentista ativo
+      */
       function loadRecepcionistaData() {
         var cnpj = AutenticacaoService.getCurrentTenant().cnpj;
         listaDentistas(cnpj);
+        // TODO: buscar os eventos do dentista ativo
       }
 
+      /*
+      * Busca todos os dentistas de uma clinica
+      * recebe o cnpj da clinica
+      * atualiza a lista de dentistas e o dentista ativo
+      */
       function listaDentistas(cnpj) {
         return ClinicaService
                 .getAllDentistasFromClinica(cnpj)
                 .then(function(dados) {
                     vm.dentistas = dados;
                     vm.dentistaAtivo = dados[0]
-                    vm.eventos = getEventosByDentista(dados[0].usuarioResponse.email);
                     return dados;
                 });
       }
 
-      function atualizarAgenda(dentista) {
+
+      /*
+      * Atualizar o dentista ativo e buscar seus eventos
+      * recebe o dentista selecionado
+      */
+      function atualizarAgendaByDentista(dentista) {
         vm.dentistaAtivo = dentista;
-        getEventosByDentista(dentista.usuarioResponse.email);
+        getEventosByDentista(resolveUsuarioHash(), vm.dataInicio, vn.dataFim);
       }
 
-      function getEventosByDentista(email) {
+      /*
+      * Busca todos os eventos de um dentista
+      * recebe o hash do usuario clinica e o range de datas
+      */
+      function getEventosByDentista(hash, dataInicio, dataFim) {
         return ApiService
-                .listaTodasEntidades_two_id(entidades.evento, entidades.dentista, email, vm.data)
+                .listaTodasEntidades_two_id(entidades.evento, entidades.dentista, hash, dataInicio, dataFim)
                 .then(function(dados) {
                   console.log(dados);
                   return dados;
                 });
       }
 
+      /* 
+      * Atualizar os eventos clicando no anterior / hoje / proximo 
+      * atualizar os eventos clicando no modo de visualizacao
+      * somente busca eventos se o modo de visualizacao for semana ou dia
+      * busca eventos do usuario logado se for dentista ou do dentista ativo se for recepcionista
+      */
+      function navigateCalendar(view) {
+        if(view)
+          vm.calendarView = view;
+
+        if(vm.calendarView === 'week' || vm.calendarView === 'day') {
+          var requestData = {
+            usuarioClinica: resolveUsuarioHash(),
+            dataInicio: moment(vm.viewDate).startOf(vm.calendarView).valueOf(),
+            dataFim: moment(vm.viewDate).endOf(vm.calendarView).valueOf()
+          }
+
+          console.log(vm.calendarView);
+          console.log("atualizar eventos, data inicio ", requestData.dataInicio);
+          console.log("atualizar eventos, data fim ", requestData.dataFim);
+
+        }
+      }
+      
+      /*
+      * Abrir modal para cadastar o evento
+      * passa como parametro a data inicial e a data final e o hash do dentista selecionado
+      * hash do usuario logado se for dentista ou do dentista ativo se for recepcionista
+      */
+      function cadastrarEvento(startDate, endDate) {
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: 'partials/modulos/agenda/agendamento/agendamento-novo.view.html',
+          size: 'lg',
+          controller: 'AgendamentoController',
+          controllerAs: 'vm',
+          resolve: {
+            model: function () {
+              return {
+                dataInicio: (startDate) ? startDate : vm.dataInicio,
+                dataFim: (endDate) ? endDate : vm.dataFim,
+                usuarioClinica: resolveUsuarioHash()
+              };
+            }
+          }
+        });
+      }
+
+      /* 
+      * Abre a modal com o evento selecionado para visualizacao
+      */
+      function visualizarEvento(event){
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: 'partials/modulos/agenda/agendamento/agendamento-detalhes.view.html',
+          size: 'lg',
+          controller: 'AgendamentoController',
+          controllerAs: 'vm',
+          resolve: {
+            evento: function () {
+             return event;
+            }
+          }
+        });
+      }
+
+      /*
+      * Valida o tipo de usuario logado e retorna o hash do dentista ativo
+      */
+      function resolveUsuarioHash() {
+        if(AutenticacaoService.isDentista())
+          return AutenticacaoService.getCurrentUser().hash;
+        else
+          return vm.dentistaAtivo.usuarioResponse.hash
+      }
 
     }
 })();

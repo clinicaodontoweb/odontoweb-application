@@ -1,0 +1,10 @@
+#calendarContainer mwl-calendar .cal-month-box [class*=cal-cell]
+, #calendarContainer mwl-calendar .cal-year-box [class*=span] {
+    background: $white-color;
+    color: #4b4c4c;
+}
+
+mwl-calendar .cal-slide-content {
+    background: $font-color;
+    box-shadow: none;
+}

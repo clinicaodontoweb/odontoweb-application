@@ -9,9 +9,9 @@
 
     function AgendamentoController(model) {
         var vm = this;
-        vm.title = "andre";
-        vm.data = model.data;
-        vm.profissional = model.profissional;
+        vm.dataInicio = model.dataInicio;
+        vm.dataFim = model.dataFim;
+        vm.usuarioClinica = model.usuarioClinica;
 
         console.log(model);
         
