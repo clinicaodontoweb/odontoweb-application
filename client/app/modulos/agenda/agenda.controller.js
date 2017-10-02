@@ -5,9 +5,9 @@
         .module('odontoweb.agenda')
         .controller('AgendaController', AgendaController);
 
-    AgendaController.$inject = ['AutenticacaoService', 'ClinicaService', 'ApiService', 'entidades', '$uibModal'];
+    AgendaController.$inject = ['AgendaService', 'AutenticacaoService', 'ClinicaService', 'ApiService', 'entidades', '$uibModal'];
 
-    function AgendaController(AutenticacaoService, ClinicaService, ApiService, entidades, $uibModal) {
+    function AgendaController(AgendaService, AutenticacaoService, ClinicaService, ApiService, entidades, $uibModal) {
       var vm = this;
       vm.dataInicio = moment().startOf('month').valueOf();
       vm.dataFim = moment().endOf('month').valueOf();
@@ -35,7 +35,7 @@
       * Busca todos os eventos do dentista ativo
       */
       function loadDentistaData() {
-        getEventosByDentista(resolveUsuarioHash(), vm.dataInicio, vn.dataFim);
+        getEventosByDentista(resolveUsuarioHash(), vm.dataInicio, vm.dataFim);
       }
 
       /*
@@ -70,7 +70,7 @@
       */
       function atualizarAgendaByDentista(dentista) {
         vm.dentistaAtivo = dentista;
-        getEventosByDentista(resolveUsuarioHash(), vm.dataInicio, vn.dataFim);
+        getEventosByDentista(resolveUsuarioHash(), vm.dataInicio, vm.dataFim);
       }
 
       /*
@@ -79,10 +79,15 @@
       */
       function getEventosByDentista(hash, dataInicio, dataFim) {
         return ApiService
-                .listaTodasEntidades_two_id(entidades.evento, entidades.dentista, hash, dataInicio, dataFim)
+                .listaTodasEntidades_two_id(entidades.evento, entidades.dentista, hash, {'dataInicio': dataInicio, 'dataFim': dataFim})
                 .then(function(dados) {
-                  console.log(dados);
+                  // atualiza os eventos no calendario
+                  vm.eventos = AgendaService.buildEventos(dados);
+                  // mensagem quantidade de eventos encontrados
+                  dateChangedMessage(dados.length, (dados.length == 0) ? true : false);
                   return dados;
+                },function(error){
+                  dateChangedMessage(undefined, true);
                 });
       }
 
@@ -103,6 +108,8 @@
             dataFim: moment(vm.viewDate).endOf(vm.calendarView).valueOf()
           }
 
+          getEventosByDentista(requestData.usuarioClinica, requestData.dataInicio, requestData.dataFim);
+
           console.log(vm.calendarView);
           console.log("atualizar eventos, data inicio ", requestData.dataInicio);
           console.log("atualizar eventos, data fim ", requestData.dataFim);
@@ -118,9 +125,9 @@
       function cadastrarEvento(startDate, endDate) {
         var modalInstance = $uibModal.open({
           animation: true,
-          templateUrl: 'partials/modulos/agenda/agendamento/agendamento-novo.view.html',
+          templateUrl: 'partials/modulos/agenda/agendamento-novo/agendamento-novo.view.html',
           size: 'lg',
-          controller: 'AgendamentoController',
+          controller: 'AgendamentoNovoController',
           controllerAs: 'vm',
           resolve: {
             model: function () {
@@ -140,13 +147,15 @@
       function visualizarEvento(event){
         var modalInstance = $uibModal.open({
           animation: true,
-          templateUrl: 'partials/modulos/agenda/agendamento/agendamento-detalhes.view.html',
+          templateUrl: 'partials/modulos/agenda/agendamento-visualizar/agendamento-visualizar.view.html',
           size: 'lg',
-          controller: 'AgendamentoController',
+          controller: 'AgendamentoVisualizarController',
           controllerAs: 'vm',
           resolve: {
-            evento: function () {
-             return event;
+            model: function () {
+              return {
+               agendamento: event
+              };
             }
           }
         });
@@ -157,11 +166,20 @@
       */
       function resolveUsuarioHash() {
         if(AutenticacaoService.isDentista())
-          return AutenticacaoService.getCurrentUser().hash;
+          return AutenticacaoService.getCurrentUser().hashKey;
         else
-          return vm.dentistaAtivo.usuarioResponse.hash
+          return vm.dentistaAtivo.usuarioResponse.hashKey
       }
 
+      /*
+      * Mensagem quando troca de data
+      */
+      function dateChangedMessage(quantidade, error) {
+        if(error)
+          toastr.error('Você não tem agendamentos para o período selecionado!');
+        else
+          toastr.success('Você tem ('+quantidade+') agendamentos para o período selecionado!');        
+      }
     }
 })();
 

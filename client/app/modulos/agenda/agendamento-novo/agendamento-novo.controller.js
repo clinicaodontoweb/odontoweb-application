@@ -3,11 +3,11 @@
 
     angular
         .module('odontoweb.agenda')
-        .controller('AgendamentoController', AgendamentoController);
+        .controller('AgendamentoNovoController', AgendamentoNovoController);
 
-    AgendamentoController.$inject = ['model'];
+    AgendamentoNovoController.$inject = ['model'];
 
-    function AgendamentoController(model) {
+    function AgendamentoNovoController(model) {
         var vm = this;
         vm.dataInicio = model.dataInicio;
         vm.dataFim = model.dataFim;

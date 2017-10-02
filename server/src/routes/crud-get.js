@@ -19,8 +19,8 @@ router.get('/:entidade', function (req, res) {
 	
 });
 
-router.get('/:entidade/:id([0-9])', function (req, res) {
-	var id = req.params.id;
+router.get('/:entidade/:hash', function (req, res) {
+	var id = req.params.hash;
 	var entidade = req.params.entidade;
 	var options = requestBuilder.buildRequest('GET', url + entidade + '/' + id, req);
 	
@@ -32,14 +32,14 @@ router.get('/:entidade/:id([0-9])', function (req, res) {
 	
 });
 
-router.get('/:entidade/:entidade2/:id([0-9])', function (req, res) {
-	var id = req.params.id;
+router.get('/:entidade/:entidade2/:hash', function (req, res) {
+	var id = req.params.hash;
 	var entidade = req.params.entidade;
 	var entidade2 = req.params.entidade2;
 	var options = requestBuilder.buildRequest('GET', url + entidade + '/' + entidade2 + '/' + id, req);
 	
 	// LOG REQUEST URL
-	console.log(options.url);
+	console.log(options);
 
 	request(options, response);
 

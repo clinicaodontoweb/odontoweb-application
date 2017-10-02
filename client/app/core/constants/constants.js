@@ -12,7 +12,8 @@
 			usuario: "usuario",
 			dentista: "dentista",
 			clinica: "clinica",
-			recepcinista: "recepcionista"
+			recepcinista: "recepcionista",
+			agenda: "agenda"
 	    }
     }
 

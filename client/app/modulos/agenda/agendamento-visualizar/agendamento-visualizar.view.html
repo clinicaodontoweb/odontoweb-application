@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h5 class="modal-title">Agendamento do(a) <b>{{vm.agendamento.title}}</b></h5>
+</div>
+<div class="modal-body">
+
+  <div class="avatar-consulta">
+    <span>{{vm.agendamento.paciente.nome | showFirstLetters}}</span>
+  </div>
+  <p class="consulta-nome"><b>{{vm.agendamento.paciente.nome}}</b></p>
+  <p class="consulta-detalhes">{{vm.agendamento.paciente.email}} | (51) {{vm.agendamento.paciente.telefone}}</p>
+
+<ul class="list-group">
+  <li class="list-group-item {{vm.agendamento.statusClass}}">Status: <b>{{vm.agendamento.status}}</b></li>
+  <li class="list-group-item">Horário: <b> {{vm.agendamento.startsAt | date:'dd-MM-yyyy'}}</b> - <b>{{vm.agendamento.startsAt | date:'HH:mm'}}</b> às <b>{{vm.agendamento.endsAt | date:'HH:mm'}}</b></li>
+  <li class="list-group-item">Procedimento: <b> {{vm.agendamento.procedimento}}</b></li>
+  <li class="list-group-item">Convênio: <b>{{vm.agendamento.convenio}}</b></li>
+</ul>
+  
+</div>
+<div class="modal-footer" ng-hide="{{vm.agendamento.status == 'Cancelado'}}">
+  <button class="btn btn-danger">Deletar</button>
+  <button class="btn btn-primary" ng-click="$close()">Iniciar Consulta</button>
+</div>
