@@ -1,0 +1,26 @@
+.autocomplete {
+    background: $white-color;
+    position: absolute;
+    width: 97%;
+    box-shadow: 0 6px 15px rgba(0,0,0,.5);
+    top: -15px;
+
+    &__results {
+        list-style: none;
+        width: 100%;
+        float: left;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background: $gray-light-color;
+            }
+        }
+    }
+}

@@ -9,8 +9,8 @@
 
     function AgendaController(AgendaService, AutenticacaoService, ClinicaService, ApiService, entidades, $uibModal) {
       var vm = this;
-      vm.dataInicio = moment().startOf('month').valueOf();
-      vm.dataFim = moment().endOf('month').valueOf();
+      vm.dataInicio = moment().startOf('week').valueOf();
+      vm.dataFim = moment().endOf('week').valueOf();
       vm.viewDate = moment();
       vm.calendarView = 'week';
       vm.cellIsOpen = false;
@@ -35,7 +35,8 @@
       * Busca todos os eventos do dentista ativo
       */
       function loadDentistaData() {
-        getEventosByDentista(resolveUsuarioHash(), vm.dataInicio, vm.dataFim);
+        var date = resolveDate();
+        getEventosByDentista(resolveUsuarioHash(), date.dataInicio, date.dataFim);
       }
 
       /*
@@ -44,8 +45,15 @@
       */
       function loadRecepcionistaData() {
         var cnpj = AutenticacaoService.getCurrentTenant().cnpj;
-        listaDentistas(cnpj);
-        // TODO: buscar os eventos do dentista ativo
+        listaDentistas(cnpj)
+              .then(atualizarAgendaByDentista, listaDentistaError);
+      }
+
+      /*
+      * Mensagem de erro caso nao encontre dentistas
+      */
+      function listaDentistaError(error) {
+        toastr.error(error.data.mensagem, 'Erro ao buscar dentistas!');
       }
 
       /*
@@ -58,8 +66,7 @@
                 .getAllDentistasFromClinica(cnpj)
                 .then(function(dados) {
                     vm.dentistas = dados;
-                    vm.dentistaAtivo = dados[0]
-                    return dados;
+                    return dados[0];
                 });
       }
 
@@ -69,8 +76,9 @@
       * recebe o dentista selecionado
       */
       function atualizarAgendaByDentista(dentista) {
+        var date = resolveDate();
         vm.dentistaAtivo = dentista;
-        getEventosByDentista(resolveUsuarioHash(), vm.dataInicio, vm.dataFim);
+        getEventosByDentista(resolveUsuarioHash(), date.dataInicio, date.dataFim);
       }
 
       /*
@@ -97,15 +105,17 @@
       * somente busca eventos se o modo de visualizacao for semana ou dia
       * busca eventos do usuario logado se for dentista ou do dentista ativo se for recepcionista
       */
-      function navigateCalendar(view) {
+      function navigateCalendar(date, view) {
+        console.log(date);
+        console.log(view);
         if(view)
           vm.calendarView = view;
 
         if(vm.calendarView === 'week' || vm.calendarView === 'day') {
           var requestData = {
             usuarioClinica: resolveUsuarioHash(),
-            dataInicio: moment(vm.viewDate).startOf(vm.calendarView).valueOf(),
-            dataFim: moment(vm.viewDate).endOf(vm.calendarView).valueOf()
+            dataInicio: moment((date) ? date : vm.viewDate).startOf(vm.calendarView).valueOf(),
+            dataFim: moment((date) ? date : vm.viewDate).endOf(vm.calendarView).valueOf()
           }
 
           getEventosByDentista(requestData.usuarioClinica, requestData.dataInicio, requestData.dataFim);
@@ -169,6 +179,17 @@
           return AutenticacaoService.getCurrentUser().hashKey;
         else
           return vm.dentistaAtivo.usuarioResponse.hashKey
+      }
+
+      /*
+      * Valida a data ativada no calendario baseado na visao atual
+      */
+      function resolveDate() {
+        var date = (vm.calendarView === 'week' || vm.calendarView === 'day') ? moment(vm.viewDate) : moment();
+        return {
+          dataInicio: date.startOf(vm.calendarView).valueOf(),
+          dataFim: date.endOf(vm.calendarView).valueOf()
+        }
       }
 
       /*

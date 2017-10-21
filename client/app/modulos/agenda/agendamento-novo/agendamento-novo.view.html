@@ -3,7 +3,23 @@
 </div>
 <div class="modal-body">
 
-  <pre>{{vm.usuarioClinica}}</pre>
+  <!-- <pre>{{vm.usuarioClinica}}</pre> -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <input type="text" class="form-control" name="busca-paciente" data-ng-keyup="vm.autocompletePaciente(vm.search)" data-ng-model="vm.search" autofocus autocomplete="off" placeholder="Nome do paciente">
+        <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div data-ng-show="vm.completing" class="autocomplete">
+        <ul class="autocomplete__results">
+          <li data-ng-repeat="paciente in vm.pacientes" data-ng-click="vm.selectPaciente(paciente)"><b>{{paciente.nome}}</b> {{paciente.cpf}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
   
 </div>
 <div class="modal-footer">
