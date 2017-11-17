@@ -8,3 +8,18 @@ mwl-calendar .cal-slide-content {
     background: $font-color;
     box-shadow: none;
 }
+
+.cal-day-box .day-highlight,
+a.event-item {
+    color: white;
+}
+
+a.event-item {
+    height: 80%;
+    display: block;
+}
+
+.cal-day-box .cal-day-hour-part,
+.cal-day-box .cal-day-hour-part .cal-day-hour-part-spacer {
+    height: 50px;
+}

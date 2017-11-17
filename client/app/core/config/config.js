@@ -15,9 +15,12 @@
 
 	function calendarConfig(calendarConfig) {
 		calendarConfig.allDateFormats.moment.date.hour = 'HH:mm';
+		calendarConfig.allDateFormats.moment.title.week = 'Semana {week} de {year}'
 		calendarConfig.dateFormatter = 'moment';
 		calendarConfig.showTimesOnWeekView = true;
 		calendarConfig.i18nStrings.weekNumber = 'Semana {week}';
+		calendarConfig.templates.calendarDayView = 'partials/core/calendar/calendarDayView.html';
+		calendarConfig.templates.calendarWeekView = 'partials/core/calendar/calendarWeekView.html';
 	}
 
 	restConfig.$inject = ['RestangularProvider'];
@@ -25,6 +28,12 @@
 	function restConfig(RestangularProvider) {
 		//base url api
 		RestangularProvider.setBaseUrl('/api/v1');
+		RestangularProvider.setRequestInterceptor(function(elem, operation) {
+			if (operation === "remove") {
+			   return undefined;
+			} 
+			return elem;
+		});
 	}
 
 	httpConfig.$inject = ['$httpProvider'];
@@ -59,7 +68,7 @@
 
 	function toastrConfig() {
 		//toastr
-		toastr.options.positionClass = 'toast-top-right';
+		toastr.options.positionClass = 'toast-bottom-right';
 		toastr.options.progressBar = true;
 		toastr.options.hideMethod = 'slideUp';
 		toastr.options.closeMethod = 'slideUp';

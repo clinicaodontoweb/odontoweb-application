@@ -3,26 +3,26 @@
 
     angular
         .module('odontoweb.agenda')
-        .controller('AgendamentoNovoController', AgendamentoNovoController);
+        .controller('AgendamentoEditarController', AgendamentoEditarController);
 
-    AgendamentoNovoController.$inject = ['model', 'ApiService', 'AgendamentoService', 'AgendaService' , 'entidades', '$uibModalInstance'];
+    AgendamentoEditarController.$inject = ['model', 'AgendamentoService', '$uibModalInstance', 'ApiService', 'entidades', 'AgendaService'];
 
-    function AgendamentoNovoController(model, ApiService, AgendamentoService, AgendaService, entidades, $uibModalInstance) {
+    function AgendamentoEditarController(model, AgendamentoService, $uibModalInstance, ApiService, entidades, AgendaService) {
         var vm = this;
-        vm.dataInicio = new Date(model.dataInicio);
-        vm.dataFim = new Date(model.dataFim);
+        vm.idAgendamento = model.idAgendamento;
         vm.usuarioClinica = model.usuarioClinica;
         vm.calendarView = model.calendarView,
         vm.viewDate = model.viewDate,
+        vm.agendamento = {};
         vm.autocompletePaciente = autocompletePaciente;
         vm.completing = false;
         vm.selectPaciente = selectPaciente;
-        vm.agendamento = {};
-        vm.agendar = agendar;
+        vm.alterar = alterar;
 
         activate();
 
         function activate() {
+            loadAgendamento(vm.idAgendamento);
             listaTiposConsulta();
             listaStatusConsulta();
         }
@@ -57,6 +57,19 @@
         }
 
         /*
+        * Carrega o agendamento pelo ID
+        */
+        function loadAgendamento(idAgendamento) {
+            return AgendamentoService.getAgendamento(idAgendamento)
+                        .then(function(evento) {
+                            vm.agendamento = buildAgendamentoModel(evento);
+                        }, function(error) {
+                            $uibModalInstance.close();
+                            toastr.error('Erro ao buscar agendamento!');
+                        });
+        }
+
+        /*
         * Busca todos os tipos de consulta
         */
         function listaTiposConsulta() {
@@ -82,9 +95,26 @@
         }
 
         /*
-        * Agenda consulta
+        * Monsta o objeto do model
         */
-        function agendar() {
+        function buildAgendamentoModel(agendamento) {
+            return {
+                idAgendamento: agendamento.idEvento,
+                encaixe: agendamento.encaixe,
+                statusConsulta: {nome: agendamento.statusEvento},
+                observacao: agendamento.observacao,
+                dataInicio: new Date(agendamento.dataInicio),
+                dataFim: new Date(agendamento.dataFim),
+                tipoConsulta: agendamento.tipoConsultaResponse,
+                paciente: agendamento.pacienteResponse,
+                convenio: agendamento.convenioResponse
+            }
+        }
+
+        /*
+        * Altera consulta
+        */
+        function alterar() {
             vm.request = buildRequestModel();
             return AgendamentoService.agendar(vm.request, vm.usuarioClinica)
                     .then(function(dados) {
@@ -100,11 +130,12 @@
         */
         function buildRequestModel() {
             return {
-                encaixe: false,
+                id: vm.agendamento.idAgendamento,
+                encaixe: vm.agendamento.encaixe,
                 status: vm.agendamento.statusConsulta.nome,
                 observacao: vm.agendamento.observacao,
-                dataInicio: vm.dataInicio.getTime(),
-                dataFim: vm.dataFim.getTime(),
+                dataInicio: vm.agendamento.dataInicio.getTime(),
+                dataFim: vm.agendamento.dataFim.getTime(),
                 idTipoConsulta: vm.agendamento.tipoConsulta.idTipoConsulta,
                 idPaciente: vm.agendamento.paciente.idPaciente,
                 idConvenio: vm.agendamento.convenio.idConvenio
@@ -138,6 +169,5 @@
                         return null;
                     });
         }
-        
     }
 })();

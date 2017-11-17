@@ -13,7 +13,8 @@
 			dentista: "dentista",
 			clinica: "clinica",
 			recepcinista: "recepcionista",
-			agenda: "agenda"
+			agenda: "agenda",
+			tiposConsulta: "tipoConsulta"
 	    }
     }
 

@@ -144,10 +144,72 @@
               return {
                 dataInicio: (startDate) ? startDate : vm.dataInicio,
                 dataFim: (endDate) ? endDate : vm.dataFim,
-                usuarioClinica: resolveUsuarioHash()
+                usuarioClinica: resolveUsuarioHash(),
+                viewDate: vm.viewDate,
+                calendarView: vm.calendarView
               };
             }
           }
+        });
+
+        modalInstance.result.then(function (eventos) {
+          vm.eventos = eventos;
+        });
+      }
+
+      /*
+      * Abrir modal para editar o agendamento
+      */
+      function alterarEvento(id) {
+        //cria modal de alterar agendamento
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'partials/modulos/agenda/agendamento-editar/agendamento-editar.view.html',
+            size: 'lg',
+            controller: 'AgendamentoEditarController',
+            controllerAs: 'vm',
+            resolve: {
+                model: function () {
+                    return {
+                        idAgendamento: id,
+                        usuarioClinica: resolveUsuarioHash(),
+                        viewDate: vm.viewDate,
+                        calendarView: vm.calendarView
+                    };
+                }
+            }
+        });
+
+        modalInstance.result.then(function (eventos) {
+            vm.eventos = eventos;
+        });
+      }
+
+      /*
+      * Abrir modal para deletar o agendamento
+      */
+      function deletarEvento(id) {
+        //cria modal de alterar agendamento
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'partials/modulos/agenda/agendamento-deletar/agendamento-deletar.view.html',
+            size: 'lg',
+            controller: 'AgendamentoDeletarController',
+            controllerAs: 'vm',
+            resolve: {
+                model: function () {
+                    return {
+                        idAgendamento: id,
+                        usuarioClinica: resolveUsuarioHash(),
+                        viewDate: vm.viewDate,
+                        calendarView: vm.calendarView
+                    };
+                }
+            }
+        });
+
+        modalInstance.result.then(function (eventos) {
+            vm.eventos = eventos;
         });
       }
 
@@ -164,7 +226,9 @@
           resolve: {
             model: function () {
               return {
-               agendamento: event
+               agendamento: event,
+               alterarEvento: alterarEvento,
+               deletarEvento: deletarEvento
               };
             }
           }

@@ -13,12 +13,13 @@ var path 			= require('path');
 var depsFolder		= 'bower_components/'
 
 gulp.task('default', function(callback){
-	runSequence('clean-dist-folder', 'deps-js', 'deps-css', 'app-js', 'app-css', 'copy-html', 'copy-img', 'copy-fonts');
+	runSequence('clean-dist-folder', 'deps-js', 'deps-css', 'app-js', 'app-css', 'copy-html', 'copy-html-calendar', 'copy-img', 'copy-fonts');
 });
 
 gulp.task('watch', function(){
 	gulp.watch('client/**/*.js', ['app-js']);
 	gulp.watch('client/**/*.html', ['copy-html']);
+	gulp.watch('lib/**/*.html', ['copy-html-calendar']);
 	gulp.watch('client/**/*.scss', ['app-css']);
 	gulp.watch('client/assets/img/**/*.*', ['copy-img']);
 });
@@ -55,7 +56,7 @@ gulp.task('deps-js', function (){
 					depsFolder + 'angular-jwt/dist/angular-jwt.js',
 					depsFolder + 'restangular/dist/restangular.js',
 					depsFolder + 'bootstrap/dist/js/bootstrap.js',
-					depsFolder + 'angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js',
+					'lib/calendar/angular-bootstrap-calendar-tpls.js',
 					depsFolder + 'angular-bootstrap/ui-bootstrap-tpls.js',
 					depsFolder + 'angular-bootstrap/ui-bootstrap.js',
 					depsFolder + 'ngstorage/ngStorage.js',
@@ -109,8 +110,13 @@ gulp.task('copy-img', function (){
 });
 
 gulp.task('copy-html', function (){
-	return gulp.src('client/**/*.html')
+	return gulp.src(['client/**/*.html'])
 			.pipe(gulp.dest('dist'));
+});
+
+gulp.task('copy-html-calendar', function (){
+	return gulp.src(['lib/calendar/templates/calendarWeekView.html', 'lib/calendar/templates/calendarDayView.html'])
+			.pipe(gulp.dest('dist/app/core/calendar'));
 });
 
 gulp.task('copy-fonts', function (){

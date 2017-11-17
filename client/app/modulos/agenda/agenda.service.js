@@ -22,6 +22,7 @@
 
         function bindToEvento(evento) {
             return {
+                idAgendamento: evento.idEvento,
                 title: evento.pacienteResponse.nome,
                 paciente: {
                   nome: evento.pacienteResponse.nome,
@@ -35,8 +36,8 @@
                 status: evento.statusEvento,
                 statusClass: 'list-group-item-info',
                 color: {
-                  primary: '#31708f',
-                  secondary: '#d9edf7'
+                  primary: evento.tipoConsultaResponse.cor,
+                  secondary: evento.tipoConsultaResponse.cor
                 }
             }
         }

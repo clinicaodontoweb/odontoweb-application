@@ -7,7 +7,7 @@ var router = express.Router();
 
 var url = config.get('servicos.agenda');
 
-router.delete('/:entidade/:id([0-9])', function (req, res) {
+router.delete('/:entidade/:id', function (req, res) {
 	var id = req.params.id;
 	var entidade = req.params.entidade;
 	var options = requestBuilder.buildRequest('DELETE', url + entidade + '/' + id, req);

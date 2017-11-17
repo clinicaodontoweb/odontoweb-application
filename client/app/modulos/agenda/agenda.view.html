@@ -59,7 +59,10 @@
 				view-title="vm.viewTitle"
 			    events="vm.eventos"
 			    cell-is-open="vm.cellIsOpen"
+				day-view-start="06:00"
+				day-view-end="22:59"
 				day-view-split="15"
+				cell-auto-open-disabled="true"
 				on-event-click="vm.visualizarEvento(calendarEvent)"
 				on-view-change-click="vm.navigateCalendar(calendarDate, calendarNextView)"
 				on-date-range-select="vm.cadastrarEvento(calendarRangeStartDate, calendarRangeEndDate)">

@@ -19,5 +19,18 @@ router.post('/:entidade', function (req, res) {
 	
 });
 
+router.post('/:entidade/:hash', function (req, res) {
+	var id = req.params.hash;
+	var entidade = req.params.entidade;
+	var options = requestBuilder.buildRequest('POST', url + entidade + '/' + id, req);
+	
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+	
+});
+
 
 module.exports = router;
