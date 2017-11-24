@@ -16,6 +16,7 @@
         $rootScope.toggleMenu = toggleMenu;
         $rootScope.logout = logout;
         $rootScope.changeTenant = changeTenant;
+        $rootScope.isActive = isActive;
 
         function routeChangeStart(event, nextRoute, currentRoute) {
             if(!AutenticacaoService.isLogged()) {
@@ -69,6 +70,11 @@
             var currentTenant = AutenticacaoService.getTenantFromToken();
             var tenants = AutenticacaoService.getCurrentUser().clinicas;
             return _.find(tenants, function(tenant) {return tenant.cnpj == currentTenant;});
+        }
+
+        function isActive(viewLocation) {
+            var active = (viewLocation === $location.path());
+            return active;
         }
 
     }

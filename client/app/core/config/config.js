@@ -21,6 +21,7 @@
 		calendarConfig.i18nStrings.weekNumber = 'Semana {week}';
 		calendarConfig.templates.calendarDayView = 'partials/core/calendar/calendarDayView.html';
 		calendarConfig.templates.calendarWeekView = 'partials/core/calendar/calendarWeekView.html';
+		calendarConfig.templates.calendarHourList = 'partials/core/calendar/calendarHourList.html';
 	}
 
 	restConfig.$inject = ['RestangularProvider'];

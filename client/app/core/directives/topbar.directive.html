@@ -1,17 +1,18 @@
 <div class="topbar row no-gutter">
-    <div class="col-xs-2 col-sm-5">
-        <button type="button" class="topbar__menu" data-ng-if="isLoggedIn()">
-            <span class="topbar__menu-icon"></span>
-            <span class="topbar__menu-icon"></span>
-            <span class="topbar__menu-icon"></span>
-        </button>
-    </div>
-    <div class="col-xs-2 col-sm-2 hidden-xs">
+    <div class="col-xs-9">
         <div class="topbar__logo">
-            <div class="topbar__logo-company"></div>
+
+        </div>
+        <div class="topbar__menu">
+            <ul>
+                <li ng-class="{ active: isActive('/agenda')}"><i class="material-icons">today</i><a href="#!/agenda">Agenda</a></li>
+                <li ng-class="{ active: isActive('/cadastro/paciente')}"><i class="material-icons">supervisor_account</i><a href="#!/cadastro/paciente">Pacientes</a></li>
+                <li ng-class="{ active: isActive('/cadastro/dentista')}"><i class="material-icons">group_add</i><a href="#!/cadastro/dentista">Profissionais</a></li>
+                <li ng-class="{ active: isActive('/cadastro/recepcionista')}"><i class="material-icons">face</i><a href="#!/cadastro/recepcionista">Recepcionistas</a></li>
+            </ul>
         </div>
     </div>
-    <div class="col-xs-10 col-sm-5">
+    <div class="col-xs-3">
         <div class="topbar__profile" data-ng-if="isLoggedIn()">
             <i class="material-icons" id="btnMenu" data-ng-click="toggleMenu()">keyboard_arrow_down</i>
             <div class="topbar__profile-details">

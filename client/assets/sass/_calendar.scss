@@ -17,9 +17,111 @@ a.event-item {
 a.event-item {
     height: 80%;
     display: block;
+    outline: none;
+}
+
+.cal-week-box.cal-day-box .cal-row-head {
+    background: white;
+}
+mwl-calendar .cal-row-head [class*=cal-cell], mwl-calendar .cal-row-head [class*=cal-cell]:first-child {
+    border-right: 1px solid #e1e1e1;
+}
+mwl-calendar .cal-row-head [class*=cal-cell]:last-child {
+    border-right: none;
+}
+.cal-day-box .cal-day-hour-part:hover {
+    background-color: transparent;
+}
+
+.cal-day-box .cal-day-hour-part-selected,
+mwl-calendar .cal-day-today  {
+    background: $blue-light-color;
+}
+
+mwl-calendar .cal-cell.drop-active, mwl-calendar .cal-day-hour-part.drop-active, mwl-calendar .cal-week-box .cal-cell1.drop-active, mwl-calendar .cell-focus, mwl-calendar [class*=cal-cell] .drop-active, mwl-calendar [class*=cal-cell]:hover {
+    background: $blue-light-color;
+}
+
+mwl-calendar .cal-day-today span[data-cal-date] {
+    color: $blue-color;
+}
+
+.cal-day-box .cal-day-hour:nth-child(odd){
+    background: white;
 }
 
 .cal-day-box .cal-day-hour-part,
 .cal-day-box .cal-day-hour-part .cal-day-hour-part-spacer {
     height: 50px;
+}
+.cal-day-hour-part-spacer {
+    background: white;
+    border: none;
+    border-right: 1px solid #e1e1e1;
+    border-bottom: 1px dashed #e1e1e1;
+    width: 14.285%;
+
+    &:hover {
+        background: $blue-light-color;
+    }
+}
+
+.cal-day-box .cal-day-hour-part .cal-day-hour-part-time {
+    width: 45px;
+}
+
+.cal-week-box.cal-day-box .cal-row-head,
+.cal-day-box .cal-day-hour-part {
+    padding-left: 0px;
+}
+
+.cal-day-box .cal-day-hour-part .cal-day-hour-part-spacer:last-child{
+    border-right: none;
+}
+
+.busca-dentistas-container {
+    .busca-dentista {
+        padding: 10px 10px 25px 10px;
+        position: relative;
+
+        i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            margin-top: -18px;
+        }
+
+        input { 
+            padding-left: 42px;
+        }
+
+    }
+    
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            padding: 15px 22px;
+            border-left: 4px solid transparent;
+            outline: none;
+            cursor: pointer;
+        }
+
+        li.active,
+        li:hover {
+            color: $blue-color;
+            border-left: 4px solid $blue-color;
+            background: $blue-light-color;
+
+        }
+    }
+}
+
+.calendar-actions,
+.calendar-container {
+    margin-bottom: 25px;
+    float: left;
+    width: 100%;
 }

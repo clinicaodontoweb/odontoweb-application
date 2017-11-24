@@ -36,8 +36,8 @@
                 status: evento.statusEvento,
                 statusClass: 'list-group-item-info',
                 color: {
-                  primary: evento.tipoConsultaResponse.cor,
-                  secondary: evento.tipoConsultaResponse.cor
+                  primary: "#" + evento.tipoConsultaResponse.cor.split("#")[1],
+                  secondary: "#" + evento.tipoConsultaResponse.cor.split("#")[2]
                 }
             }
         }

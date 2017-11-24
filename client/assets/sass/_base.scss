@@ -1,6 +1,5 @@
 body {
-    background-color: $gray-color;
-    color: #887888;
+    color: #868F9C;
     font-family: 'Roboto Condensed', sans-serif;
     padding-top: 80px;
 }
@@ -12,4 +11,24 @@ body {
 
 .content {
     padding: $padding;
+}
+
+aside {
+    position: absolute;
+    border-right: 1px solid #e1e1e1;
+    background: white;
+    height: 100%;
+    width: 230px;
+    top: 70px;
+    left: 0;
+}
+
+.content-aside {
+    width: calc(100% - 230px);
+    position: absolute;
+    height: 100%;
+    top: 70px;
+    left: 230px;
+    background-color: $gray-color;
+    padding: 25px;
 }

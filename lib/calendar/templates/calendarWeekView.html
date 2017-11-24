@@ -9,6 +9,7 @@
         'cal-day-past': day.isPast,
         'cal-day-today': day.isToday,
         'cal-day-future': day.isFuture}"
+      ng-style="{width: '14.285%'}"
       mwl-element-dimensions="vm.dayColumnDimensions"
       mwl-droppable
       on-drop="vm.eventDropped(dropData.event, day.date)">
@@ -45,7 +46,7 @@
       ng-if="vm.showTimes">
     </mwl-calendar-hour-list>
 
-    <div class="row" ng-repeat="row in vm.view.eventRows track by $index">
+    <div class="row" ng-repeat="row in vm.view.eventRows track by $index" ng-style="{marginLeft: '-60px'}">
       <div class="col-xs-12">
         <div class="cal-row-fluid">
           <div
@@ -54,14 +55,18 @@
             ng-style="{
               top: vm.showTimes ? ((eventRow.top) + 'px') : 'auto',
               position: vm.showTimes ? 'absolute' : 'inherit',
-              width: vm.showTimes ? (vm.dayColumnDimensions.width + 'px') : '',
-              left: vm.showTimes ? (vm.dayColumnDimensions.width * eventRow.offset) + 15 + 'px' : ''
+              left: vm.showTimes ? (vm.dayColumnDimensions.width * eventRow.offset) + 'px' : ''
             }">
             <div
               class="day-highlight"
               ng-class="[eventRow.event.cssClass, !vm.showTimes && eventRow.startsBeforeWeek ? '' : 'border-left-rounded', !vm.showTimes && eventRow.endsAfterWeek ? '' : 'border-right-rounded']"
-              ng-style="{backgroundColor: eventRow.event.color.secondary, 
-                        height: vm.showTimes ? (eventRow.height + 'px') : '' }"
+              ng-style="{backgroundColor: eventRow.event.color.secondary,
+                        border: 'none',
+                        borderLeft: '5px solid' + eventRow.event.color.primary,
+                        color: eventRow.event.color.primary,
+                        fontWeight: bold,
+                        height: vm.showTimes ? (eventRow.height + 'px') : '',
+                        fontWeight: 'bold' }"
               data-event-class
               mwl-draggable="eventRow.event.draggable === true"
               axis="vm.showTimes ? 'xy' : 'x'"
@@ -71,15 +76,16 @@
               mwl-resizable="eventRow.event.resizable === true && eventRow.event.endsAt && !vm.showTimes"
               resize-edges="{left: true, right: true}"
               on-resize-end="vm.weekResized(eventRow.event, edge, x / vm.dayColumnDimensions.width)">
-              <span ng-bind="'{{eventRow.event.startsAt | date:'HH:mm'}}' + ' - ' + '{{eventRow.event.endsAt| date:'HH:mm'}}'" ng-show="vm.showTimes" ng-style="{lineHeight: 'initial', display: 'block'}"></span>
+              <span ng-bind="'{{eventRow.event.startsAt | date:'HH:mm'}}' + ' - ' + '{{eventRow.event.endsAt| date:'HH:mm'}}'" ng-show="vm.showTimes" ng-style="{lineHeight: 'initial', display: 'block', paddingTop: '5px', paddingLeft: '5px'}"></span>
               <a
                 href="javascript:;"
                 ng-click="vm.onEventClick({calendarEvent: eventRow.event})"
+                ng-style="{color: eventRow.event.color.primary, paddingLeft: '5px', fontWeight: 'bold'}"
                 class="event-item"
-                ng-bind-html="vm.calendarEventTitle.weekView(eventRow.event) | calendarTrustAsHtml"
                 uib-tooltip-html="vm.calendarEventTitle.weekViewTooltip(eventRow.event) | calendarTrustAsHtml"
                 tooltip-placement="left"
                 tooltip-append-to-body="true">
+                {{vm.calendarEventTitle.weekViewTooltip(eventRow.event) | captalize}}
               </a>
             </div>
           </div>

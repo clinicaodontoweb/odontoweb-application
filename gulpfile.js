@@ -115,7 +115,7 @@ gulp.task('copy-html', function (){
 });
 
 gulp.task('copy-html-calendar', function (){
-	return gulp.src(['lib/calendar/templates/calendarWeekView.html', 'lib/calendar/templates/calendarDayView.html'])
+	return gulp.src(['lib/calendar/templates/calendarWeekView.html', 'lib/calendar/templates/calendarDayView.html', 'lib/calendar/templates/calendarHourList.html'])
 			.pipe(gulp.dest('dist/app/core/calendar'));
 });
 

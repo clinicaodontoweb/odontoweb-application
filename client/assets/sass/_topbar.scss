@@ -1,46 +1,62 @@
 .topbar {
     background: $white-color;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e1e1e1;
     height: $topbar-height;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 900;
 
     &__logo {
-        width: auto;
-
-        &-company {
-            @include image('logo_color.png');
-            width: 32px;
-            height: 38px;
-            display: block;
-            margin: 10px auto;
-        }
+        width: 230px;
+        float: left;
+        height: $topbar-height;
     }
 
     &__menu {
-        position: relative;
+        display: block;
+        width: auto;
         float: left;
-        background-image: none;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        padding: 9px 10px;
-        margin: 12px 0 0px 10px;
-        background: transparent;
 
-        &:hover {
-            background-color: $gray-light-color;
-            border-color: $gray-light-color;
-        }
-
-        &-icon {
+        ul {
+            margin: 0;
+            padding: 0;
             display: block;
-            width: 22px;
-            height: 2px;
-            border-radius: 1px;
-            background-color: $blue-light-color;
+            list-style: none;
+            float: left;
+
+            li {
+                display: inline-block;
+                height: $topbar-height;
+                line-height: $topbar-height;
+                padding: 0 20px;
+                position: relative;
+
+                i {
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    margin-top: -12px;
+                }
+                
+                a {
+                    text-decoration: none;
+                    margin-left: 15px;
+                    color: #868F9C;
+                }
+            }
+
+            li.active,
+            li:hover {
+                i {
+                    color: $blue-color;
+                }
+                
+                a {
+                    color: $blue-color;
+                }
+            }
         }
     }
 
@@ -51,9 +67,10 @@
             float: right;
             width: auto;
             height: 100%;
+            padding-left: 10px;
             
             &-user {
-                padding-top: 10px;
+                padding-top: 14px;
             }
 
             &-user, &-tenant {
@@ -70,15 +87,14 @@
             width: auto;
             display: block;
             height: 100%;
-            padding-top: 12px;
+            padding-top: 25px;
             font-size: 24pt;
-            border-left: 1px solid $gray-color;
-            color: $blue-color;
-            outline: none;
+            outline: 0;
+            font-size: 1.7em;
+            padding-right: 10px;
+            padding-left: 10px;
             
             &:hover {
-                border-left: 1px solid $gray-dark-color;
-                border-bottom: 1px solid $gray-dark-color;
                 background-color: $gray-light-color;
                 cursor: pointer;
             }
