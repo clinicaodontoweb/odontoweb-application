@@ -3,7 +3,7 @@
         <div class="topbar__logo">
 
         </div>
-        <div class="topbar__menu">
+        <div class="topbar__menu" data-ng-if="isLoggedIn()">
             <ul>
                 <li ng-class="{ active: isActive('/agenda')}"><i class="material-icons">today</i><a href="#!/agenda">Agenda</a></li>
                 <li ng-class="{ active: isActive('/cadastro/paciente')}"><i class="material-icons">supervisor_account</i><a href="#!/cadastro/paciente">Pacientes</a></li>

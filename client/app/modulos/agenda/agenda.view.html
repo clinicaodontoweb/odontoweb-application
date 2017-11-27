@@ -99,6 +99,17 @@
 			<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'week'}" data-ng-click="vm.navigateCalendar(undefined, 'week')">Semana</label>
 			<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'day'}" data-ng-click="vm.navigateCalendar(undefined, 'day')">Dia</label>
 		</div>
+		<div class="btn-group">
+			<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" data-ng-click="vm.navigateCalendar()">
+				Anterior
+			</button>
+			<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" set-to-today data-ng-click="vm.navigateCalendar()">
+				Hoje
+			</button>
+			<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" data-ng-click="vm.navigateCalendar()">
+				Próximo
+			</button>
+		</div>
 	</div>
 
 	<div class="calendar-container">
