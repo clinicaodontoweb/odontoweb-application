@@ -1,24 +1,34 @@
-<div class="modal-header">
-  <h5 class="modal-title">Agendamento do(a) <b>{{vm.agendamento.title}}</b></h5>
-  <button class="btn" ng-click="$close()">Cancelar</button>
+<div class="modal-header" ng-style="{backgroundColor: vm.agendamento.color.secondary}">
+  <h5 class="modal-title" ng-style="{color: vm.agendamento.color.primary}">
+    Agendamento do(a) <b>{{vm.agendamento.title}}</b>
+    <button class="botao botao--fechar" ng-click="$close()"><i class="material-icons">close</i></button>
+  </h5>
 </div>
 <div class="modal-body">
 
-  <div class="avatar-consulta">
-    <span>{{vm.agendamento.paciente.nome | showFirstLetters}}</span>
+  <div class="consulta-view-header">
+    <div class="consulta-view-header-avatar">
+      <div class="avatar-consulta" ng-style="{backgroundColor: vm.agendamento.color.secondary, borderColor: vm.agendamento.color.primary}">
+        <span ng-style="{color: vm.agendamento.color.primary}">{{vm.agendamento.paciente.nome | showFirstLetters}}</span>
+      </div>
+    </div>
+    <div class="consulta-view-header-info">
+      <p class="consulta-nome"><b>{{vm.agendamento.paciente.nome}}</b></p>
+      <p class="consulta-detalhes">{{vm.agendamento.paciente.email}} | (51) {{vm.agendamento.paciente.telefone}}</p>
+    </div>
   </div>
-  <p class="consulta-nome"><b>{{vm.agendamento.paciente.nome}}</b></p>
-  <p class="consulta-detalhes">{{vm.agendamento.paciente.email}} | (51) {{vm.agendamento.paciente.telefone}}</p>
-
-<ul class="list-group">
-  <li class="list-group-item {{vm.agendamento.statusClass}}">Status: <b>{{vm.agendamento.status}}</b></li>
-  <li class="list-group-item">Horário: <b> {{vm.agendamento.startsAt | date:'dd-MM-yyyy'}}</b> - <b>{{vm.agendamento.startsAt | date:'HH:mm'}}</b> às <b>{{vm.agendamento.endsAt | date:'HH:mm'}}</b></li>
-  <li class="list-group-item">Procedimento: <b> {{vm.agendamento.procedimento}}</b></li>
-  <li class="list-group-item">Convênio: <b>{{vm.agendamento.convenio}}</b></li>
-</ul>
+  <div class="consulta-view-info">
+    <ul class="list-group">
+      <li class="list-group-item" ng-style="{backgroundColor: vm.agendamento.color.secondary, color: vm.agendamento.color.primary}">Procedimento: <b> {{vm.agendamento.procedimento}}</b></li>
+      <li class="list-group-item">Horário: <b> {{vm.agendamento.startsAt | date:'dd-MM-yyyy'}}</b> - <b>{{vm.agendamento.startsAt | date:'HH:mm'}}</b> às <b>{{vm.agendamento.endsAt | date:'HH:mm'}}</b></li>
+      <li class="list-group-item">Status: <b>{{vm.agendamento.status}}</b></li>
+      <li class="list-group-item">Convênio: <b>{{vm.agendamento.convenio}}</b></li>
+      <li class="list-group-item">Observações: <b>{{vm.agendamento.observacao}}</b></li>
+    </ul>
+  </div>
   
 </div>
 <div class="modal-footer" ng-hide="{{vm.agendamento.status == 'Cancelado'}}">
-  <button class="btn" ng-click="vm.deletarAgendamento()">Deletar</button>
-  <button class="btn btn-primary" ng-click="vm.alterarAgendamento()">Alterar</button>
+  <button class="botao botao--vermelho" ng-click="vm.deletarAgendamento()">Deletar</button>
+  <button class="botao botao--azul" ng-click="vm.alterarAgendamento()">Alterar</button>
 </div>

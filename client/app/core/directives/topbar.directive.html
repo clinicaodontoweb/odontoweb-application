@@ -1,9 +1,9 @@
-<div class="topbar row no-gutter">
+<div class="topbar row no-gutter" data-ng-if="isLoggedIn()">
     <div class="col-xs-9">
         <div class="topbar__logo">
-
+            <span>Odontoweb</span>
         </div>
-        <div class="topbar__menu" data-ng-if="isLoggedIn()">
+        <div class="topbar__menu">
             <ul>
                 <li ng-class="{ active: isActive('/agenda')}"><i class="material-icons">today</i><a href="#!/agenda">Agenda</a></li>
                 <li ng-class="{ active: isActive('/cadastro/paciente')}"><i class="material-icons">supervisor_account</i><a href="#!/cadastro/paciente">Pacientes</a></li>
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="col-xs-3">
-        <div class="topbar__profile" data-ng-if="isLoggedIn()">
+        <div class="topbar__profile">
             <i class="material-icons" id="btnMenu" data-ng-click="toggleMenu()">keyboard_arrow_down</i>
             <div class="topbar__profile-details">
                 <span class="topbar__profile-details-user"><b>Acessando dados da clínica</b></span>

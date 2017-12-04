@@ -34,7 +34,7 @@
                 startsAt: new Date(evento.dataInicio),
                 endsAt: new Date(evento.dataFim),
                 status: evento.statusEvento,
-                statusClass: 'list-group-item-info',
+                observacao: evento.observacao,
                 color: {
                   primary: "#" + evento.tipoConsultaResponse.cor.split("#")[1],
                   secondary: "#" + evento.tipoConsultaResponse.cor.split("#")[2]

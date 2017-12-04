@@ -30,7 +30,7 @@ mwl-calendar .cal-row-head [class*=cal-cell]:last-child {
     border-right: none;
 }
 .cal-day-box .cal-day-hour-part:hover {
-    background-color: transparent;
+    background-color: $gray-light-color;
 }
 
 .cal-day-box .cal-day-hour-part-selected,
@@ -88,7 +88,7 @@ mwl-calendar .cal-day-today span[data-cal-date] {
             position: absolute;
             left: 18px;
             top: 50%;
-            margin-top: -18px;
+            margin-top: -24px;
         }
 
         input { 
@@ -121,7 +121,37 @@ mwl-calendar .cal-day-today span[data-cal-date] {
 
 .calendar-actions,
 .calendar-container {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     float: left;
     width: 100%;
+    position: relative;
+}
+
+.calendar-actions {
+    height: 50px;
+}
+
+.calendar-title {
+    width: 100%;
+    float: left;
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.btn-view {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.btn-control {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 143px;
 }

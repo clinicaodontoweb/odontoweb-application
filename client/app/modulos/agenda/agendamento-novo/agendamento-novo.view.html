@@ -1,73 +1,104 @@
-<div class="modal-body">
+<form class="agendamento-form" name="agendamentoForm" ng-submit="vm.agendar(agendamentoForm.$valid)" novalidate>
+  <div class="modal-body">
 
-  <!-- <pre>{{vm.usuarioClinica}}</pre> -->
-
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="form-group">
-        <input type="text" class="form-control" name="busca-paciente" data-ng-keyup="vm.autocompletePaciente(vm.search)" data-ng-model="vm.search" autofocus autocomplete="off" placeholder="Nome do paciente">
-        <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="buscaPaciente">Digite o nome do paciente</label>
+          <input type="text" class="form-control" name="buscaPaciente" data-ng-keyup="vm.autocompletePaciente(vm.search)" data-ng-model="vm.search" autofocus autocomplete="off" placeholder="Nome do paciente">
+        </div>
       </div>
-    </div>
-    <div class="col-xs-12">
-      <div data-ng-show="vm.completing" class="autocomplete">
-        <ul class="autocomplete__results">
-          <li data-ng-repeat="paciente in vm.pacientes" data-ng-click="vm.selectPaciente(paciente)"><b>{{paciente.nome}}</b> {{paciente.cpf}}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-xs-12">
-        <input type="text" name="nomePaciente" class="form-control" data-ng-model="vm.agendamento.paciente.nome" placeholder="Nome do Paciente" disabled="disabled">
-    </div>
-    <div class="col-xs-6">
-        <input type="text" name="cpf" class="form-control" data-ng-model="vm.agendamento.paciente.cpf" placeholder="CPF do Paciente" disabled="disabled">
-    </div>
-    <div class="col-xs-6">
-        <input type="text" name="telefone" class="form-control" data-ng-model="vm.agendamento.paciente.contatoResponse.telefones[0].numero" placeholder="Telefone do Paciente" disabled="disabled">
-    </div>
-  </div>
-
-  <div class="row">
-    <fieldset data-ng-disabled="vm.agendamento.paciente == null">
-      <div class="col-xs-6">
-        <select name="tipoConsulta" id="tipoConsulta" class="form-control" data-ng-options="tipo as tipo.nome for tipo in vm.tiposConsulta track by tipo.idTipoConsulta" data-ng-model="vm.agendamento.tipoConsulta">
-            <option style="display:none" value="">Tipo de Agendamento</option>
-        </select>
+      <div class="col-xs-12">
+        <div data-ng-show="vm.completing" class="autocomplete">
+          <ul class="autocomplete__results">
+            <li data-ng-repeat="paciente in vm.pacientes" data-ng-click="vm.selectPaciente(paciente)"><b>{{paciente.nome}}</b> {{paciente.cpf}}</li>
+          </ul>
+        </div>
       </div>
       <div class="col-xs-6">
-        <select name="statusConsulta" id="statusConsulta" class="form-control" data-ng-options="status as status.nome for status in vm.statusConsulta track by status.nome" data-ng-model="vm.agendamento.statusConsulta" data-ng-init="vm.agendamento.statusConsulta = vm.statusConsulta[0]"/>
+        <div class="form-group">
+          <label for="nomePaciente">Nome do paciente</label>
+          <input type="text" name="nomePaciente" class="form-control" data-ng-model="vm.agendamento.paciente.nome" placeholder="Nome do Paciente" disabled="disabled">
+        </div>
       </div>
-      <div class="col-xs-6">
-        <select name="convenio" id="convenio" class="form-control" data-ng-options="convenio as convenio.nome for convenio in vm.agendamento.paciente.conveniosResponse track by convenio.idConvenio" data-ng-model="vm.agendamento.convenio">
-            <option style="display:none" value="">Convênio</option>
-        </select>
+      <div class="col-xs-3">
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input type="text" name="cpf" class="form-control" data-ng-model="vm.agendamento.paciente.cpf" placeholder="CPF do Paciente" disabled="disabled">
+        </div>
       </div>
-    </fieldset>
+      <div class="col-xs-3">
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="text" name="telefone" class="form-control" data-ng-model="vm.agendamento.paciente.contatoResponse.telefones[0].numero" placeholder="Telefone do Paciente" disabled="disabled">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <fieldset data-ng-disabled="vm.agendamento.paciente == null">
+        <div class="col-xs-4">
+          <div class="form-group" ng-class="{ 'has-error' : agendamentoForm.tipoConsulta.$invalid && !agendamentoForm.tipoConsulta.$pristine }">
+            <label for="tipoConsulta">Tipo do agendameto *</label>
+            <select name="tipoConsulta" id="tipoConsulta" class="form-control" data-ng-options="tipo as tipo.nome for tipo in vm.tiposConsulta track by tipo.idTipoConsulta" data-ng-model="vm.agendamento.tipoConsulta" required>
+                <option style="display:none" value="">Tipo de Agendamento</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="form-group" ng-class="{ 'has-error' : agendamentoForm.statusConsulta.$invalid && !agendamentoForm.statusConsulta.$pristine }">
+            <label for="statusConsulta">Status do agendamento *</label>
+            <select name="statusConsulta" id="statusConsulta" class="form-control" data-ng-options="status as status.nome for status in vm.statusConsulta track by status.nome" data-ng-model="vm.agendamento.statusConsulta" data-ng-init="vm.agendamento.statusConsulta = vm.statusConsulta[0]" required/>
+          </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group" ng-class="{ 'has-error' : agendamentoForm.convenio.$invalid && !agendamentoForm.convenio.$pristine }">
+              <label for="convenio">Convênio *</label>
+              <select name="convenio" id="convenio" class="form-control" data-ng-options="convenio as convenio.nome for convenio in vm.agendamento.paciente.conveniosResponse track by convenio.idConvenio" data-ng-model="vm.agendamento.convenio" required>
+                  <option style="display:none" value="">Convênio</option>
+              </select>
+            </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="row">
+      <fieldset data-ng-disabled="vm.agendamento.paciente == null">
+        <div class="col-xs-12">
+          <div class="dataAgendamentoContainer">
+            <span>
+              <i class="material-icons">date_range</i>
+              {{vm.dataInicio | date:'dd-MM-yyyy'}}
+            </span>
+            <span>
+              <i class="material-icons">access_time</i>
+              {{vm.dataInicio | date:'HH:mm'}}
+            </span>
+            <span>
+              <i class="material-icons">access_time</i>
+              {{vm.dataFim | date:'HH:mm'}}
+            </span>
+            <button class="botao botao--azul" ng-click="$close()">Próximo Horário</button>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="row">
+      <fieldset data-ng-disabled="vm.agendamento.paciente == null">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="observacaoConsulta">Observação</label>
+            <textarea class="form-control" name="observacaoConsulta" rows="5" data-ng-model="vm.agendamento.observacao" placeholder="Observações"></textarea>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    
   </div>
 
-  <div class="row">
-    <fieldset data-ng-disabled="vm.agendamento.paciente == null">
-      <div class="col-xs-4">
-        <span>{{vm.dataInicio | date:'dd-MM-yyyy'}}</span>
-      </div>
-      <div class="col-xs-4">
-        <span>{{vm.dataInicio | date:'HH:mm'}}</span>
-      </div>
-      <div class="col-xs-4">
-        <span>{{vm.dataFim | date:'HH:mm'}}</span>
-      </div>
-    </fieldset>
+  <div class="modal-footer">
+    <button class="botao botao--vermelho" ng-click="$close()">Cancelar</button>
+    <button type="submit" class="botao botao--azul" ng-click="vm.agendar()" ng-disabled="agendamentoForm.$invalid">Agendar</button>
   </div>
-
-  <div class="row">
-    <fieldset data-ng-disabled="vm.agendamento.paciente == null">
-      <textarea class="form-control" name="observacaoConsulta" rows="5" data-ng-model="vm.agendamento.observacao" placeholder="Observações"></textarea>
-    </fieldset>
-  </div>
-  
-</div>
-
-<div class="modal-footer">
-  <button class="btn btn-danger" ng-click="$close()">Cancelar</button>
-  <button class="btn btn-primary" ng-click="vm.agendar()">Agendar</button>
-</div>
+</form>

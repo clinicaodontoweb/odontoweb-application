@@ -12,6 +12,17 @@
         width: 230px;
         float: left;
         height: $topbar-height;
+
+        span {
+            font-size: 28px;
+            font-family: 'Julius Sans One', sans-serif;
+            text-align: center;
+            color: $blue-color;
+            width: 100%;
+            display: block;
+            height: $topbar-height;
+            line-height: $topbar-height;
+        }
     }
 
     &__menu {

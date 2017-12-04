@@ -53,7 +53,8 @@
         height: dayEvent.height + 'px',
         width: '100%',
         backgroundColor: dayEvent.event.color.secondary,
-        borderColor: dayEvent.event.color.primary
+        borderColor: dayEvent.event.color.primary,
+        color: dayEvent.event.color.primary
       }"
       mwl-draggable="dayEvent.event.draggable === true"
       axis="'xy'"
@@ -74,6 +75,7 @@
       <a
         href="javascript:;"
         class="event-item"
+        ng-style="{color: dayEvent.event.color.primary, fontWeight: 'bold'}"
         ng-click="vm.onEventClick({calendarEvent: dayEvent.event})">
         <span ng-bind-html="vm.calendarEventTitle.dayView(dayEvent.event) | calendarTrustAsHtml"></span>
       </a>

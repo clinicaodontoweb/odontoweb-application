@@ -4,10 +4,18 @@
     border: 1px solid $gray-dark-color;
     height: 45px;
     box-shadow: none;
+    margin: 0px 0 10px 0;
 
     &:focus {
         outline: none;
         box-shadow: none;
         border: 1px solid $blue-color;
     }
+}
+
+.has-error .form-control {
+    border-color: $botao-vermelho;
+}
+.has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .form-control-feedback, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
+    color: $botao-vermelho;
 }

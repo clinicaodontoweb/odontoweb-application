@@ -1,0 +1,82 @@
+.dataAgendamentoContainer {
+    background: $blue-light-color;
+    width: 100%;
+    float: left;
+    padding: 20px;
+    margin: 5px 0 15px 0;
+
+    span {
+        display: block;
+        float: left;
+        margin-right: 15px;
+        position: relative;
+        padding-left: 35px;
+        height: 35px;
+        line-height: 35px;
+
+        i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+    }
+
+    .botao {
+        float: right;
+    }
+}
+.modal-footer .botao {
+    margin-right: 10px;
+}
+
+.modal-title {
+    line-height: 3;
+    color: $blue-color;
+}
+
+.modal-header {
+    background: $blue-light-color;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.avatar-consulta {
+    border: 1px solid $blue-color;
+    width: 100px;
+    height: 100px;
+    float: none;
+    margin: 10px auto;
+    border-radius: 50%;
+    background: $blue-light-color;
+
+    span{
+        color: $blue-color;
+        font-size: 24pt;
+        margin: 0 auto;
+        line-height: 100px;
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-weight: 400;
+    }
+}
+
+.modal-body,
+.consulta-view-header,
+.consulta-view-info {
+    width: 100%;
+    float: left;
+
+    .consulta-view-header-avatar,
+    .consulta-view-header-info {
+        float: left;
+    }
+    
+    .consulta-view-header-info {
+        margin-left: 40px;
+        margin-top: 20px;
+    }
+}
+
+.consulta-view-header {
+    margin: 20px;
+}
