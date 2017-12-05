@@ -1,0 +1,27 @@
+.form-container {
+    width: 75%;
+    margin: 0 auto;
+
+    .form-title {
+        font-size: 22px;
+        color: $blue-color;
+        margin: 0;
+        padding: 20px 0px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        border-bottom: 1px solid $blue-color;
+
+        &--sub {
+            margin-bottom: 10px;
+        }
+    }
+
+    .form-footer {
+        width: 100%;
+        float: left;
+
+        .botao {
+            float: right;
+        }
+    }
+}

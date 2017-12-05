@@ -14,7 +14,8 @@
 			clinica: "clinica",
 			recepcinista: "recepcionista",
 			agenda: "agenda",
-			tiposConsulta: "tipoConsulta"
+			tiposConsulta: "tipoConsulta",
+			paciente: "paciente"
 	    }
     }
 

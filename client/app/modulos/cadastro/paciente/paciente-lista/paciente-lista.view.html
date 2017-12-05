@@ -1,0 +1,38 @@
+<div class="list">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="form-group">
+                <label for="buscaPaciente">Digite o nome do paciente</label>
+                <input type="text" class="form-control" name="buscaPaciente" data-ng-model="vm.search" placeholder="Nome do paciente">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-actions">
+                <a class="botao botao--azul pull-right" href="#!/cadastro/paciente/novo">Cadastrar Novo Paciente</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-header">
+        <div class="col-xs-3">Nome do Paciente</div>
+        <div class="col-xs-2">Cpf</div>
+        <div class="col-xs-4">Email</div>
+        <div class="col-xs-1">Genêro</div>
+        <div class="col-xs-2">Data de Nascimento</div>
+    </div>
+
+    <div class="row list-item" data-ng-repeat="paciente in vm.pacientes | filter:vm.search:strict as resultados">
+        <div class="col-xs-3">{{paciente.nome | captalize}}</div>
+        <div class="col-xs-2">{{paciente.cpf}}</div>
+        <div class="col-xs-4">{{paciente.contatoResponse.email}}</div>
+        <div class="col-xs-1">{{paciente.genero}}</div>
+        <div class="col-xs-2">{{paciente.dataNascimento | date:'dd-MM-yyyy'}}</div>
+    </div>
+
+    <div class="row" data-ng-if="resultados.length == 0" class="vazio">
+        <div class="col-xs-12" style="text-align: center; margin-top: 50px">
+            Nenhum resultado encontrado
+        </div>
+    </div>
+
+</div>

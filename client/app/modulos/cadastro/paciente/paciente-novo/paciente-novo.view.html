@@ -1,0 +1,36 @@
+<div class="form-container">
+	<form name="pacienteForm" ng-submit="vm.cadastrar(pacienteForm.$valid)" novalidate>
+		<h5 class="form-title">Dados do Paciente</h5>
+		
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.nomePaciente.$invalid && !pacienteForm.nomePaciente.$pristine }">
+					<label for="nomePaciente">Nome Completo</label>
+					<input type="text" class="form-control" name="nomePaciente" data-ng-model="vm.paciente.nome" placeholder="Nome Completo" autofocus required/>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.rgPaciente.$invalid && !pacienteForm.rgPaciente.$pristine }">
+					<label for="rgPaciente">RG</label>
+					<input type="text" class="form-control" name="rgPaciente" data-ng-model="vm.paciente.rg" placeholder="RG" ng-minlength="10" ng-maxlength="10" maxlength="10"/>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.cpfPaciente.$invalid && !pacienteForm.cpfPaciente.$pristine }">
+					<label for="cpfPaciente">CPF</label>
+					<input type="text" class="form-control" name="cpfPaciente" data-ng-model="vm.paciente.cpf" placeholder="CPF" ng-minlength="11" ng-maxlength="11" maxlength="11" required/>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.emailPaciente.$invalid && !pacienteForm.emailPaciente.$pristine }">
+					<label for="emailPaciente">Email</label>
+					<input type="email" class="form-control" name="emailPaciente" data-ng-model="vm.paciente.email" placeholder="Email" required/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-footer">
+			<button type="submit" class="botao botao--azul" ng-disabled="pacienteForm.$invalid">Cadastrar Paciente</button>
+		</div>
+	</form>
+</div>
