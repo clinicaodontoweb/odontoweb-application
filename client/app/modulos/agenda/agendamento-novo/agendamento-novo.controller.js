@@ -84,15 +84,17 @@
         /*
         * Agenda consulta
         */
-        function agendar() {
-            vm.request = buildRequestModel();
-            return AgendamentoService.agendar(vm.request, vm.usuarioClinica)
-                    .then(function(dados) {
-                        toastr.success('Agendamento salvo com sucesso!');
-                        $uibModalInstance.close(listaEventosDentista());
-                    },function(error) {
-                        toastr.error('Erro ao salvar agendamento!');
-                    });
+        function agendar(isValid) {
+            if(isValid) {
+                vm.request = buildRequestModel();
+                return AgendamentoService.agendar(vm.request, vm.usuarioClinica)
+                        .then(function(dados) {
+                            toastr.success('Agendamento salvo com sucesso!');
+                            $uibModalInstance.close(listaEventosDentista());
+                        },function(error) {
+                            toastr.error('Erro ao salvar agendamento!');
+                        });
+            }
         }
 
         /*
