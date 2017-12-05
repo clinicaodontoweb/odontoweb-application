@@ -82,4 +82,16 @@ router.post('/recepcionista', function (req, res) {
 
 });
 
+router.get('/recepcionista/clinica/:cnpj', function (req, res) {
+	var cnpj = req.params.cnpj;
+	var options = requestBuilder.buildRequest('GET', url + 'recepcionista/clinica/' + cnpj, req);
+
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+
+});
+
 module.exports = router;

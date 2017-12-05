@@ -12,8 +12,14 @@
 		//routes
 	 	$routeProvider
 			.when('/cadastro/dentista', {
-                templateUrl: 'partials/modulos/cadastro/dentista/dentista.novo.html',
-                controller: 'DentistaController', 
+                templateUrl: 'partials/modulos/cadastro/dentista/dentista-lista/dentista-lista.view.html',
+                controller: 'DentistaListaController', 
+				controllerAs: 'vm',
+				requireAdmin: true
+			})
+			.when('/cadastro/dentista/novo', {
+                templateUrl: 'partials/modulos/cadastro/dentista/dentista-novo/dentista-novo.view.html',
+                controller: 'DentistaNovoController', 
 				controllerAs: 'vm',
 				requireAdmin: true
             });

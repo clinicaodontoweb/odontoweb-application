@@ -1,0 +1,36 @@
+<div class="list">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="form-group">
+                <label for="buscaRecepcionista">Digite o nome do(a) recepcionista</label>
+                <input type="text" class="form-control" name="buscaRecepcionista" data-ng-model="vm.search" placeholder="Nome do(a) recepcionista">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-actions">
+                <a class="botao botao--azul pull-right" href="#!/cadastro/recepcionista/novo">Cadastrar Novo Recepcionista</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-header">
+        <div class="col-xs-4">Nome do(a) recepcionista</div>
+        <div class="col-xs-4">Email</div>
+        <div class="col-xs-2">Genêro</div>
+        <div class="col-xs-2">Admin</div>
+    </div>
+
+    <div class="row list-item" data-ng-repeat="recepcionista in vm.recepcionistas | filter:vm.search:strict as resultados">
+        <div class="col-xs-4">{{recepcionista.nome | captalize}}</div>
+        <div class="col-xs-4">{{recepcionista.usuarioResponse.email}}</div>
+        <div class="col-xs-2">{{recepcionista.genero}}</div>
+        <div class="col-xs-2">{{recepcionista.usuarioResponse.admin}}</div>
+    </div>
+
+    <div class="row" data-ng-if="resultados.length == 0" class="vazio">
+        <div class="col-xs-12" style="text-align: center; margin-top: 50px">
+            Nenhum resultado encontrado
+        </div>
+    </div>
+
+</div>

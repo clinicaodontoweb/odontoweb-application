@@ -1,0 +1,38 @@
+<div class="list">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="form-group">
+                <label for="buscaPaciente">Digite o nome do dentista</label>
+                <input type="text" class="form-control" name="buscaPaciente" data-ng-model="vm.search" placeholder="Nome do dentista">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-actions">
+                <a class="botao botao--azul pull-right" href="#!/cadastro/dentista/novo">Cadastrar Novo Dentista</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-header">
+        <div class="col-xs-4">Nome do dentista</div>
+        <div class="col-xs-4">Email</div>
+        <div class="col-xs-1">Conselho</div>
+        <div class="col-xs-1">Registro</div>
+        <div class="col-xs-2">Admin</div>
+    </div>
+
+    <div class="row list-item" data-ng-repeat="dentista in vm.dentistas | filter:vm.search:strict as resultados">
+        <div class="col-xs-4">{{dentista.nome | captalize}}</div>
+        <div class="col-xs-4">{{dentista.usuarioResponse.email}}</div>
+        <div class="col-xs-1">{{dentista.conselho}}</div>
+        <div class="col-xs-1">{{dentista.registro}}</div>
+        <div class="col-xs-2">{{dentista.usuarioResponse.admin}}</div>
+    </div>
+
+    <div class="row" data-ng-if="resultados.length == 0" class="vazio">
+        <div class="col-xs-12" style="text-align: center; margin-top: 50px">
+            Nenhum resultado encontrado
+        </div>
+    </div>
+
+</div>

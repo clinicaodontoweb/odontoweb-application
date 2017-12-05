@@ -12,14 +12,14 @@
 		//routes
 	 	$routeProvider
 			.when('/cadastro/recepcionista', {
-                templateUrl: 'partials/modulos/cadastro/recepcionista/recepcionista.novo.html',
-                controller: 'RecepcionistaController', 
+                templateUrl: 'partials/modulos/cadastro/recepcionista/recepcionista-lista/recepcionista-lista.view.html',
+                controller: 'RecepcionistaListaController', 
 				controllerAs: 'vm',
 				requireAdmin: true
 			})
-			.when('/cadastro/recepcionista/lista', {
-                templateUrl: 'partials/modulos/cadastro/recepcionista/recepcionista.lista.html',
-                controller: 'RecepcionistaController', 
+			.when('/cadastro/recepcionista/novo', {
+                templateUrl: 'partials/modulos/cadastro/recepcionista/recepcionista-novo/recepcionista-novo.view.html',
+                controller: 'RecepcionistaNovoController', 
 				controllerAs: 'vm',
 				requireAdmin: true
             });

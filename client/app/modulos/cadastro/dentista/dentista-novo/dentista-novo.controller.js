@@ -3,11 +3,11 @@
 
     angular
         .module('odontoweb.cadastro')
-        .controller('DentistaController', DentistaController);
+        .controller('DentistaNovoController', DentistaNovoController);
 
-    DentistaController.$inject = ['DentistaService', 'entidades', '$uibModal', '$scope'];
+    DentistaNovoController.$inject = ['DentistaService', 'entidades', '$uibModal', '$scope', '$location'];
 
-    function DentistaController(DentistaService, entidades, $uibModal, $scope) {
+    function DentistaNovoController(DentistaService, entidades, $uibModal, $scope, $location) {
         var vm = this;
         vm.toggle = toggle;
         vm.cadastrar = cadastrar;
@@ -41,6 +41,7 @@
                         vm.dentista = {};
                         $scope.dentistaForm.$setUntouched();
                         $scope.dentistaForm.$setPristine();
+                        $location.path("/cadastro/dentista");
                     },function(error) {
                         toastr.error(error.data.mensagem, 'Erro ao cadastrar!');
                     });

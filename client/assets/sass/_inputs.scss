@@ -19,3 +19,19 @@
 .has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .form-control-feedback, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
     color: $botao-vermelho;
 }
+
+md-switch.md-checked.md-primary .md-thumb,
+md-checkbox.md-checked .md-ink-ripple,
+md-checkbox.md-checked .md-ink-ripple, 
+md-checkbox.md-checked .md-icon{
+    background-color: $blue-color;
+    color: $blue-color;
+}
+
+md-switch {
+    padding: 34px 0px 34px 10px;
+    margin: 0;
+}
+md-switch:hover {
+    background-color: $blue-light-color;
+}

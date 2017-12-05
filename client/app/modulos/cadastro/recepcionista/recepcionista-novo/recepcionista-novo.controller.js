@@ -3,11 +3,11 @@
 
     angular
         .module('odontoweb.cadastro')
-        .controller('RecepcionistaController', RecepcionistaController);
+        .controller('RecepcionistaNovoController', RecepcionistaNovoController);
 
-    RecepcionistaController.$inject = ['DentistaService', 'RecepcionistaService', '$scope'];
+    RecepcionistaNovoController.$inject = ['DentistaService', 'RecepcionistaService', '$scope', '$location'];
 
-    function RecepcionistaController(DentistaService, RecepcionistaService, $scope) {
+    function RecepcionistaNovoController(DentistaService, RecepcionistaService, $scope, $location) {
         var vm = this;
         vm.toggle = toggle;
         vm.cadastrar = cadastrar;
@@ -47,6 +47,7 @@
                         };
                         $scope.recepcionistaForm.$setUntouched();
                         $scope.recepcionistaForm.$setPristine();
+                        $location.path("/cadastro/recepcionista");
                     },function(error) {
                         toastr.error(error.data.mensagem, 'Erro ao cadastrar!');
                     });
