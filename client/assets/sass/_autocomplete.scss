@@ -2,25 +2,53 @@
     background: $white-color;
     position: absolute;
     width: 97%;
-    box-shadow: 0 6px 15px rgba(0,0,0,.5);
+    border: 1px solid $blue-color;
+    border-radius: 4px;
     top: -15px;
     z-index: 999;
+
+    &__title {
+        width: 100%;
+        float: left;
+        margin: 0;
+        padding: 20px;
+        border-bottom: 1px solid $blue-color;
+    }
 
     &__results {
         list-style: none;
         width: 100%;
         float: left;
         margin: 0;
-        padding: 0;
+        padding: 10px;
 
         li {
             display: inline-block;
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             cursor: pointer;
 
             &:hover {
-                background: $gray-light-color;
+                background-color: $blue-light-color;
+                color: $blue-color;
+            }
+        }
+
+        &-info{
+            width: 70%;
+            float: left;
+        }
+
+        &-action {
+            width: 30%;
+            float: left;
+
+            span {
+                display: block;
+                font-weight: bold;
+                float: left;
+                margin-top: 15px;
+                color: $blue-color;
             }
         }
     }

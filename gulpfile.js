@@ -10,7 +10,8 @@ var clean			= require('gulp-clean');
 var runSequence		= require('run-sequence');
 var path 			= require('path');
 
-var depsFolder		= 'bower_components/'
+var depsFolder		= 'bower_components/';
+var nodeFolder		= 'node_modules/';
 
 gulp.task('default', function(callback){
 	runSequence('clean-dist-folder', 'deps-js', 'deps-css', 'app-js', 'app-css', 'copy-html', 'copy-html-calendar', 'copy-img', 'copy-fonts');
@@ -63,7 +64,9 @@ gulp.task('deps-js', function (){
 					depsFolder + 'toastr/toastr.js',
 					depsFolder + 'angular-aria/angular-aria.js',
 					depsFolder + 'angular-animate/angular-animate.js',
-					depsFolder + 'angular-material/angular-material.js'
+					depsFolder + 'angular-material/angular-material.js',
+					depsFolder + 'angular-br-filters/release/angular-br-filters.js',
+					nodeFolder + 'angular-input-masks/releases/angular-input-masks-standalone.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
 			.pipe(gulp.dest('dist'))

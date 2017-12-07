@@ -11,7 +11,8 @@
         var service = {
             agendar: agendar,
             getAgendamento: getAgendamento,
-            deleteAgendamento: deleteAgendamento
+            deleteAgendamento: deleteAgendamento,
+            getPaciente: getPaciente 
         };
 
         return service;
@@ -26,6 +27,10 @@
 
         function deleteAgendamento(idAgendamento) {
             return Restangular.one('crud').one('evento', idAgendamento).remove();
+        }
+
+        function getPaciente(field, str) {
+            return Restangular.one('crud').one('evento').one('paciente').one(field, str).get();
         }
     }
 })();

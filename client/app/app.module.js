@@ -11,6 +11,8 @@
         'ui.bootstrap.tpls',
         'ngStorage',
         'ngMaterial',
+        'ui.utils.masks',
+        'idf.br-filters',
 
         /* modulos */
         'odontoweb.agenda',

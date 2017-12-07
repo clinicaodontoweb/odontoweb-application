@@ -5,9 +5,9 @@
         .module('odontoweb.agenda')
         .controller('AgendaController', AgendaController);
 
-    AgendaController.$inject = ['AgendaService', 'AutenticacaoService', 'ClinicaService', 'ApiService', 'entidades', '$uibModal'];
+    AgendaController.$inject = ['AgendamentoService', 'AgendaService', 'AutenticacaoService', 'ClinicaService', 'ApiService', 'entidades', '$uibModal'];
 
-    function AgendaController(AgendaService, AutenticacaoService, ClinicaService, ApiService, entidades, $uibModal) {
+    function AgendaController(AgendamentoService, AgendaService, AutenticacaoService, ClinicaService, ApiService, entidades, $uibModal) {
       var vm = this;
       vm.dataInicio = moment().startOf('week').valueOf();
       vm.dataFim = moment().endOf('week').valueOf();
@@ -21,6 +21,9 @@
       vm.eventos = [];
       vm.dentistas = [];
       vm.dentistaAtivo = {};
+      vm.autocompletePaciente = autocompletePaciente;
+      vm.completing = false;
+      vm.clearResults = clearResults;
 
       activate();
 
@@ -29,6 +32,35 @@
           loadDentistaData()
         else
           loadRecepcionistaData()
+      }
+
+      /*
+      * Busca paciente pelo nome para o autocomplete
+      */
+      function autocompletePaciente(str) {
+        if(str == "" || str.length < 3) {
+            vm.completing = false;
+        }else {
+          var field = str.match(/^\d/) ? "cpf": "nome";
+          return AgendamentoService
+                  .getPaciente(field, str)
+                  .then(function(dados) {
+                      vm.eventosAutocomplete = AgendaService.buildEventos(dados);
+                      vm.completing = true;
+                      return dados;
+                  },function(error) {
+                      toastr.error('Não foi possível buscar o paciente');
+                  });
+        }
+      }
+
+      /*
+      * Limpa resultados do autocomplete
+      */
+      function clearResults() {
+        vm.completing = false;
+        vm.search = null;
+        vm.eventosAutocomplete = null;
       }
 
       /*

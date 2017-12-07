@@ -119,6 +119,7 @@ mwl-calendar .cal-day-today span[data-cal-date] {
     }
 }
 
+.calendar-search,
 .calendar-actions,
 .calendar-container {
     margin-bottom: 15px;
@@ -129,6 +130,31 @@ mwl-calendar .cal-day-today span[data-cal-date] {
 
 .calendar-actions {
     height: 50px;
+}
+
+.calendar-search {
+    height: auto;
+    position: relative;
+
+    &__results {
+        position: absolute;
+        top: 120px;
+        width: 100%;
+
+        .autocomplete {
+            width: 100%;
+        }
+    }
+
+    .form-group {
+        i {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            cursor: pointer;
+            outline: none;
+        }
+    }
 }
 
 .calendar-title {

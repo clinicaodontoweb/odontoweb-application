@@ -1,78 +1,3 @@
-<!-- <div class="row" id="calendarContainer">
-	<div class="col-md-2 busca-dentistas-container" data-ng-if="vm.dentistas.length">
-		
-		<div class="form-group has-feedback">
-		  <input type="text" class="form-control" name="busca-profissional" data-ng-model="busca.nome" placeholder="Dentistas">
-		  <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
-		</div>
-
-		<ul class="lista-dentistas-agenda">
-			<li data-ng-repeat="dentista in vm.dentistas | filter:busca:strict as resultados" data-ng-class="{'dentista--ativo': vm.dentistaAtivo == dentista}" data-ng-click="vm.atualizarAgendaByDentista(dentista)">
-				<span class="glyphicon glyphicon-user"></span> 
-				{{dentista.nome}}
-			</li>
-			<li data-ng-if="resultados.length == 0" class="vazio">
-		  		<strong>Nenhum dentista encontrado...</strong>
-			</li>
-		</ul>
-
-	</div>
-
-	<div class="col-md-10 calendar-container">
-		<div class="row">
-			<div class="btn-group">
-				<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" data-ng-click="vm.navigateCalendar()">
-		      		Anterior
-		    	</button>
-				<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" set-to-today data-ng-click="vm.navigateCalendar()">
-					Hoje
-				</button>
-				<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" data-ng-click="vm.navigateCalendar()">
-					Próximo
-				</button>
-			</div>
-			
-			<div class="btn-group">
-				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'year'}" data-ng-click="vm.navigateCalendar(undefined, 'year')">Ano</label>
-				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'month'}" data-ng-click="vm.navigateCalendar(undefined, 'month')">Mês</label>
-				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'week'}" data-ng-click="vm.navigateCalendar(undefined, 'week')">Semana</label>
-				<label class="btn btn-primary" data-ng-class="{'active': vm.calendarView == 'day'}" data-ng-click="vm.navigateCalendar(undefined, 'day')">Dia</label>
-			</div>
-			
-			<div class="btn-group pull-right">
-				<button class="btn btn-success" data-ng-click="vm.cadastrarEvento()">
-					<span class="glyphicon glyphicon-plus"></span>
-					Agendar
-				</button>
-			</div>
-			
-		</div>
-
-		<div class="row text-center">
-			<h3>{{vm.viewTitle}}</h3>
-		</div>
-
-		<div class="row">
-			<mwl-calendar
-			    view="vm.calendarView"
-				view-date="vm.viewDate"
-				view-title="vm.viewTitle"
-			    events="vm.eventos"
-			    cell-is-open="vm.cellIsOpen"
-				day-view-start="06:00"
-				day-view-end="22:59"
-				day-view-split="15"
-				cell-auto-open-disabled="true"
-				on-event-click="vm.visualizarEvento(calendarEvent)"
-				on-view-change-click="vm.navigateCalendar(calendarDate, calendarNextView)"
-				on-date-range-select="vm.cadastrarEvento(calendarRangeStartDate, calendarRangeEndDate)">
-			</mwl-calendar>
-		</div>
-
-	</div>
-
-</div> -->
-
 <div class="menu-lateral">
 	<div class="busca-dentistas-container">
 		<div class="busca-dentista">
@@ -91,6 +16,31 @@
 </div>
 
 <div class="menu-lateral-content">
+	<div class="calendar-search">
+		<div class="form-group">
+			<label for="buscaPaciente">Busque um paciente pelo nome ou cpf</label>
+			<input type="text" class="form-control form-control--big" name="buscaPaciente" data-ng-model="vm.search" data-ng-keyup="vm.autocompletePaciente(vm.search)" placeholder="Nome ou CPF do paciente" autocomplete="off">
+			<i class="material-icons" data-ng-show="vm.completing" data-ng-click="vm.clearResults()">close</i>
+		</div>
+		<div class="calendar-search__results" data-ng-show="vm.completing">
+			<div class="autocomplete">
+				<h4 class="autocomplete__title">Resultados Encontrados <strong>({{vm.eventosAutocomplete.length}})</strong></h4>
+				<ul class="autocomplete__results">
+					<li data-ng-repeat="evento in vm.eventosAutocomplete">
+						<div class="autocomplete__results-info">
+							<h5><strong>{{evento.paciente.nome}}</strong></h5>
+							<strong>Tel: </strong> {{evento.paciente.telefone}}
+							<strong>Email: </strong> {{evento.paciente.email}}
+						</div>
+						<div class="autocomplete__results-action">
+							<span>{{evento.startsAt | date:'dd-MM-yyyy'}} - {{evento.startsAt | date:'HH:mm'}} - {{evento.endsAt | date:'HH:mm'}}</span>
+							<button class="botao botao--azul pull-right" data-ng-click="vm.visualizarEvento(evento)">Visualizar</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="calendar-actions">
 		<div class="btn-group btn-view">
 			<label class="botao botao--azul" data-ng-class="{'active': vm.calendarView == 'week'}" data-ng-click="vm.navigateCalendar(undefined, 'week')">Semana</label>

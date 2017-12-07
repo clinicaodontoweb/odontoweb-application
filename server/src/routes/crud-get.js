@@ -48,4 +48,19 @@ router.get('/:entidade/:entidade2/:hash', function (req, res) {
 	}
 });
 
+router.get('/evento/paciente/:field/:search', function (req, res) {
+	var search = req.params.search;
+	var field = req.params.field;
+	var options = requestBuilder.buildRequest('GET', url + 'evento/paciente/' + field + '/' + search, req);
+	
+	// LOG REQUEST URL
+	console.log(options);
+
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+});
+
 module.exports = router;
