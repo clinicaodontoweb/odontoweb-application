@@ -15,7 +15,8 @@
 			recepcinista: "recepcionista",
 			agenda: "agenda",
 			tiposConsulta: "tipoConsulta",
-			paciente: "paciente"
+			paciente: "paciente",
+			convenio: "convenio"
 	    }
     }
 

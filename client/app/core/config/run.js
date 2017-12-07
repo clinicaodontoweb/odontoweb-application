@@ -73,7 +73,7 @@
         }
 
         function isActive(viewLocation) {
-            var active = (viewLocation === $location.path());
+            var active = ($location.path().includes(viewLocation));
             return active;
         }
 

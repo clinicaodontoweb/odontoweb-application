@@ -11,6 +11,10 @@
         box-shadow: none;
         border: 1px solid $blue-color;
     }
+
+    &--big {
+        height: 60px;
+    }
 }
 
 .has-error .form-control {
