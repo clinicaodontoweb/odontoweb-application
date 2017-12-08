@@ -5,24 +5,11 @@
         .module('odontoweb.cadastro')
         .controller('DentistaListaController', DentistaListaController);
 
-    DentistaListaController.$inject = ['entidades', 'DentistaService'];
+    DentistaListaController.$inject = ['dentistaListaData'];
 
-    function DentistaListaController(entidades, DentistaService) {
+    function DentistaListaController(dentistaListaData) {
         var vm = this;
+        vm.dentistas = dentistaListaData.dentistas;
 
-        activate();
-
-        function activate() {
-            getClinicasAndDentistas();
-        }
-
-        function getClinicasAndDentistas() {
-            return DentistaService
-                .listaClinicasAndDentistas()
-                .then(function(dados) {
-                    vm.dentistas = dados.dentistas;
-                    return dados;
-                });
-        }
     }
 })();

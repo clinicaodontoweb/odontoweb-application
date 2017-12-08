@@ -5,9 +5,9 @@
         .module('odontoweb.cadastro')
         .controller('RecepcionistaNovoController', RecepcionistaNovoController);
 
-    RecepcionistaNovoController.$inject = ['DentistaService', 'RecepcionistaService', '$scope', '$location'];
+    RecepcionistaNovoController.$inject = ['recepcionistaNovoData', 'RecepcionistaService', '$scope', '$location'];
 
-    function RecepcionistaNovoController(DentistaService, RecepcionistaService, $scope, $location) {
+    function RecepcionistaNovoController(recepcionistaNovoData, RecepcionistaService, $scope, $location) {
         var vm = this;
         vm.toggle = toggle;
         vm.cadastrar = cadastrar;
@@ -16,25 +16,9 @@
             dentistas: []
         };
         vm.request = {};
-        vm.clinicas = [];
-        vm.dentistas = [];
+        vm.clinicas = recepcionistaNovoData.clinicas;
+        vm.dentistas = recepcionistaNovoData.dentistas;
 
-        activate();
-
-        function activate() {
-            getClinicasAndDentistas();
-        }
-
-        function getClinicasAndDentistas() {
-            return DentistaService
-                .listaClinicasAndDentistas()
-                .then(function(dados) {
-                    vm.clinicas = dados.clinicas;
-                    vm.dentistas = dados.dentistas;
-                    return dados;
-                });
-        }
-      
         function cadastrar(isValid) {
             if(isValid) {
                 vm.request = buildRequestModel();

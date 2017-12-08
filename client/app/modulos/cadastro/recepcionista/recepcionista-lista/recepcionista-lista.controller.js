@@ -5,24 +5,11 @@
         .module('odontoweb.cadastro')
         .controller('RecepcionistaListaController', RecepcionistaListaController);
 
-    RecepcionistaListaController.$inject = ['RecepcionistaService', 'AutenticacaoService'];
+    RecepcionistaListaController.$inject = ['recepcionistaListaData'];
 
-    function RecepcionistaListaController(RecepcionistaService, AutenticacaoService) {
+    function RecepcionistaListaController(recepcionistaListaData) {
         var vm = this;
+        vm.recepcionistas = recepcionistaListaData;
 
-        activate();
-
-        function activate() {
-            getClinicasAndDentistas();
-        }
-
-        function getClinicasAndDentistas() {
-            return RecepcionistaService
-                .getAllRecepcionistaByClinica(AutenticacaoService.getCurrentTenant().cnpj)
-                .then(function(dados) {
-                    vm.recepcionistas = dados;
-                    return dados;
-                });
-        }
     }
 })();

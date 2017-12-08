@@ -5,24 +5,11 @@
         .module('odontoweb.cadastro')
         .controller('PacienteListaController', PacienteListaController);
 
-    PacienteListaController.$inject = ['ApiService', 'entidades'];
+    PacienteListaController.$inject = ['pacienteListaData'];
 
-    function PacienteListaController(ApiService, entidades) {
+    function PacienteListaController(pacienteListaData) {
         var vm = this;
+        vm.pacientes = pacienteListaData;
 
-        activate();
-
-        function activate() {
-            getPacientes();
-        }
-
-        function getPacientes() {
-            return ApiService
-                .listaTodasEntidades(entidades.paciente)
-                .then(function(dados) {
-                    vm.pacientes = dados;
-                    return dados;
-                });
-        }
     }
 })();
