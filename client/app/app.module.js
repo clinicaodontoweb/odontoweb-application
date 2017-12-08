@@ -13,6 +13,8 @@
         'ngMaterial',
         'ui.utils.masks',
         'idf.br-filters',
+        'angular-loading-bar', 
+        'ngAnimate',
 
         /* modulos */
         'odontoweb.agenda',

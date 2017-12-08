@@ -9,7 +9,7 @@
 	core.config(storageConfig);	
 	core.config(routerConfig);	
 	core.config(toastrConfig);
-	//core.config(materialConfig);
+	core.config(loadingConfig);
 
 	calendarConfig.$inject = ['calendarConfig'];
 
@@ -77,17 +77,14 @@
 		toastr.options.closeMethod = 'fadeOut';
 		toastr.options.closeDuration = 300;
 		toastr.options.closeEasing = 'swing';
-		toastr.options.preventDuplicates = true;
+		//toastr.options.preventDuplicates = true;
 	}
 
-	materialConfig.$inject = ['$mdThemingProvider'];
+	loadingConfig.$inject = ['cfpLoadingBarProvider'];
 
-	function materialConfig($mdThemingProvider) {
-
-		$mdThemingProvider.definePallete('odontowebTheme', {
-			'50': '42f492'
-		});
-		$mdThemingProvider.theme('default').primaryPalette('odontowebTheme');
+	function loadingConfig(cfpLoadingBarProvider) {
+		cfpLoadingBarProvider.latencyThreshold = 100;
+		cfpLoadingBarProvider.includeSpinner = false;
 	}
 
 })();

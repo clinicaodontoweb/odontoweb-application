@@ -16,8 +16,8 @@
         function login(isValid) {
 			if (isValid) {
 				autenticar()
-					.then(getProfile, loginError)
-					.then(redirect);
+					.then(getProfile)
+					.then(redirect, loginError);
 			}
 		}
 
@@ -35,6 +35,7 @@
 		}
 			
 		function getProfile() {
+			console.log("ffd")
 			return AutenticacaoService.me().then(function(usuario) {
 				AutenticacaoService.saveCurrentUser(usuario);
 				AutenticacaoService.saveCurrentTenant(getSelectedTenant(usuario.clinicas));
