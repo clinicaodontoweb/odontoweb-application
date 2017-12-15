@@ -14,6 +14,7 @@
         vm.paciente = {};
         vm.paciente.convenios = [];
         vm.convenios = pacienteNovoData;
+        vm.buscaCep = buscaCep;
 
         function cadastrar(isValid) {
             if(isValid) {
@@ -26,6 +27,20 @@
                         $location.path("/cadastro/paciente");
                     },function(error) {
                         toastr.error(error.data.mensagem, 'Erro ao cadastrar!');
+                    });
+            }
+        }
+
+        function buscaCep() {
+            if(vm.paciente.cep) {
+                PacienteService.getCep(vm.paciente.cep)
+                    .then(function(response) {
+                        vm.paciente.endereco = response.data.logradouro;
+                        vm.paciente.cidade = response.data.localidade;
+                        vm.paciente.bairro = response.data.bairro;
+                        vm.paciente.uf = response.data.uf;
+                    }, function(response) {
+                        toastr.error('Erro ao buscar cep, tente novamente!');
                     });
             }
         }

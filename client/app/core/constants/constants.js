@@ -16,7 +16,8 @@
 			agenda: "agenda",
 			tiposConsulta: "tipoConsulta",
 			paciente: "paciente",
-			convenio: "convenio"
+			convenio: "convenio",
+			status: "status"
 	    }
     }
 

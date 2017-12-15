@@ -18,7 +18,7 @@
         function request(config) {
             config.headers = config.headers || {};
 
-            if ($localStorage.token) {
+            if (!config.skipInterceptor && $localStorage.token) {
                 config.headers['X-Auth-Token'] = $localStorage.token;
             }
 

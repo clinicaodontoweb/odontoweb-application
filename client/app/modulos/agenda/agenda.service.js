@@ -33,11 +33,11 @@
                 convenio: (evento.pacienteResponse.conveniosResponse) ? evento.pacienteResponse.conveniosResponse[0].nome : 'PARTICULAR',
                 startsAt: new Date(evento.dataInicio),
                 endsAt: new Date(evento.dataFim),
-                status: evento.statusEvento,
+                status: evento.statusEvento.nome,
                 observacao: evento.observacao,
                 color: {
-                  primary: "#" + evento.tipoConsultaResponse.cor.split("#")[1],
-                  secondary: "#" + evento.tipoConsultaResponse.cor.split("#")[2]
+                  primary: evento.tipoConsultaResponse.corPrimaria,
+                  secondary: evento.tipoConsultaResponse.corSecundaria
                 }
             }
         }

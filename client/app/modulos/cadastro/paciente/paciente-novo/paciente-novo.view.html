@@ -66,13 +66,13 @@
 			<div class="col-xs-4">
 				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.cep.$invalid && !pacienteForm.cep.$pristine }">
 					<label for="cep">CEP</label>
-					<input type="text" class="form-control" name="cep" data-ng-model="vm.paciente.cep" placeholder="CEP" ui-br-cep-mask required/>
+					<input type="text" class="form-control" name="cep" data-ng-model="vm.paciente.cep" data-ng-change="vm.buscaCep()" placeholder="CEP" ui-br-cep-mask required/>
 				</div>
 			</div>
 			<div class="col-xs-4">
 				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.endereco.$invalid && !pacienteForm.endereco.$pristine }">
 					<label for="endereco">Endereço</label>
-					<input type="text" class="form-control" name="endereco" data-ng-model="vm.paciente.endereco" placeholder="Endereço" required/>
+					<input type="text" class="form-control" name="endereco" data-ng-model="vm.paciente.endereco" placeholder="Endereço" required disabled/>
 				</div>
 			</div>
 			<div class="col-xs-4">
@@ -84,13 +84,19 @@
 			<div class="col-xs-4">
 				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.cidade.$invalid && !pacienteForm.cidade.$pristine }">
 					<label for="cidade">Cidade</label>
-					<input type="text" class="form-control" name="cidade" data-ng-model="vm.paciente.cidade" placeholder="Cidade" required/>
+					<input type="text" class="form-control" name="cidade" data-ng-model="vm.paciente.cidade" placeholder="Cidade" required disabled/>
 				</div>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-3">
 				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.bairro.$invalid && !pacienteForm.bairro.$pristine }">
 					<label for="bairro">Bairro</label>
-					<input type="text" class="form-control" name="bairro" data-ng-model="vm.paciente.bairro" placeholder="Bairro" required/>
+					<input type="text" class="form-control" name="bairro" data-ng-model="vm.paciente.bairro" placeholder="Bairro" required disabled/>
+				</div>
+			</div>
+			<div class="col-xs-1">
+				<div class="form-group">
+					<label for="bairro">UF</label>
+					<input type="text" class="form-control" name="uf" data-ng-model="vm.paciente.uf" placeholder="UF" required disabled/>
 				</div>
 			</div>
 			<div class="col-xs-4">

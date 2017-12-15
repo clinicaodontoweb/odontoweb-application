@@ -63,6 +63,7 @@
             return AgendamentoService.getAgendamento(idAgendamento)
                         .then(function(evento) {
                             vm.agendamento = buildAgendamentoModel(evento);
+
                         }, function(error) {
                             $uibModalInstance.close();
                             toastr.error('Erro ao buscar agendamento!');
@@ -87,11 +88,14 @@
         * Lista status de consulta
         */
         function listaStatusConsulta() {
-            return vm.statusConsulta = [
-                {nome: "ABERTO"},
-                {nome: "CONCLUÍDO"},
-                {nome: "CANCELADO"}
-            ]
+            return ApiService
+                .listaTodasEntidades(entidades.status)
+                .then(function(dados) {
+                    vm.statusConsulta = dados;
+                    return dados;
+                },function(error){
+                    console.log(error);
+                });
         }
 
         /*
@@ -101,7 +105,7 @@
             return {
                 idAgendamento: agendamento.idEvento,
                 encaixe: agendamento.encaixe,
-                statusConsulta: {nome: agendamento.statusEvento},
+                statusConsulta: agendamento.statusEvento,
                 observacao: agendamento.observacao,
                 dataInicio: new Date(agendamento.dataInicio),
                 dataFim: new Date(agendamento.dataFim),
@@ -132,10 +136,10 @@
             return {
                 id: vm.agendamento.idAgendamento,
                 encaixe: vm.agendamento.encaixe,
-                status: vm.agendamento.statusConsulta.nome,
                 observacao: vm.agendamento.observacao,
                 dataInicio: vm.agendamento.dataInicio.getTime(),
                 dataFim: vm.agendamento.dataFim.getTime(),
+                idStatus: vm.agendamento.statusConsulta.idStatus,
                 idTipoConsulta: vm.agendamento.tipoConsulta.idTipoConsulta,
                 idPaciente: vm.agendamento.paciente.idPaciente,
                 idConvenio: vm.agendamento.convenio.idConvenio

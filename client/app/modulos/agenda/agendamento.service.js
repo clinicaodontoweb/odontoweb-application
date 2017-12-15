@@ -18,7 +18,7 @@
         return service;
 
         function agendar(agendamento, hash) {
-    		return Restangular.all('crud/agendamento/' + hash).post(agendamento);
+    		return Restangular.all('crud/evento/' + hash).post(agendamento);
         }
 
         function getAgendamento(idAgendamento) {

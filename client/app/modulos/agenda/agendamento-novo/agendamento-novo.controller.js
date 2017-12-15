@@ -74,11 +74,14 @@
         * Lista status de consulta
         */
         function listaStatusConsulta() {
-            return vm.statusConsulta = [
-                {nome: "ABERTO"},
-                {nome: "CONCLUÍDO"},
-                {nome: "CANCELADO"}
-            ]
+            return ApiService
+                .listaTodasEntidades(entidades.status)
+                .then(function(dados) {
+                    vm.statusConsulta = dados;
+                    return dados;
+                },function(error){
+                    console.log(error);
+                });
         }
 
         /*
@@ -103,10 +106,10 @@
         function buildRequestModel() {
             return {
                 encaixe: false,
-                status: vm.agendamento.statusConsulta.nome,
                 observacao: vm.agendamento.observacao,
                 dataInicio: vm.dataInicio.getTime(),
                 dataFim: vm.dataFim.getTime(),
+                idStatus: vm.agendamento.statusConsulta.idStatus,
                 idTipoConsulta: vm.agendamento.tipoConsulta.idTipoConsulta,
                 idPaciente: vm.agendamento.paciente.idPaciente,
                 idConvenio: vm.agendamento.convenio.idConvenio
