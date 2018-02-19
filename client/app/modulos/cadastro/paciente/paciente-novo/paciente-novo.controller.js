@@ -38,7 +38,7 @@
                         vm.paciente.endereco = response.data.logradouro;
                         vm.paciente.cidade = response.data.localidade;
                         vm.paciente.bairro = response.data.bairro;
-                        vm.paciente.uf = response.data.uf;
+                        vm.paciente.sigla = response.data.uf;
                     }, function(response) {
                         toastr.error('Erro ao buscar cep, tente novamente!');
                     });
