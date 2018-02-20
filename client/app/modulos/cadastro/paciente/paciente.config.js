@@ -28,6 +28,15 @@
 				resolve: {
 					pacienteNovoData: pacienteNovoData
 				}
+			})
+			.when('/cadastro/paciente/editar/:pacienteId', {
+                templateUrl: 'partials/modulos/cadastro/paciente/paciente-editar/paciente-editar.view.html',
+                controller: 'PacienteEditarController',
+				controllerAs: 'vm',
+				requireAdmin: true,
+				resolve: {
+					pacienteEditarData: pacienteEditarData
+				}
             });
 			
 	}
@@ -38,6 +47,10 @@
 
 	function pacienteNovoData(ApiService, entidades) {
 		return ApiService.listaTodasEntidades(entidades.convenio);
+	}
+
+	function pacienteEditarData(ApiService, entidades, $route) {
+		return ApiService.listaTodasEntidades_id(entidades.paciente, $route.current.params.pacienteId);
 	}
 
 })();

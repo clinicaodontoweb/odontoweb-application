@@ -10,7 +10,8 @@
     function dentistaservice(Restangular) {
         var service = {
             listaClinicasAndDentistas: listaClinicasAndDentistas,
-            salvar: salvar
+            salvar: salvar,
+            getDentista: getDentista
         };
 
         return service;
@@ -21,6 +22,10 @@
 
         function salvar(dentista) {
     		return Restangular.all('auth/dentista').post(dentista);
+        }
+
+        function getDentista(id) {
+            return Restangular.one('auth').one('dentista/detalhe', id).get();
         }
     }
 })();

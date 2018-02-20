@@ -21,7 +21,7 @@
         <div class="col-xs-2">Admin</div>
     </div>
 
-    <div class="row list-item" data-ng-repeat="dentista in vm.dentistas | filter:vm.search:strict as resultados">
+    <div class="row list-item" data-ng-click="go('/cadastro/dentista/editar/' + dentista.idDentista)" data-ng-repeat="dentista in vm.dentistas | filter:vm.search:strict as resultados">
         <div class="col-xs-4">{{dentista.nome | captalize}}</div>
         <div class="col-xs-4">{{dentista.usuarioResponse.email}}</div>
         <div class="col-xs-1">{{dentista.conselho}}</div>

@@ -1,0 +1,69 @@
+<div class="form-container">
+	<form name="recepcionistaForm" ng-submit="vm.cadastrar(recepcionistaForm.$valid)" novalidate>
+		<h5 class="form-title">Dados do(a) Recepcionista</h5>
+		
+		<div class="row">
+			<div class="col-xs-5">
+				<div class="form-group" ng-class="{ 'has-error' : recepcionistaForm.nomeRecepcionista.$invalid && !recepcionistaForm.nomeRecepcionista.$pristine }">
+					<label for="nomeRecepcionista">Nome Completo</label>
+					<input type="text" class="form-control" name="nomeRecepcionista" data-ng-model="vm.recepcionista.nome" placeholder="Nome Completo" autofocus required/>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group" ng-class="{ 'has-error' : recepcionistaForm.emailRecepcionista.$invalid && !recepcionistaForm.emailRecepcionista.$pristine }">
+					<label for="emailRecepcionista">Email</label>
+					<input type="email" class="form-control" name="emailRecepcionista" data-ng-model="vm.recepcionista.email" placeholder="Email" required/>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group" ng-class="{ 'has-error' : recepcionistaForm.senhaRecepcionista.$invalid && !recepcionistaForm.senhaRecepcionista.$pristine }">
+					<label for="senhaRecepcionista">Senha</label>
+					<input type="password" class="form-control" name="senhaRecepcionista" data-ng-model="vm.recepcionista.senha" placeholder="Senha" ng-minlength="4" ng-maxlength="8" maxlength="8" required/>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group" ng-class="{ 'has-error' : recepcionistaForm.generoRecepcionista.$invalid && !recepcionistaForm.generoRecepcionista.$pristine }">
+					<label for="generoRecepcionista">Genêro</label>
+					<select class="form-control" name="generoRecepcionista" id="generoRecepcionista" ng-model="vm.recepcionista.genero" required>
+						<option value="">Selecione o genêro</option>
+						<option value="Masculino">Masculino</option>
+						<option value="Feminino">Feminino</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<md-input-container class="md-block">
+					<md-checkbox name="admin" ng-model="vm.recepcionista.isAdmin">
+						Administrador do sistema?
+					</md-checkbox>
+				</md-input-container>
+			</div>
+		</div>
+
+		<h5 class="form-title form-title--sub">Clinicas que atende!</h5>
+		<div class="row">
+			<div class="col-xs-12">
+				<md-input-container class="md-block">
+					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica.id, vm.recepcionista.clinicas)"> 
+						{{clinica.nome}}
+					</md-switch>
+				</md-input-container>
+			</div>
+		</div>
+        
+        <h5 class="form-title form-title--sub">Dentistas que atende!</h5>
+		<div class="row">
+			<div class="col-xs-12">
+				<md-input-container class="md-block">
+                    <md-switch class="md-primary" name="dentista" ng-repeat="dentista in vm.dentistas" ng-click="vm.toggle(dentista.idDentista, vm.recepcionista.dentistas)"> 
+                    {{dentista.nome}} - {{dentista.conselho}} - {{dentista.registo}}
+                    </md-switch>
+                </md-input-container>
+			</div>
+		</div>
+		
+		<div class="form-footer">
+			<button type="submit" class="botao botao--azul" ng-disabled="recepcionistaForm.$invalid">Cadastrar Recepcionista</button>
+		</div>
+	</form>
+</div>

@@ -20,7 +20,7 @@
         <div class="col-xs-2">Admin</div>
     </div>
 
-    <div class="row list-item" data-ng-repeat="recepcionista in vm.recepcionistas | filter:vm.search:strict as resultados">
+    <div class="row list-item" data-ng-click="go('/cadastro/recepcionista/editar/' + recepcionista.idRecepcionista)" data-ng-repeat="recepcionista in vm.recepcionistas | filter:vm.search:strict as resultados">
         <div class="col-xs-4">{{recepcionista.nome | captalize}}</div>
         <div class="col-xs-4">{{recepcionista.usuarioResponse.email}}</div>
         <div class="col-xs-2">{{recepcionista.genero}}</div>

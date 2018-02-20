@@ -5,9 +5,9 @@
         .module('odontoweb.cadastro')
         .controller('PacienteNovoController', PacienteNovoController);
 
-    PacienteNovoController.$inject = ['pacienteNovoData', 'entidades', 'PacienteService', '$scope'];
+    PacienteNovoController.$inject = ['pacienteNovoData', 'entidades', 'PacienteService', '$scope', '$location'];
 
-    function PacienteNovoController(pacienteNovoData, entidades, PacienteService, $scope) {
+    function PacienteNovoController(pacienteNovoData, entidades, PacienteService, $scope, $location) {
         var vm = this;
         vm.toggle = toggle;
         vm.cadastrar = cadastrar;

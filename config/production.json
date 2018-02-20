@@ -1,6 +1,6 @@
 {
 	"servicos": {
-		"agenda": "http://192.168.3.118:3334/agenda-service/",
-		"autenticacao": "http://192.168.3.118:8001/autenticacao-service/"
+		"agenda": "http://agenda-service.herokuapp.com/agenda-service/",
+		"autenticacao": "http://autenticacao-service.herokuapp.com/autenticacao-service/"
 	}
 }

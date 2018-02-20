@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bower install && gulp default",
     "dev": "cross-env NODE_ENV=development gulp serve",
-    "start": "cross-env NODE_ENV=development node server.js"
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",

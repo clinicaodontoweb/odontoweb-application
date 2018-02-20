@@ -10,7 +10,8 @@
     function recepcionistaService(Restangular) {
         var service = {
             salvar: salvar,
-            getAllRecepcionistaByClinica: getAllRecepcionistaByClinica
+            getAllRecepcionistaByClinica: getAllRecepcionistaByClinica,
+            getRecepcionista: getRecepcionista
         };
 
         return service;
@@ -22,5 +23,11 @@
         function getAllRecepcionistaByClinica(cnpj) {
             return Restangular.all('auth/recepcionista/clinica/' + cnpj).getList();          
         }
+
+        function getRecepcionista(id) {
+            console.log('getRecepcionista', id)
+            return Restangular.one('auth').one('recepcionista/detalhe', id).get();
+        }
+           
     }
 })();

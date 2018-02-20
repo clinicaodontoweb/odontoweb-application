@@ -1,0 +1,72 @@
+<div class="form-container">
+	<form name="dentistaForm" ng-submit="vm.cadastrar(dentistaForm.$valid)" novalidate>
+		<h5 class="form-title">Dados do(a) Dentista</h5>
+		
+		<div class="row">
+			<div class="col-xs-5">
+				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.nomeDentista.$invalid && !dentistaForm.nomeDentista.$pristine }">
+					<label for="nomeDentista">Nome Completo</label>
+					<input type="text" class="form-control" name="nomeDentista" data-ng-model="vm.dentista.nome" placeholder="Nome Completo" autofocus required/>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.emailDentista.$invalid && !dentistaForm.emailDentista.$pristine }">
+					<label for="emailDentista">Email</label>
+					<input type="email" class="form-control" name="emailDentista" data-ng-model="vm.dentista.usuarioResponse.email" placeholder="Email" required/>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.generoDentista.$invalid && !dentistaForm.generoDentista.$pristine }">
+					<label for="generoDentista">Genêro</label>
+					<select class="form-control" name="generoDentista" id="generoDentista" ng-model="vm.dentista.genero" required>
+						<option value="">Selecione o genêro</option>
+						<option value="MASCULINO">Masculino</option>
+						<option value="FEMININO">Feminino</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-xs-2">
+				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.conselhoDentista.$invalid && !dentistaForm.conselhoDentista.$pristine }">
+					<label for="conselhoDentista">Nro Conselho</label>
+					<input type="text" class="form-control" name="conselhoDentista" data-ng-model="vm.dentista.conselho" placeholder="Nro Conselho" required/>
+				</div>
+			</div>
+			<div class="col-xs-2">
+				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.registroDentista.$invalid && !dentistaForm.registroDentista.$pristine }">
+					<label for="registroDentista">Nro Registro</label>
+					<input type="text" class="form-control" name="registroDentista" data-ng-model="vm.dentista.registro" placeholder="Nro Registro" required/>
+				</div>
+			</div>
+			<div class="col-xs-2">
+				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.ocupacaoDentista.$invalid && !dentistaForm.ocupacaoDentista.$pristine }">
+					<label for="ocupacaoDentista">Nro Ocupação</label>
+					<input type="text" class="form-control" name="ocupacaoDentista" data-ng-model="vm.dentista.codigoBrasileiroOcupacao" placeholder="Nro Ocupação" required/>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<md-input-container class="md-block">
+					<md-checkbox name="admin" ng-model="vm.dentista.usuarioResponse.admin">
+						Administrador do sistema?
+					</md-checkbox>
+				</md-input-container>
+			</div>
+			
+		</div>
+
+		<h5 class="form-title form-title--sub">Clinicas que atende!</h5>
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<md-input-container class="md-block">
+					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica.id, vm.dentista.usuarioResponse.clinicas)"> 
+						{{clinica.nome}}
+					</md-switch>
+				</md-input-container>
+			</div>
+		</div>
+		
+		<div class="form-footer">
+			<button type="submit" class="botao botao--azul" ng-disabled="dentistaForm.$invalid">Cadastrar Dentista</button>
+		</div>
+	</form>
+</div>

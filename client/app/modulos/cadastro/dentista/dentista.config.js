@@ -28,6 +28,15 @@
 				resolve: {
 					dentistaNovoData: dentistaNovoData
 				}
+			})
+			.when('/cadastro/dentista/editar/:dentistaId', {
+                templateUrl: 'partials/modulos/cadastro/dentista/dentista-editar/dentista-editar.view.html',
+                controller: 'DentistaEditarController', 
+				controllerAs: 'vm',
+				requireAdmin: true,
+				resolve: {
+					dentistaEditarData: dentistaEditarData
+				}
             });
 			
 	}
@@ -38,6 +47,10 @@
 
 	function dentistaNovoData(DentistaService) {
 		return DentistaService.listaClinicasAndDentistas();
+	}
+
+	function dentistaEditarData(DentistaService, $route) {
+		return DentistaService.getDentista($route.current.params.dentistaId);
 	}
 
 })();

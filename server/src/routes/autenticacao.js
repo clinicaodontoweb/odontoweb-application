@@ -60,6 +60,28 @@ router.get('/dentista/:cnpj', function (req, res) {
 	}
 });
 
+router.get('/dentista/detalhe/:id', function (req, res) {
+	var id = req.params.id;
+	var options = requestBuilder.buildRequest('GET', url + 'dentista/' + id, req);
+		
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+});
+
+router.get('/recepcionista/detalhe/:id', function (req, res) {
+	var id = req.params.id;
+	var options = requestBuilder.buildRequest('GET', url + 'recepcionista/' + id, req);
+		
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+});
+
 router.post('/dentista', function (req, res) {
 	var options = requestBuilder.buildRequest('POST', url + 'dentista', req);
 

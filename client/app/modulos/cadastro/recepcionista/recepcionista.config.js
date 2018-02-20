@@ -28,6 +28,15 @@
 				resolve: {
 					recepcionistaNovoData: recepcionistaNovoData
 				}
+			})
+			.when('/cadastro/recepcionista/editar/:recepcionistaId', {
+                templateUrl: 'partials/modulos/cadastro/recepcionista/recepcionista-editar/recepcionista-editar.view.html',
+                controller: 'RecepcionistaEditarController', 
+				controllerAs: 'vm',
+				requireAdmin: true,
+				resolve: {
+					recepcionistaEditarData: recepcionistaEditarData
+				}
             });
 			
 	}
@@ -40,6 +49,9 @@
 		return DentistaService.listaClinicasAndDentistas();
 	}
 
+	function recepcionistaEditarData(RecepcionistaService, $route) {
+		return RecepcionistaService.getRecepcionista($route.current.params.recepcionistaId);
+	}
 
 
 })();

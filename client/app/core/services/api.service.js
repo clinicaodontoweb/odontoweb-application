@@ -10,6 +10,7 @@
     function apiservice(Restangular) {
         var service = {
             listaTodasEntidades: listaTodasEntidades,
+            listaTodasEntidades_id: listaTodasEntidades_id,
             listaTodasEntidades_two_id: listaTodasEntidades_two_id,
         };
 
@@ -17,6 +18,10 @@
 
         function listaTodasEntidades(entidade) {
     		return Restangular.one('crud').getList(entidade);
+        }
+        
+        function listaTodasEntidades_id(entidade, id, params) {
+            return Restangular.one('crud').one(entidade, id).get(params);
         }
 
         function listaTodasEntidades_two_id(entidade, entidade2, id, params) {
