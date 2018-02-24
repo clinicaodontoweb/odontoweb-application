@@ -5,9 +5,9 @@
         .module('odontoweb.cadastro')
         .controller('PacienteEditarController', PacienteEditarController);
 
-    PacienteEditarController.$inject = ['pacienteEditarData', 'entidades', 'PacienteService', '$scope', '$location'];
+    PacienteEditarController.$inject = ['ApiService', 'pacienteEditarData', 'entidades', 'PacienteService', '$scope', '$location'];
 
-    function PacienteEditarController(pacienteEditarData, entidades, PacienteService, $scope, $location) {
+    function PacienteEditarController(ApiService, pacienteEditarData, entidades, PacienteService, $scope, $location) {
         var vm = this;
         vm.toggle = toggle;
         vm.cadastrar = cadastrar;
@@ -33,6 +33,14 @@
         delete vm.paciente.enderecoResponse;
         delete vm.paciente.contatoResponse;
         delete vm.paciente.conveniosResponse
+
+        activate();
+
+        function activate() {
+            ApiService.listaTodasEntidades(entidades.convenio).then(function(response) {
+                vm.convenios = response;
+            });
+        }
 
         function cadastrar(isValid) {
             if(isValid) {
