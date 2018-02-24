@@ -11,6 +11,8 @@ router.get('/:entidade', function (req, res) {
 	var entidade = req.params.entidade;
 	var options = requestBuilder.buildRequest('GET', url + entidade, req);
 
+	// LOG REQUEST URL
+	console.log(options);
 	request(options, response);
 
 	function response(error, response, body) {

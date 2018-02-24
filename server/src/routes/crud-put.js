@@ -10,7 +10,22 @@ var url = config.get('servicos.agenda');
 router.put('/:entidade/:id([0-9])', function (req, res) {
 	var id = req.params.id;
 	var entidade = req.params.entidade;
-	var options = requestBuilder.buildRequest('POST', url + entidade + '/' + id, req);
+	var options = requestBuilder.buildRequest('PUT', url + entidade + '/' + id, req);
+	
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+	
+});
+
+router.put('/:entidade', function (req, res) {
+	var entidade = req.params.entidade;
+	var options = requestBuilder.buildRequest('PUT', url + entidade, req);
+	
+	// LOG REQUEST URL
+	console.log(options);
 	
 	request(options, response);
 

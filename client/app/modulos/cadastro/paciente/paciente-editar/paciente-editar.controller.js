@@ -15,6 +15,24 @@
         vm.buscaCep = buscaCep;
 
         vm.paciente.dataNascimento = new Date(pacienteEditarData.dataNascimento);
+        vm.paciente.conveniosRequest = vm.paciente.conveniosResponse;
+        vm.paciente.enderecoRequest = vm.paciente.enderecoResponse;
+        vm.paciente.enderecoRequest.cepRequest = vm.paciente.enderecoResponse.cepResponse;
+        vm.paciente.enderecoRequest.cidadeRequest = vm.paciente.enderecoResponse.cidadeResponse;
+        vm.paciente.enderecoRequest.cidadeRequest.estadoRequest = vm.paciente.enderecoResponse.cidadeResponse.estadoResponse;
+        vm.paciente.enderecoRequest.cidadeRequest.estadoRequest.siglaRequest = vm.paciente.enderecoResponse.cidadeResponse.estadoResponse.siglaResponse;
+        vm.paciente.enderecoRequest.bairroRequest = vm.paciente.enderecoResponse.bairroResponse;
+        vm.paciente.contatoRequest = vm.paciente.contatoResponse;
+
+        delete vm.paciente.enderecoResponse.cepResponse;
+        delete vm.paciente.enderecoResponse.cidadeResponse.estadoResponse.siglaResponse;
+        delete vm.paciente.enderecoResponse.cidadeResponse.estadoResponse;
+        delete vm.paciente.enderecoResponse.cidadeResponse;
+        delete vm.paciente.enderecoResponse.bairroResponse
+        delete vm.paciente.conveniosRequest;
+        delete vm.paciente.enderecoResponse;
+        delete vm.paciente.contatoResponse;
+        delete vm.paciente.conveniosResponse
 
         function cadastrar(isValid) {
             if(isValid) {
@@ -22,6 +40,7 @@
                     $scope.pacienteForm.$setUntouched();
                     $scope.pacienteForm.$setPristine();
                     $location.path("/cadastro/paciente");
+                    toastr.success('Cadastro atualizado com sucesso!');
                 }, function(response) {
                     toastr.error('Erro ao atualizar cadastro!');
                 });

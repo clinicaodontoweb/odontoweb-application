@@ -103,7 +103,7 @@
         */
         function buildAgendamentoModel(agendamento) {
             return {
-                idAgendamento: agendamento.idEvento,
+                idEvento: agendamento.idEvento,
                 encaixe: agendamento.encaixe,
                 statusConsulta: agendamento.statusEvento,
                 observacao: agendamento.observacao,
@@ -134,7 +134,7 @@
         */
         function buildRequestModel() {
             return {
-                id: vm.agendamento.idAgendamento,
+                idEvento: vm.agendamento.idEvento,
                 encaixe: vm.agendamento.encaixe,
                 observacao: vm.agendamento.observacao,
                 dataInicio: vm.agendamento.dataInicio.getTime(),
