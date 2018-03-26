@@ -30,13 +30,20 @@
                 templateUrl: 'partials/modulos/cadastro/status-evento/status-evento-editar/status-evento-editar.view.html',
                 controller: 'StatusEventoEditarController', 
 				controllerAs: 'vm',
-				requireAdmin: true
+				requireAdmin: true,
+				resolve: {
+					statusEditarData: statusEditarData
+				}
             });
 			
 	}
 
 	function statusListaData(StatusEventoService) {
 		return StatusEventoService.lista()
+	}
+	
+	function statusEditarData(ApiService, entidades, $route) {
+		return ApiService.listaTodasEntidades_id(entidades.status, $route.current.params.statusId);
 	}
 
 })();

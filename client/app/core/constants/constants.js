@@ -17,7 +17,8 @@
 			tiposConsulta: "tipoConsulta",
 			paciente: "paciente",
 			convenio: "convenio",
-			status: "status"
+			status: "status",
+			redeSocial: "redesocial"
 	    }
     }
 

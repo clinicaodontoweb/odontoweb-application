@@ -26,17 +26,24 @@
 				controllerAs: 'vm',
 				requireAdmin: true
 			})
-			.when('/cadastro/status/editar/:statusId', {
+			.when('/cadastro/status/editar/:tipoConsultaId', {
                 templateUrl: 'partials/modulos/cadastro/tipo-consulta/tipo-consulta-editar/tipo-consulta-editar.view.html',
                 controller: 'TipoConsultaEditarController', 
 				controllerAs: 'vm',
-				requireAdmin: true
+				requireAdmin: true,
+				resolve: {
+					tipoConsultaEditarData: tipoConsultaEditarData
+				}
             });
 			
 	}
 
 	function tipoConsultaListaData(TipoConsultaService) {
 		return TipoConsultaService.lista()
+	}
+
+	function tipoConsultaEditarData(ApiService, entidades, $route) {
+		return ApiService.listaTodasEntidades_id(entidades.tipoConsulta, $route.current.params.tipoConsultaId);
 	}
 
 })();
