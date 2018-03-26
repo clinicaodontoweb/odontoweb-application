@@ -1,0 +1,23 @@
+<div class="form-container">
+	<form name="cadastroForm" ng-submit="vm.cadastrar(cadastroForm.$valid)" novalidate>
+		<h5 class="form-title">Dados do Status</h5>
+		
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomeStatusEvento.$invalid && !cadastroForm.nomeStatusEvento.$pristine }">
+					<label for="nomeStatusEvento">Nome do Status</label>
+					<input type="text" class="form-control" name="nomeStatusEvento" data-ng-model="vm.request.nome" placeholder="Nome do Status" autofocus required/>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.corStatusEvento.$invalid && !cadastroForm.corStatusEvento.$pristine }">
+					<label for="corStatusEvento">Cor do Status</label>
+					<input type="tet" class="form-control" name="corStatusEvento" data-ng-model="vm.request.cor" placeholder="Cor do Status" required/>
+				</div>
+			</div>
+		</div>
+		<div class="form-footer">
+			<button type="submit" class="botao botao--azul" ng-disabled="cadastroForm.$invalid">Cadastrar Status</button>
+		</div>
+	</form>
+</div>
