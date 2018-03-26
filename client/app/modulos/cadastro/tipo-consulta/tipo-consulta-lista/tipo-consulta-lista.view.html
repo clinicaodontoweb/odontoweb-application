@@ -1,0 +1,36 @@
+<div class="list">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="form-group">
+                <label for="buscaTipoConsulta">Digite o Tipo da Consulta</label>
+                <input type="text" class="form-control form-control--big" name="buscaTipoConsulta" data-ng-model="vm.search" placeholder="Nome do Tipo da Consulta">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-actions">
+                <a class="botao botao--azul pull-right" href="#!/cadastro/tipo-consulta/novo">Cadastrar Tipo de Consulta</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-header">
+        <div class="col-xs-2">ID</div>
+        <div class="col-xs-4">Tipo de Consulta</div>
+        <div class="col-xs-3">Cor Primária</div>
+        <div class="col-xs-3">Cor Secundária</div>
+    </div>
+
+    <div class="row list-item" data-ng-click="go('/cadastro/tipo-consulta/editar/' + tipoConsulta.idTipoConsulta)" data-ng-repeat="tipoConsulta in vm.tipoConsultas | filter:vm.search:strict as resultados">
+        <div class="col-xs-2">{{tipoConsulta.idTipoConsulta}}</div>
+        <div class="col-xs-4">{{tipoConsulta.nome}}</div>
+        <div class="col-xs-3">{{tipoConsulta.corPrimaria}}</div>
+        <div class="col-xs-3">{{tipoConsulta.corSecundaria}}</div>
+    </div>
+
+    <div class="row" data-ng-if="resultados.length == 0" class="vazio">
+        <div class="col-xs-12" style="text-align: center; margin-top: 50px">
+            Nenhum resultado encontrado
+        </div>
+    </div>
+
+</div>

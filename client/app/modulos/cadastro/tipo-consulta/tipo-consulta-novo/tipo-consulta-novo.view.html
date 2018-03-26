@@ -1,0 +1,29 @@
+<div class="form-container">
+	<form name="cadastroForm" ng-submit="vm.cadastrar(cadastroForm.$valid)" novalidate>
+		<h5 class="form-title">Dados do Tipo de Consulta</h5>
+		
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomeTipoConsulta.$invalid && !cadastroForm.nomeTipoConsulta.$pristine }">
+					<label for="nomeTipoConsulta">Nome do Tipo de Consulta</label>
+					<input type="text" class="form-control" name="nomeTipoConsulta" data-ng-model="vm.request.nome" placeholder="Nome do Tipo de Consulta" autofocus required/>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.corPrimariaTipoConsulta.$invalid && !cadastroForm.corPrimariaTipoConsulta.$pristine }">
+					<label for="corPrimariaTipoConsulta">Cor Primária</label>
+					<input type="tet" class="form-control" name="corPrimariaTipoConsulta" data-ng-model="vm.request.corPrimaria" placeholder="Cor Primária" required/>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.corSecundariaTipoConsulta.$invalid && !cadastroForm.corSecundariaTipoConsulta.$pristine }">
+					<label for="corSecundariaTipoConsulta">Cor Secundária</label>
+					<input type="tet" class="form-control" name="corSecundariaTipoConsulta" data-ng-model="vm.request.corSecundaria" placeholder="Cor Secundária" required/>
+				</div>
+			</div>
+		</div>
+		<div class="form-footer">
+			<button type="submit" class="botao botao--azul" ng-disabled="cadastroForm.$invalid">Cadastrar Tipo de Consulta</button>
+		</div>
+	</form>
+</div>
