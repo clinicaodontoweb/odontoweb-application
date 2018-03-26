@@ -1,0 +1,34 @@
+<div class="list">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="form-group">
+                <label for="buscaStatusEvento">Digite o nome do status</label>
+                <input type="text" class="form-control form-control--big" name="buscaStatusEvento" data-ng-model="vm.search" placeholder="Nome do Status">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-actions">
+                <a class="botao botao--azul pull-right" href="#!/cadastro/status/novo">Cadastrar Novo Status</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-header">
+        <div class="col-xs-2">ID</div>
+        <div class="col-xs-6">Nome do Status</div>
+        <div class="col-xs-4">Cor</div>
+    </div>
+
+    <div class="row list-item" data-ng-click="go('/cadastro/status/editar/' + statusEvento.idStatus)" data-ng-repeat="statusEvento in vm.status | filter:vm.search:strict as resultados">
+        <div class="col-xs-2">{{statusEvento.idStatus}}</div>
+        <div class="col-xs-6">{{statusEvento.nome}}</div>
+        <div class="col-xs-4">{{statusEvento.cor}}</div>
+    </div>
+
+    <div class="row" data-ng-if="resultados.length == 0" class="vazio">
+        <div class="col-xs-12" style="text-align: center; margin-top: 50px">
+            Nenhum resultado encontrado
+        </div>
+    </div>
+
+</div>
