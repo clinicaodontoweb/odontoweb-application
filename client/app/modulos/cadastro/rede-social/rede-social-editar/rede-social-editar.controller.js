@@ -5,9 +5,9 @@
         .module('odontoweb.cadastro')
         .controller('RedeSocialEditarController', RedeSocialEditarController);
 
-    RedeSocialEditarController.$inject = ['redeSocialEditarData', 'RedeSocialService', 'entidades', '$uibModal', '$scope', '$location'];
+    RedeSocialEditarController.$inject = ['redeSocialEditarData', 'entidades', '$uibModal', '$scope', '$location'];
 
-    function RedeSocialEditarController(redeSocialEditarData, RedeSocialService, entidades, $uibModal, $scope, $location) {
+    function RedeSocialEditarController(redeSocialEditarData, entidades, $uibModal, $scope, $location) {
         var vm = this;
         vm.cadastrar = cadastrar;
         vm.request = redeSocialEditarData;

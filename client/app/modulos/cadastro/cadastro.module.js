@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
-    angular.module('odontoweb.cadastro', []);
+    angular.module('odontoweb.cadastro', [
+        'angular.viacep'
+    ]);
     
 })();

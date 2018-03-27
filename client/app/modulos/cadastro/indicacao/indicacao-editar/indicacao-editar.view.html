@@ -1,0 +1,17 @@
+<div class="form-container">
+	<form name="cadastroForm" ng-submit="vm.cadastrar(cadastroForm.$valid)" novalidate>
+		<h5 class="form-title">Dados da Indicação</h5>
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomeIndicacao.$invalid && !cadastroForm.nomeIndicacao.$pristine }">
+					<label for="nomeIndicacao">Nome da Indicação</label>
+					<input type="text" class="form-control" name="nomeIndicacao" data-ng-model="vm.request.nome" placeholder="Nome da Indicação" autofocus required/>
+				</div>
+			</div>
+		</div>
+		<div class="form-footer">
+			<button type="submit" class="botao botao--azul" ng-disabled="cadastroForm.$invalid">Atualizar Indicação</button>
+		</div>
+	</form>
+</div>

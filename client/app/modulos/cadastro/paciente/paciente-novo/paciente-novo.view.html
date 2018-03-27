@@ -54,13 +54,48 @@
 					<input type="text" class="form-control" name="dataNascimentolPaciente" data-ng-model="vm.paciente.dataNascimento" placeholder="DD/MM/AAAA" ui-date-mask="DD/MM/YYYY" required/>
 				</div>
 			</div>
-			<div class="col-xs-6">
-				<md-input-container class="md-block">
+			<div class="col-xs-8">
+				<md-input-container class="md-block" style="float:left; margin-right: 20px;">
+					<md-checkbox name="pendenciaFinanceira" ng-model="vm.paciente.pendenciaFinanceira" style="float:left">
+						Pendencia Financeira?
+					</md-checkbox>
+				</md-input-container>
+				<md-input-container class="md-block" style="float:left; margin-right: 20px;">
 					<md-checkbox name="indicacao" ng-model="vm.indicacao" style="float:left">
 						Indicação?
 					</md-checkbox>
 					<input type="text" ng-disabled="!vm.indicacao" class="form-control" name="indicacaoPaciente" data-ng-model="vm.paciente.indicacao" style="float:left;width: 200px;margin-left: 25px;"/>
 				</md-input-container>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.profissaoPaciente.$invalid && !pacienteForm.profissaoPaciente.$pristine }">
+					<label for="profissaoPaciente">Profissão</label>
+					<input type="text" class="form-control" name="profissaoPaciente" data-ng-model="vm.paciente.profissao" placeholder="Profissão" required/>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.localTrabalhoPaciente.$invalid && !pacienteForm.localTrabalhoPaciente.$pristine }">
+					<label for="localTrabalhoPaciente">Local de Trabalho</label>
+					<input type="text" class="form-control" name="localTrabalhoPaciente" data-ng-model="vm.paciente.localTrabalho" placeholder="Local de Trabalho" required/>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.nomeMaePaciente.$invalid && !pacienteForm.nomeMaePaciente.$pristine }">
+					<label for="nomeMaePaciente">Nome da Mãe</label>
+					<input type="text" class="form-control" name="nomeMaePaciente" data-ng-model="vm.paciente.nomeMae" placeholder="Nome da Mãe" required/>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.nomePaiPaciente.$invalid && !pacienteForm.nomePaiPaciente.$pristine }">
+					<label for="nomePaiPaciente">Nome da Pai</label>
+					<input type="text" class="form-control" name="nomePaiPaciente" data-ng-model="vm.paciente.nomePai" placeholder="Nome da Pai" required/>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="observacaoPaciente">Observação</label>
+					<textarea class="form-control" name="observacaoPaciente" rows="5" data-ng-model="vm.paciente.observacao" placeholder="Observações"></textarea>
+				</div>
 			</div>
 
 			<h5 class="form-title">Dados sobre Endereço</h5>

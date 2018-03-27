@@ -5,9 +5,9 @@
         .module('odontoweb.cadastro')
         .controller('TipoConsultaEditarController', TipoConsultaEditarController);
 
-    TipoConsultaEditarController.$inject = ['tipoConsultaEditarData', 'TipoConsultaService', 'entidades', '$uibModal', '$scope', '$location'];
+    TipoConsultaEditarController.$inject = ['tipoConsultaEditarData', 'entidades', '$uibModal', '$scope', '$location'];
 
-    function TipoConsultaEditarController(tipoConsultaEditarData, TipoConsultaService, entidades, $uibModal, $scope, $location) {
+    function TipoConsultaEditarController(tipoConsultaEditarData, entidades, $uibModal, $scope, $location) {
         var vm = this;
         vm.cadastrar = cadastrar;
         vm.request = tipoConsultaEditarData;

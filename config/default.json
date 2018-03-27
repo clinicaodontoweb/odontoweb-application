@@ -1,6 +1,6 @@
 {
 	"servicos": {
-		"agenda": "http://192.168.0.95:3334/agenda-service/",
-		"autenticacao": "http://192.168.0.95:8001/autenticacao-service/"
+		"agenda": "http://localhost:3334/agenda-service/",
+		"autenticacao": "http://localhost:8001/autenticacao-service/"
 	}
 }

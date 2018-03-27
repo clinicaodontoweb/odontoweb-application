@@ -14,11 +14,12 @@
 			clinica: "clinica",
 			recepcinista: "recepcionista",
 			agenda: "agenda",
-			tiposConsulta: "tipoConsulta",
+			tipoConsulta: "tipoConsulta",
 			paciente: "paciente",
 			convenio: "convenio",
 			status: "status",
-			redeSocial: "redesocial"
+			redeSocial: "redesocial",
+			indicacao: "indicacao"
 	    }
     }
 

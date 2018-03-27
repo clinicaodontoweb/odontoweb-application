@@ -1,0 +1,36 @@
+<div class="list">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="form-group">
+                <label for="buscaConvenio">Digite o Nome do Convênio</label>
+                <input type="text" class="form-control form-control--big" name="buscaConvenio" data-ng-model="vm.search" placeholder="Nome do Convênio">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-actions">
+                <a class="botao botao--azul pull-right" href="#!/cadastro/convenio/novo">Cadastrar Novo Convênio</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-header">
+        <div class="col-xs-2">ID</div>
+        <div class="col-xs-4">Nome do Convênio</div>
+        <div class="col-xs-4">Razão Social</div>
+        <div class="col-xs-2">CNPJ</div>
+    </div>
+
+    <div class="row list-item" data-ng-click="go('/cadastro/convenio/editar/' + convenio.idConvenio)" data-ng-repeat="convenio in vm.convenios | filter:vm.search:strict as resultados">
+        <div class="col-xs-2">{{convenio.idConvenio}}</div>
+        <div class="col-xs-4">{{convenio.nome}}</div>
+        <div class="col-xs-4">{{convenio.razaoSocial}}</div>
+        <div class="col-xs-2">{{convenio.cnpj}}</div>
+    </div>
+
+    <div class="row" data-ng-if="resultados.length == 0" class="vazio">
+        <div class="col-xs-12" style="text-align: center; margin-top: 50px">
+            Nenhum resultado encontrado
+        </div>
+    </div>
+
+</div>

@@ -18,7 +18,7 @@
         function request(config) {
             config.headers = config.headers || {};
 
-            if (!config.skipInterceptor && $localStorage.token) {
+            if (!config.skipInterceptor && !config.url.includes("viacep") && $localStorage.token) {
                 config.headers['X-Auth-Token'] = $localStorage.token;
             }
 

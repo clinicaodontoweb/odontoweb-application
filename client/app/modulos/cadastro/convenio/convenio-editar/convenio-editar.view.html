@@ -1,0 +1,151 @@
+<div class="form-container">
+		<form name="cadastroForm" ng-submit="vm.cadastrar(cadastroForm.$valid)" novalidate>
+			<h5 class="form-title">Dados do Convênio</h5>
+			<div via-cep-form>
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomeConvenio.$invalid && !cadastroForm.nomeConvenio.$pristine }">
+							<label for="nomeConvenio">Nome do convênio</label>
+							<input type="text" class="form-control" name="nomeConvenio" data-ng-model="vm.request.nome" placeholder="Nome do Convênio" autofocus required/>
+						</div>
+					</div>
+					<div class="col-xs-3">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.cnpjConvenio.$invalid && !cadastroForm.cnpjConvenio.$pristine }">
+							<label for="cnpjConvenio">CNPJ</label>
+							<input type="text" class="form-control" name="cnpjConvenio" data-ng-model="vm.request.cnpj" placeholder="CNPJ" required/>
+						</div>
+					</div>
+					<div class="col-xs-5">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.razaoSocialConvenio.$invalid && !cadastroForm.razaoSocialConvenio.$pristine }">
+							<label for="razaoSocialConvenio">Razão Social</label>
+							<input type="text" class="form-control" name="razaoSocialConvenio" data-ng-model="vm.request.razaoSocial" placeholder="Razão Social" required/>
+						</div>
+					</div>
+				</div>
+	
+				<h5 class="form-title">Dados sobre Endereço</h5>
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.cep.$invalid && !cadastroForm.cep.$pristine }">
+							<label for="cep">CEP</label>
+							<input type="text" class="form-control" name="cep" data-ng-model="vm.request.endereco.cep.cep" placeholder="CEP" via-cep="cep" ui-br-cep-mask required/>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.endereco.$invalid && !cadastroForm.endereco.$pristine }">
+							<label for="endereco">Endereço</label>
+							<input type="text" class="form-control" name="endereco" data-ng-model="vm.request.endereco.endereco" placeholder="Endereço" via-cep="logradouro" required/>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.numero.$invalid && !cadastroForm.numero.$pristine }">
+							<label for="numero">Número</label>
+							<input type="text" class="form-control" name="numero" data-ng-model="vm.request.endereco.numero" placeholder="Número" required/>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.cidade.$invalid && !cadastroForm.cidade.$pristine }">
+							<label for="cidade">Cidade</label>
+							<input type="text" class="form-control" name="cidade" data-ng-model="vm.request.endereco.cidade.nome" placeholder="Cidade" via-cep="localidade" required/>
+						</div>
+					</div>
+					<div class="col-xs-3">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.bairro.$invalid && !cadastroForm.bairro.$pristine }">
+							<label for="bairro">Bairro</label>
+							<input type="text" class="form-control" name="bairro" data-ng-model="vm.request.endereco.bairro.nome" placeholder="Bairro" via-cep="bairro" required/>
+						</div>
+					</div>
+					<div class="col-xs-1">
+						<div class="form-group">
+							<label for="uf">UF</label>
+							<input type="text" class="form-control" name="uf" data-ng-model="vm.request.endereco.cidade.estado.sigla.sigla" placeholder="UF" via-cep="uf" required/>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.complemento.$invalid && !cadastroForm.complemento.$pristine }">
+							<label for="complemento">Complemento</label>
+							<input type="text" class="form-control" name="complemento" data-ng-model="vm.request.endereco.complemento" placeholder="Complemento"/>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.pontoReferencia.$invalid && !cadastroForm.pontoReferencia.$pristine }">
+							<label for="pontoReferencia">Ponto de Referência</label>
+							<input type="text" class="form-control" name="pontoReferencia" data-ng-model="vm.request.endereco.pontoReferencia" placeholder="Ponto de Referência"/>
+						</div>
+					</div>
+				</div>
+	
+				<h5 class="form-title">Dados sobre Contato</h5>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.email.$invalid && !cadastroForm.email.$pristine }">
+							<label for="email">Email</label>
+							<input type="text" class="form-control" name="email" data-ng-model="vm.request.contato.email" placeholder="Email" required/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.identificador.$invalid && !cadastroForm.identificador.$pristine }">
+							<label for="identificador">Identificador</label>
+							<input type="text" class="form-control" name="identificador" data-ng-model="vm.telefone.nome" placeholder="Identificador"/>
+						</div>
+					</div>
+					<div class="col-xs-2">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.tipoTelefone.$invalid && !cadastroForm.tipoTelefone.$pristine }">
+							<label for="tipoTelefone">Tipo Telefone</label>
+							<select class="form-control" name="tipoTelefone" id="tipoTelefone" ng-model="vm.telefone.tipoTelefone">
+								<option value="">Tipo telefone</option>
+								<option value="Celular">Celular</option>
+								<option value="Residencial">Residencial</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-1">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.ddd.$invalid && !cadastroForm.ddd.$pristine }">
+							<label for="ddd">DDD</label>
+							<input type="text" class="form-control" name="ddd" data-ng-model="vm.telefone.ddd" placeholder="DDD"/>
+						</div>
+					</div>
+					<div class="col-xs-2">
+						<div class="form-group" ng-class="{ 'has-error' : cadastroForm.telefone.$invalid && !cadastroForm.telefone.$pristine }">
+							<label for="telefone">Telefone</label>
+							<input type="text" class="form-control" name="telefone" data-ng-model="vm.telefone.numero" placeholder="Telefone"/>
+						</div>
+					</div>
+					<div class="col-xs-2">
+						<md-input-container class="md-block" style="margin: 30px 0 0 0;">
+							<md-checkbox name="principal" ng-model="vm.telefone.principal">
+								Principal?
+							</md-checkbox>
+						</md-input-container>
+					</div>
+					<div class="col-xs-3">
+						<div class="botao botao--verde" style="margin-top:25px;" data-ng-click="vm.adicionarTelefone()">Adicionar Telefone</div>
+					</div>
+				</div>
+				<div class="row" data-ng-if="vm.request.contato.telefones.length > 0">
+					<div class="list-header">
+						<div class="col-xs-2">Identificador</div>
+						<div class="col-xs-4">Tipo</div>
+						<div class="col-xs-1">DDD</div>
+						<div class="col-xs-2">Número</div>
+					</div>
+				
+					<div class="list-item" data-ng-repeat="telefone in vm.request.contato.telefones">
+						<div class="col-xs-2">{{telefone.nome}}</div>
+						<div class="col-xs-4">{{telefone.tipoTelefone}}</div>
+						<div class="col-xs-1">{{telefone.ddd}}</div>
+						<div class="col-xs-2">{{telefone.numero}}</div>
+						<div class="col-xs-3">
+							<div class="botao botao--vermelho" data-ng-click="vm.removerTelefone($index)" style="margin-top: 10px;">Remover Telefone</div>
+						</div>
+					</div>
+				</div>
+	
+				<div class="form-footer">
+					<button type="submit" class="botao botao--azul" ng-disabled="cadastroForm.$invalid">Atualizar Convênio</button>
+				</div>
+			</div>
+		</form>
+	</div>

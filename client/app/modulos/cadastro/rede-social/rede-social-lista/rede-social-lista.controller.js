@@ -3,13 +3,13 @@
 
     angular
         .module('odontoweb.cadastro')
-        .controller('StatusEventoListaController', StatusEventoListaController);
+        .controller('RedeSocialListaController', RedeSocialListaController);
 
-    StatusEventoListaController.$inject = ['statusListaData'];
+    RedeSocialListaController.$inject = ['redeSocialListaData'];
 
-    function StatusEventoListaController(statusListaData) {
+    function RedeSocialListaController(redeSocialListaData) {
         var vm = this;
-        vm.status = statusListaData.status;
+        vm.redeSociais = redeSocialListaData;
 
     }
 })();

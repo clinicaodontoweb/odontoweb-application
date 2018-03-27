@@ -1,0 +1,32 @@
+<div class="list">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="form-group">
+                <label for="buscaIndicacao">Digite o nome da Indicação</label>
+                <input type="text" class="form-control form-control--big" name="buscaIndicacao" data-ng-model="vm.search" placeholder="Nome da Indicação">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-actions">
+                <a class="botao botao--azul pull-right" href="#!/cadastro/indicacao/novo">Cadastrar Nova Indicação</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-header">
+        <div class="col-xs-2">ID</div>
+        <div class="col-xs-10">Nome da Indicação</div>
+    </div>
+
+    <div class="row list-item" data-ng-click="go('/cadastro/indicacao/editar/' + indicacao.idIndicacao)" data-ng-repeat="indicacao in vm.indicacoes | filter:vm.search:strict as resultados">
+        <div class="col-xs-2">{{indicacao.idIndicacao}}</div>
+        <div class="col-xs-10">{{indicacao.nome}}</div>
+    </div>
+
+    <div class="row" data-ng-if="resultados.length == 0" class="vazio">
+        <div class="col-xs-12" style="text-align: center; margin-top: 50px">
+            Nenhum resultado encontrado
+        </div>
+    </div>
+
+</div>

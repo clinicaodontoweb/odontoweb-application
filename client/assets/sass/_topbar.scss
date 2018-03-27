@@ -31,7 +31,7 @@
         width: auto;
         float: left;
 
-        ul {
+        ul.topbar__menu-container {
             margin: 0;
             padding: 0;
             display: block;
@@ -131,4 +131,33 @@
     top: 0;
     left: 0;
     display: none;
+}
+
+.dropdown > button {
+    border: none;
+    background-color: transparent;
+    color: #868F9C;
+    font-family: 'Roboto Condensed',sans-serif;
+
+    &:hover, &:focus {
+        background-color: transparent;
+        color: $blue-color;
+    }
+}
+
+.topbar__menu ul.dropdown-menu li {
+    font-family: 'Roboto Condensed',sans-serif;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 100%;
+    
+    a {
+        padding: 0 20px; 
+        margin: 0; 
+        line-height: 50px;
+        text-align: left;
+    }
 }

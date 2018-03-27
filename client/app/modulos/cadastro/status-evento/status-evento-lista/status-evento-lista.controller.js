@@ -9,7 +9,7 @@
 
     function StatusEventoListaController(statusListaData) {
         var vm = this;
-        vm.status = statusListaData.status;
+        vm.status = statusListaData;
 
     }
 })();

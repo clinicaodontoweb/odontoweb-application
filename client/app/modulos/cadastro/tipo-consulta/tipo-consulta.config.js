@@ -20,13 +20,13 @@
 					tipoConsultaListaData: tipoConsultaListaData
 				}
 			})
-			.when('/cadastro/status/novo', {
+			.when('/cadastro/tipo-consulta/novo', {
                 templateUrl: 'partials/modulos/cadastro/tipo-consulta/tipo-consulta-novo/tipo-consulta-novo.view.html',
                 controller: 'TipoConsultaNovoController', 
 				controllerAs: 'vm',
 				requireAdmin: true
 			})
-			.when('/cadastro/status/editar/:tipoConsultaId', {
+			.when('/cadastro/tipo-consulta/editar/:tipoConsultaId', {
                 templateUrl: 'partials/modulos/cadastro/tipo-consulta/tipo-consulta-editar/tipo-consulta-editar.view.html',
                 controller: 'TipoConsultaEditarController', 
 				controllerAs: 'vm',

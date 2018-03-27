@@ -3,25 +3,26 @@
 
     angular
         .module('odontoweb.cadastro')
-        .controller('StatusEventoEditarController', StatusEventoEditarController);
+        .controller('IndicacaoEditarController', IndicacaoEditarController);
 
-    StatusEventoEditarController.$inject = ['statusEditarData', 'entidades', '$uibModal', '$scope', '$location'];
+    IndicacaoEditarController.$inject = ['indicacaoEditarData', 'entidades', '$uibModal', '$scope', '$location'];
 
-    function StatusEventoEditarController(statusEditarData, entidades, $uibModal, $scope, $location) {
+    function IndicacaoEditarController(indicacaoEditarData, entidades, $uibModal, $scope, $location) {
         var vm = this;
         vm.cadastrar = cadastrar;
-        vm.request = statusEditarData;
+        vm.request = indicacaoEditarData;
 
         function cadastrar(isValid) {
             if(isValid) {
                 vm.request.put().then(function(response) {
                     $scope.cadastroForm.$setUntouched();
                     $scope.cadastroForm.$setPristine();
-                    $location.path("/cadastro/status");
+                    $location.path("/cadastro/indicacao");
                 }, function(response) {
                     toastr.error('Erro ao atualizar cadastro!');
                 });
             }
         }
+
     }
 })();

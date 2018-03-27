@@ -67,7 +67,8 @@ gulp.task('deps-js', function (){
 					depsFolder + 'angular-material/angular-material.js',
 					depsFolder + 'angular-br-filters/release/angular-br-filters.js',
 					nodeFolder + 'angular-input-masks/releases/angular-input-masks-standalone.js',
-					depsFolder + 'angular-loading-bar/build/loading-bar.js'
+					depsFolder + 'angular-loading-bar/build/loading-bar.js',
+					depsFolder + 'angular-viacep/dist/angular-viacep.min.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
 			.pipe(gulp.dest('dist'))

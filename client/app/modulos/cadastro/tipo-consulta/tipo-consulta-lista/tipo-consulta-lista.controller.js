@@ -9,7 +9,7 @@
 
     function TipoConsultaListaController(tipoConsultaListaData) {
         var vm = this;
-        vm.tipoConsultas = tipoConsultaListaData.status;
+        vm.tipoConsultas = tipoConsultaListaData;
 
     }
 })();

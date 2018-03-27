@@ -2,27 +2,25 @@
     <div class="row">
         <div class="col-xs-8">
             <div class="form-group">
-                <label for="buscaStatusEvento">Digite o nome do status</label>
-                <input type="text" class="form-control form-control--big" name="buscaStatusEvento" data-ng-model="vm.search" placeholder="Nome do Status">
+                <label for="buscaRedeSocial">Digite o nome da Rede Social</label>
+                <input type="text" class="form-control form-control--big" name="buscaRedeSocial" data-ng-model="vm.search" placeholder="Nome da Rede Social">
             </div>
         </div>
         <div class="col-xs-4">
             <div class="list-actions">
-                <a class="botao botao--azul pull-right" href="#!/cadastro/status/novo">Cadastrar Novo Status</a>
+                <a class="botao botao--azul pull-right" href="#!/cadastro/rede-social/novo">Cadastrar Nova Rede Social</a>
             </div>
         </div>
     </div>
 
     <div class="row list-header">
         <div class="col-xs-2">ID</div>
-        <div class="col-xs-6">Nome do Status</div>
-        <div class="col-xs-4">Cor</div>
+        <div class="col-xs-10">Nome da Rede Social</div>
     </div>
 
-    <div class="row list-item" data-ng-click="go('/cadastro/status/editar/' + statusEvento.idStatus)" data-ng-repeat="statusEvento in vm.status | filter:vm.search:strict as resultados">
-        <div class="col-xs-2">{{statusEvento.idStatus}}</div>
-        <div class="col-xs-6">{{statusEvento.nome}}</div>
-        <div class="col-xs-4">{{statusEvento.cor}}</div>
+    <div class="row list-item" data-ng-click="go('/cadastro/rede-social/editar/' + redeSocial.idRedeSocial)" data-ng-repeat="redeSocial in vm.redeSociais | filter:vm.search:strict as resultados">
+        <div class="col-xs-2">{{redeSocial.idRedeSocial}}</div>
+        <div class="col-xs-10">{{redeSocial.nome}}</div>
     </div>
 
     <div class="row" data-ng-if="resultados.length == 0" class="vazio">
