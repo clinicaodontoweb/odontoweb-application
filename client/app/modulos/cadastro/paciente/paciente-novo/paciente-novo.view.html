@@ -1,185 +1,250 @@
 <div class="form-container">
-	<form name="pacienteForm" ng-submit="vm.cadastrar(pacienteForm.$valid)" novalidate>
+	<form name="cadastroForm" ng-submit="vm.cadastrar(cadastroForm.$valid)" novalidate>
 		<h5 class="form-title">Dados do Paciente</h5>
-		
-		<div class="row">
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.nomePaciente.$invalid && !pacienteForm.nomePaciente.$pristine }">
-					<label for="nomePaciente">Nome Completo</label>
-					<input type="text" class="form-control" name="nomePaciente" data-ng-model="vm.paciente.nome" placeholder="Nome Completo" autofocus required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.rgPaciente.$invalid && !pacienteForm.rgPaciente.$pristine }">
-					<label for="rgPaciente">RG</label>
-					<input type="text" class="form-control" name="rgPaciente" data-ng-model="vm.paciente.rg" placeholder="RG" required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.cpfPaciente.$invalid && !pacienteForm.cpfPaciente.$pristine }">
-					<label for="cpfPaciente">CPF</label>
-					<input type="text" class="form-control" name="cpfPaciente" data-ng-model="vm.paciente.cpf" placeholder="CPF" ng-minlength="14" ng-maxlength="14" maxlength="14" ui-br-cpf-mask required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.emailPaciente.$invalid && !pacienteForm.emailPaciente.$pristine }">
-					<label for="emailPaciente">Email</label>
-					<input type="email" class="form-control" name="emailPaciente" data-ng-model="vm.paciente.email" placeholder="Email" required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.generoPaciente.$invalid && !pacienteForm.generoPaciente.$pristine }">
-					<label for="generoPaciente">Genêro</label>
-					<select class="form-control" name="generoPaciente" id="generoPaciente" ng-model="vm.paciente.genero" required>
-						<option value="">Selecione o genêro</option>
-						<option value="Masculino">Masculino</option>
-						<option value="Feminino">Feminino</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.estadoCivilPaciente.$invalid && !pacienteForm.estadoCivilPaciente.$pristine }">
-					<label for="estadoCivilPaciente">Estado Civil</label>
-					<select class="form-control" name="estadoCivilPaciente" id="estadoCivilPaciente" ng-model="vm.paciente.estadoCivil" required>
-						<option value="">Selecione o estado civil</option>
-						<option value="Solteiro">Solteiro</option>
-						<option value="Casado">Casado</option>
-						<option value="Viuvo">Víuvo</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.dataNascimentolPaciente.$invalid && !pacienteForm.dataNascimentolPaciente.$pristine }">
-					<label for="dataNascimentolPaciente">Data de Nascimento</label>
-					<input type="text" class="form-control" name="dataNascimentolPaciente" data-ng-model="vm.paciente.dataNascimento" placeholder="DD/MM/AAAA" ui-date-mask="DD/MM/YYYY" required/>
-				</div>
-			</div>
-			<div class="col-xs-8">
-				<md-input-container class="md-block" style="float:left; margin-right: 20px;">
-					<md-checkbox name="pendenciaFinanceira" ng-model="vm.paciente.pendenciaFinanceira" style="float:left">
-						Pendencia Financeira?
-					</md-checkbox>
-				</md-input-container>
-				<md-input-container class="md-block" style="float:left; margin-right: 20px;">
-					<md-checkbox name="indicacao" ng-model="vm.indicacao" style="float:left">
-						Indicação?
-					</md-checkbox>
-					<input type="text" ng-disabled="!vm.indicacao" class="form-control" name="indicacaoPaciente" data-ng-model="vm.paciente.indicacao" style="float:left;width: 200px;margin-left: 25px;"/>
-				</md-input-container>
-			</div>
-			<div class="col-xs-3">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.profissaoPaciente.$invalid && !pacienteForm.profissaoPaciente.$pristine }">
-					<label for="profissaoPaciente">Profissão</label>
-					<input type="text" class="form-control" name="profissaoPaciente" data-ng-model="vm.paciente.profissao" placeholder="Profissão" required/>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.localTrabalhoPaciente.$invalid && !pacienteForm.localTrabalhoPaciente.$pristine }">
-					<label for="localTrabalhoPaciente">Local de Trabalho</label>
-					<input type="text" class="form-control" name="localTrabalhoPaciente" data-ng-model="vm.paciente.localTrabalho" placeholder="Local de Trabalho" required/>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.nomeMaePaciente.$invalid && !pacienteForm.nomeMaePaciente.$pristine }">
-					<label for="nomeMaePaciente">Nome da Mãe</label>
-					<input type="text" class="form-control" name="nomeMaePaciente" data-ng-model="vm.paciente.nomeMae" placeholder="Nome da Mãe" required/>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.nomePaiPaciente.$invalid && !pacienteForm.nomePaiPaciente.$pristine }">
-					<label for="nomePaiPaciente">Nome da Pai</label>
-					<input type="text" class="form-control" name="nomePaiPaciente" data-ng-model="vm.paciente.nomePai" placeholder="Nome da Pai" required/>
-				</div>
-			</div>
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="observacaoPaciente">Observação</label>
-					<textarea class="form-control" name="observacaoPaciente" rows="5" data-ng-model="vm.paciente.observacao" placeholder="Observações"></textarea>
-				</div>
-			</div>
-
-			<h5 class="form-title">Dados sobre Endereço</h5>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.cep.$invalid && !pacienteForm.cep.$pristine }">
-					<label for="cep">CEP</label>
-					<input type="text" class="form-control" name="cep" data-ng-model="vm.paciente.cep" data-ng-change="vm.buscaCep()" placeholder="CEP" ui-br-cep-mask required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.endereco.$invalid && !pacienteForm.endereco.$pristine }">
-					<label for="endereco">Endereço</label>
-					<input type="text" class="form-control" name="endereco" data-ng-model="vm.paciente.endereco" placeholder="Endereço" required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.numero.$invalid && !pacienteForm.numero.$pristine }">
-					<label for="numero">Número</label>
-					<input type="text" class="form-control" name="numero" data-ng-model="vm.paciente.numero" placeholder="Número" required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.cidade.$invalid && !pacienteForm.cidade.$pristine }">
-					<label for="cidade">Cidade</label>
-					<input type="text" class="form-control" name="cidade" data-ng-model="vm.paciente.cidade" placeholder="Cidade" required/>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.bairro.$invalid && !pacienteForm.bairro.$pristine }">
-					<label for="bairro">Bairro</label>
-					<input type="text" class="form-control" name="bairro" data-ng-model="vm.paciente.bairro" placeholder="Bairro" required/>
-				</div>
-			</div>
-			<div class="col-xs-1">
-				<div class="form-group">
-					<label for="bairro">UF</label>
-					<input type="text" class="form-control" name="uf" data-ng-model="vm.paciente.sigla" placeholder="UF" required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.complemento.$invalid && !pacienteForm.complemento.$pristine }">
-					<label for="complemento">Complemento</label>
-					<input type="text" class="form-control" name="complemento" data-ng-model="vm.paciente.complemento" placeholder="Complemento"/>
-				</div>
-			</div>
-
-			<h5 class="form-title">Dados sobre Contato</h5>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.tipoTelefone.$invalid && !pacienteForm.tipoTelefone.$pristine }">
-					<label for="tipoTelefone">Tipo Telefone</label>
-					<select class="form-control" name="tipoTelefone" id="tipoTelefone" ng-model="vm.paciente.telefone.tipoTelefone" required>
-						<option value="">Selecione o tipo telefone</option>
-						<option value="Celular">Celular</option>
-						<option value="Residencial">Residencial</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.ddd.$invalid && !pacienteForm.ddd.$pristine }">
-					<label for="ddd">DDD</label>
-					<input type="text" class="form-control" name="ddd" data-ng-model="vm.paciente.telefone.ddd" placeholder="DDD" required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="form-group" ng-class="{ 'has-error' : pacienteForm.telefone.$invalid && !pacienteForm.telefone.$pristine }">
-					<label for="telefone">Telefone</label>
-					<input type="text" class="form-control" name="telefone" data-ng-model="vm.paciente.telefone.numero" placeholder="Telefone" required/>
-				</div>
-			</div>
-
-			<h5 class="form-title form-title--sub">Convênios que possui!</h5>
+		<div via-cep-form>
 			<div class="row">
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomePaciente.$invalid && !cadastroForm.nomePaciente.$pristine }">
+						<label for="nomePaciente">Nome Completo</label>
+						<input type="text" class="form-control" name="nomePaciente" data-ng-model="vm.request.nome" placeholder="Nome Completo" autofocus required/>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.rgPaciente.$invalid && !cadastroForm.rgPaciente.$pristine }">
+						<label for="rgPaciente">RG</label>
+						<input type="text" class="form-control" name="rgPaciente" data-ng-model="vm.request.rg" placeholder="RG" required/>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.cpfPaciente.$invalid && !cadastroForm.cpfPaciente.$pristine }">
+						<label for="cpfPaciente">CPF</label>
+						<input type="text" class="form-control" name="cpfPaciente" data-ng-model="vm.request.cpf" placeholder="CPF" ng-minlength="14" ng-maxlength="14" maxlength="14" ui-br-cpf-mask required/>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.generoPaciente.$invalid && !cadastroForm.generoPaciente.$pristine }">
+						<label for="generoPaciente">Genêro</label>
+						<select class="form-control" name="generoPaciente" id="generoPaciente" ng-model="vm.request.genero" required>
+							<option value="">Selecione o genêro</option>
+							<option value="Masculino">Masculino</option>
+							<option value="Feminino">Feminino</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.estadoCivilPaciente.$invalid && !cadastroForm.estadoCivilPaciente.$pristine }">
+						<label for="estadoCivilPaciente">Estado Civil</label>
+						<select class="form-control" name="estadoCivilPaciente" id="estadoCivilPaciente" ng-model="vm.request.estadoCivil" required>
+							<option value="">Selecione o estado civil</option>
+							<option value="Solteiro">Solteiro</option>
+							<option value="Casado">Casado</option>
+							<option value="Viuvo">Víuvo</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.dataNascimentolPaciente.$invalid && !cadastroForm.dataNascimentolPaciente.$pristine }">
+						<label for="dataNascimentolPaciente">Data de Nascimento</label>
+						<input type="text" class="form-control" name="dataNascimentolPaciente" data-ng-model="vm.request.dataNascimento" placeholder="DD/MM/AAAA" ui-date-mask="DD/MM/YYYY" required/>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.profissaoPaciente.$invalid && !cadastroForm.profissaoPaciente.$pristine }">
+						<label for="profissaoPaciente">Profissão</label>
+						<input type="text" class="form-control" name="profissaoPaciente" data-ng-model="vm.request.profissao" placeholder="Profissão" required/>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.localTrabalhoPaciente.$invalid && !cadastroForm.localTrabalhoPaciente.$pristine }">
+						<label for="localTrabalhoPaciente">Local de Trabalho</label>
+						<input type="text" class="form-control" name="localTrabalhoPaciente" data-ng-model="vm.request.localTrabalho" placeholder="Local de Trabalho" required/>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomeMaePaciente.$invalid && !cadastroForm.nomeMaePaciente.$pristine }">
+						<label for="nomeMaePaciente">Nome da Mãe</label>
+						<input type="text" class="form-control" name="nomeMaePaciente" data-ng-model="vm.request.nomeMae" placeholder="Nome da Mãe" required/>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomePaiPaciente.$invalid && !cadastroForm.nomePaiPaciente.$pristine }">
+						<label for="nomePaiPaciente">Nome da Pai</label>
+						<input type="text" class="form-control" name="nomePaiPaciente" data-ng-model="vm.request.nomePai" placeholder="Nome da Pai" required/>
+					</div>
+				</div>
+
+				<h5 class="form-title">Dados sobre Redes Sociais</h5>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomeRedeSocial.$invalid && !cadastroForm.nomeRedeSocial.$pristine }">
+						<label for="nomeRedeSocial">Rede Social</label>
+						<select class="form-control" name="nomeRedeSocial" id="nomeRedeSocial" ng-model="vm.redeSocial.nome">
+							<option value="">Rede Social</option>
+							<option value="1">FaceBook</option>
+							<option value="2">Twitter</option>
+							<option value="outro">Outro</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-5">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.enderecoRedeSocial.$invalid && !cadastroForm.enderecoRedeSocial.$pristine }">
+						<label for="enderecoRedeSocial">Endereço</label>
+						<input type="text" class="form-control" name="enderecoRedeSocial" data-ng-model="vm.redeSocial.endereco" placeholder="Endereço"/>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="botao botao--verde" style="margin-top:25px;" data-ng-click="vm.adicionarRedeSocial()">Adicionar</div>
+				</div>
+				<div data-ng-if="vm.request.redesSociaisPaciente.length > 0">
+					<div class="list-header">
+						<div class="col-xs-2">Identificador</div>
+						<div class="col-xs-4">Nome</div>
+						<div class="col-xs-6">Endereço</div>
+					</div>
+				
+					<div class="list-item" data-ng-repeat="redeSocial in vm.request.redesSociaisPaciente">
+						<div class="col-xs-2">{{redeSocial.redeSocial.idRedeSocial}}</div>
+						<div class="col-xs-4">{{redeSocial.redeSocial.nome}}</div>
+						<div class="col-xs-6">{{redeSocial.endereco}}</div>
+						<div class="col-xs-3">
+							<div class="botao botao--vermelho" data-ng-click="vm.removerRedeSocial($index)" style="margin-top:10px;">Remover</div>
+						</div>
+					</div>
+				</div>
+
+				<h5 class="form-title">Dados sobre Endereço</h5>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.cep.$invalid && !cadastroForm.cep.$pristine }">
+						<label for="cep">CEP</label>
+						<input type="text" class="form-control" name="cep" data-ng-model="vm.request.endereco.cep.cep" placeholder="CEP" via-cep="cep" ui-br-cep-mask required/>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.endereco.$invalid && !cadastroForm.endereco.$pristine }">
+						<label for="endereco">Endereço</label>
+						<input type="text" class="form-control" name="endereco" data-ng-model="vm.request.endereco.endereco" placeholder="Endereço" via-cep="logradouro" required/>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.numero.$invalid && !cadastroForm.numero.$pristine }">
+						<label for="numero">Número</label>
+						<input type="text" class="form-control" name="numero" data-ng-model="vm.request.endereco.numero" placeholder="Número" required/>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.cidade.$invalid && !cadastroForm.cidade.$pristine }">
+						<label for="cidade">Cidade</label>
+						<input type="text" class="form-control" name="cidade" data-ng-model="vm.request.endereco.cidade.nome" placeholder="Cidade" via-cep="localidade" required/>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.bairro.$invalid && !cadastroForm.bairro.$pristine }">
+						<label for="bairro">Bairro</label>
+						<input type="text" class="form-control" name="bairro" data-ng-model="vm.request.endereco.bairro.nome" placeholder="Bairro" via-cep="bairro" required/>
+					</div>
+				</div>
+				<div class="col-xs-1">
+					<div class="form-group">
+						<label for="uf">UF</label>
+						<input type="text" class="form-control" name="uf" data-ng-model="vm.request.endereco.cidade.estado.sigla.sigla" placeholder="UF" via-cep="uf" required/>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.complemento.$invalid && !cadastroForm.complemento.$pristine }">
+						<label for="complemento">Complemento</label>
+						<input type="text" class="form-control" name="complemento" data-ng-model="vm.request.endereco.complemento" placeholder="Complemento"/>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.pontoReferencia.$invalid && !cadastroForm.pontoReferencia.$pristine }">
+						<label for="pontoReferencia">Ponto de Referência</label>
+						<input type="text" class="form-control" name="pontoReferencia" data-ng-model="vm.request.endereco.pontoReferencia" placeholder="Ponto de Referência"/>
+					</div>
+				</div>
+	
+				<h5 class="form-title">Dados sobre Contato</h5>
 				<div class="col-xs-12">
-					<md-input-container class="md-block">
-						<md-switch class="md-primary" name="convenio" ng-repeat="convenio in vm.convenios" ng-click="vm.toggle(convenio.idConvenio, vm.paciente.convenios)"> 
-							{{convenio.nome}} - {{convenio.cnpj}}
-						</md-switch>
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.email.$invalid && !cadastroForm.email.$pristine }">
+						<label for="email">Email</label>
+						<input type="text" class="form-control" name="email" data-ng-model="vm.request.contato.email" placeholder="Email" required/>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.identificador.$invalid && !cadastroForm.identificador.$pristine }">
+						<label for="identificador">Identificador</label>
+						<input type="text" class="form-control" name="identificador" data-ng-model="vm.telefone.nome" placeholder="Identificador"/>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.tipoTelefone.$invalid && !cadastroForm.tipoTelefone.$pristine }">
+						<label for="tipoTelefone">Tipo Telefone</label>
+						<select class="form-control" name="tipoTelefone" id="tipoTelefone" ng-model="vm.telefone.tipoTelefone">
+							<option value="">Tipo telefone</option>
+							<option value="Celular">Celular</option>
+							<option value="Residencial">Residencial</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-1">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.ddd.$invalid && !cadastroForm.ddd.$pristine }">
+						<label for="ddd">DDD</label>
+						<input type="text" class="form-control" name="ddd" data-ng-model="vm.telefone.ddd" placeholder="DDD"/>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.telefone.$invalid && !cadastroForm.telefone.$pristine }">
+						<label for="telefone">Telefone</label>
+						<input type="text" class="form-control" name="telefone" data-ng-model="vm.telefone.numero" placeholder="Telefone"/>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<md-input-container class="md-block" style="margin: 30px 0 0 0;">
+						<md-checkbox name="principal" ng-model="vm.telefone.principal">
+							Principal?
+						</md-checkbox>
 					</md-input-container>
 				</div>
+				<div class="col-xs-3">
+					<div class="botao botao--verde" style="margin-top:25px;" data-ng-click="vm.adicionarTelefone()">Adicionar Telefone</div>
+				</div>
+				<div data-ng-if="vm.request.contato.telefones.length > 0">
+					<div class="list-header">
+						<div class="col-xs-2">Identificador</div>
+						<div class="col-xs-4">Tipo</div>
+						<div class="col-xs-1">DDD</div>
+						<div class="col-xs-2">Número</div>
+					</div>
+				
+					<div class="list-item" data-ng-repeat="telefone in vm.request.contato.telefones">
+						<div class="col-xs-2">{{telefone.nome}}</div>
+						<div class="col-xs-4">{{telefone.tipoTelefone}}</div>
+						<div class="col-xs-1">{{telefone.ddd}}</div>
+						<div class="col-xs-2">{{telefone.numero}}</div>
+						<div class="col-xs-3">
+							<div class="botao botao--vermelho" data-ng-click="vm.removerTelefone($index)" style="margin-top:10px;">Remover Telefone</div>
+						</div>
+					</div>
+				</div>
+
+				<h5 class="form-title">Observações</h5>
+				<div class="col-xs-12">
+					<md-input-container class="md-block" style="float:left; margin-right: 20px;">
+						<md-checkbox name="pendenciaFinanceira" ng-model="vm.request.pendenciaFinanceira" style="float:left">
+							Possui Pendência Financeira?
+						</md-checkbox>
+					</md-input-container>
+				</div>
+				<div class="col-xs-12">
+					<div class="form-group">
+						<label for="observacaoPaciente">Observação</label>
+						<textarea class="form-control" name="observacaoPaciente" rows="5" data-ng-model="vm.request.observacao" placeholder="Observação"></textarea>
+					</div>
+				</div>
+
 			</div>
 		</div>
 		
 		<div class="form-footer">
-			<button type="submit" class="botao botao--azul" ng-disabled="pacienteForm.$invalid">Cadastrar Paciente</button>
+			<button type="submit" class="botao botao--azul" ng-disabled="cadastroForm.$invalid">Cadastrar Paciente</button>
 		</div>
 	</form>
 </div>

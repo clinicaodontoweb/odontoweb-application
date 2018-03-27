@@ -5,25 +5,29 @@
         .module('odontoweb.cadastro')
         .controller('PacienteNovoController', PacienteNovoController);
 
-    PacienteNovoController.$inject = ['pacienteNovoData', 'entidades', 'PacienteService', '$scope', '$location'];
+    PacienteNovoController.$inject = ['CrudService', 'pacienteNovoData', 'PacienteService', 'entidades', '$scope', '$location'];
 
-    function PacienteNovoController(pacienteNovoData, entidades, PacienteService, $scope, $location) {
+    function PacienteNovoController(CrudService, pacienteNovoData, PacienteService, entidades, $scope, $location) {
         var vm = this;
-        vm.toggle = toggle;
         vm.cadastrar = cadastrar;
-        vm.paciente = {};
-        vm.paciente.convenios = [];
-        vm.convenios = pacienteNovoData;
-        vm.buscaCep = buscaCep;
+        vm.request = {};
+        vm.adicionarTelefone = adicionarTelefone;
+        vm.removerTelefone = removerTelefone;
+        vm.adicionarRedeSocial = adicionarRedeSocial;
+        vm.removerRedeSocial = removerRedeSocial;
+
+        activate();
+        
+        function activate() {
+            vm.request = CrudService.buildRequest();
+            vm.request.redesSociaisPaciente = [];
+        }
 
         function cadastrar(isValid) {
             if(isValid) {
-                PacienteService.salvar(vm.paciente)
+                PacienteService.salvar(vm.request)
                     .then(function(dados) {
                         toastr.success(vm.paciente.nome, 'Paciente cadastrado com sucesso!');
-                        vm.paciente = {};
-                        $scope.pacienteForm.$setUntouched();
-                        $scope.pacienteForm.$setPristine();
                         $location.path("/cadastro/paciente");
                     },function(error) {
                         toastr.error(error.data.mensagem, 'Erro ao cadastrar!');
@@ -31,28 +35,22 @@
             }
         }
 
-        function buscaCep() {
-            if(vm.paciente.cep) {
-                PacienteService.getCep(vm.paciente.cep)
-                    .then(function(response) {
-                        vm.paciente.endereco = response.data.logradouro;
-                        vm.paciente.cidade = response.data.localidade;
-                        vm.paciente.bairro = response.data.bairro;
-                        vm.paciente.sigla = response.data.uf;
-                    }, function(response) {
-                        toastr.error('Erro ao buscar cep, tente novamente!');
-                    });
-            }
+        function adicionarTelefone() {
+            vm.request.contato.telefones.push(vm.telefone);
+            vm.telefone = {};
         }
 
-        function toggle(item, list) {
-            var idx = list.indexOf(item);
-            if (idx > -1) {
-              list.splice(idx, 1);
-            }
-            else {
-              list.push(item);
-            }
-        };
+        function removerTelefone(index) {
+            vm.request.contato.telefones.splice(index, 1);
+        }
+
+        function adicionarRedeSocial() {
+            vm.request.redesSociaisPaciente.push(vm.redeSocial);
+            vm.redeSocial = {};
+        }
+
+        function removerRedeSocial(index) {
+            vm.request.redesSociaisPaciente.splice(index, 1);
+        }
     }
 })();
