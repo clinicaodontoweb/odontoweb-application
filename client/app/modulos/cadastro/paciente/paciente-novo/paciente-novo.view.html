@@ -51,7 +51,7 @@
 				<div class="col-xs-3">
 					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.profissaoPaciente.$invalid && !cadastroForm.profissaoPaciente.$pristine }">
 						<label for="profissaoPaciente">Profissão</label>
-						<input type="text" class="form-control" name="profissaoPaciente" data-ng-model="vm.request.profissao" placeholder="Profissão" required/>
+						<input type="text" class="form-control" name="profissaoPaciente" data-ng-model="vm.request.profissao.nome" placeholder="Profissão" required/>
 					</div>
 				</div>
 				<div class="col-xs-3">
@@ -72,45 +72,67 @@
 						<input type="text" class="form-control" name="nomePaiPaciente" data-ng-model="vm.request.nomePai" placeholder="Nome da Pai" required/>
 					</div>
 				</div>
+			</div>
 
+			<div class="row">
+				<h5 class="form-title">Dados sobre Indicação</h5>
+				<div class="col-xs-4">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.indicacao.$invalid && !cadastroForm.indicacao.$pristine }">
+						<label for="indicacao">Indicação</label>
+						<select name="indicacao" id="indicacao" class="form-control" data-ng-options="indicacao as indicacao.nome for indicacao in vm.indicacoes track by indicacao.idIndicacao" data-ng-model="vm.request.indicacaoPaciente.indicacao">
+							<option style="display:none" value="">Indicação</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-8">
+					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomeIndicacao.$invalid && !cadastroForm.nomeIndicacao.$pristine }">
+						<label for="nomeIndicacao">Nome</label>
+						<input type="text" class="form-control" name="nomeIndicacao" data-ng-model="vm.request.indicacaoPaciente.nome" placeholder="Nome"/>
+					</div>
+				</div>
+			</div>			
+
+			<div class="row">
 				<h5 class="form-title">Dados sobre Redes Sociais</h5>
 				<div class="col-xs-4">
 					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.nomeRedeSocial.$invalid && !cadastroForm.nomeRedeSocial.$pristine }">
 						<label for="nomeRedeSocial">Rede Social</label>
-						<select class="form-control" name="nomeRedeSocial" id="nomeRedeSocial" ng-model="vm.redeSocial.nome">
-							<option value="">Rede Social</option>
-							<option value="1">FaceBook</option>
-							<option value="2">Twitter</option>
-							<option value="outro">Outro</option>
+						<select name="nomeRedeSocial" id="nomeRedeSocial" class="form-control" data-ng-options="redeSocial as redeSocial.nome for redeSocial in vm.redesSociais track by redeSocial.idRedeSocial" data-ng-model="vm.redeSocialPacienteRequest.redeSocial">
+							<option style="display:none" value="">Rede Social</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-xs-5">
 					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.enderecoRedeSocial.$invalid && !cadastroForm.enderecoRedeSocial.$pristine }">
-						<label for="enderecoRedeSocial">Endereço</label>
-						<input type="text" class="form-control" name="enderecoRedeSocial" data-ng-model="vm.redeSocial.endereco" placeholder="Endereço"/>
+						<label for="enderecoRedeSocial">Endereço / URL</label>
+						<input type="text" class="form-control" name="enderecoRedeSocial" data-ng-model="vm.redeSocialPacienteRequest.endereco" placeholder="Endereço / URL"/>
 					</div>
 				</div>
 				<div class="col-xs-3">
 					<div class="botao botao--verde" style="margin-top:25px;" data-ng-click="vm.adicionarRedeSocial()">Adicionar</div>
 				</div>
+			</div>
+
+			<div class="row">
 				<div data-ng-if="vm.request.redesSociaisPaciente.length > 0">
 					<div class="list-header">
 						<div class="col-xs-2">Identificador</div>
-						<div class="col-xs-4">Nome</div>
-						<div class="col-xs-6">Endereço</div>
+						<div class="col-xs-3">Nome</div>
+						<div class="col-xs-4">Endereço</div>
 					</div>
 				
 					<div class="list-item" data-ng-repeat="redeSocial in vm.request.redesSociaisPaciente">
 						<div class="col-xs-2">{{redeSocial.redeSocial.idRedeSocial}}</div>
-						<div class="col-xs-4">{{redeSocial.redeSocial.nome}}</div>
-						<div class="col-xs-6">{{redeSocial.endereco}}</div>
+						<div class="col-xs-3">{{redeSocial.redeSocial.nome}}</div>
+						<div class="col-xs-4">{{redeSocial.endereco}}</div>
 						<div class="col-xs-3">
 							<div class="botao botao--vermelho" data-ng-click="vm.removerRedeSocial($index)" style="margin-top:10px;">Remover</div>
 						</div>
 					</div>
 				</div>
+			</div>	
 
+			<div class="row">
 				<h5 class="form-title">Dados sobre Endereço</h5>
 				<div class="col-xs-4">
 					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.cep.$invalid && !cadastroForm.cep.$pristine }">
@@ -160,12 +182,14 @@
 						<input type="text" class="form-control" name="pontoReferencia" data-ng-model="vm.request.endereco.pontoReferencia" placeholder="Ponto de Referência"/>
 					</div>
 				</div>
-	
+			</div>	
+			
+			<div class="row">
 				<h5 class="form-title">Dados sobre Contato</h5>
 				<div class="col-xs-12">
 					<div class="form-group" ng-class="{ 'has-error' : cadastroForm.email.$invalid && !cadastroForm.email.$pristine }">
 						<label for="email">Email</label>
-						<input type="text" class="form-control" name="email" data-ng-model="vm.request.contato.email" placeholder="Email" required/>
+						<input type="email" class="form-control" name="email" data-ng-model="vm.request.contato.email" placeholder="Email" required/>
 					</div>
 				</div>
 				<div class="col-xs-2">
@@ -206,6 +230,9 @@
 				<div class="col-xs-3">
 					<div class="botao botao--verde" style="margin-top:25px;" data-ng-click="vm.adicionarTelefone()">Adicionar Telefone</div>
 				</div>
+			</div>
+			
+			<div class="row">
 				<div data-ng-if="vm.request.contato.telefones.length > 0">
 					<div class="list-header">
 						<div class="col-xs-2">Identificador</div>
@@ -224,10 +251,12 @@
 						</div>
 					</div>
 				</div>
+			</div>	
 
+			<div class="row">
 				<h5 class="form-title">Observações</h5>
 				<div class="col-xs-12">
-					<md-input-container class="md-block" style="float:left; margin-right: 20px;">
+					<md-input-container class="md-block" style="float:left;">
 						<md-checkbox name="pendenciaFinanceira" ng-model="vm.request.pendenciaFinanceira" style="float:left">
 							Possui Pendência Financeira?
 						</md-checkbox>
@@ -239,7 +268,6 @@
 						<textarea class="form-control" name="observacaoPaciente" rows="5" data-ng-model="vm.request.observacao" placeholder="Observação"></textarea>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		

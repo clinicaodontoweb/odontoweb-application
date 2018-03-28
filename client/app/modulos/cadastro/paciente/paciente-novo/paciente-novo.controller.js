@@ -15,6 +15,8 @@
         vm.removerTelefone = removerTelefone;
         vm.adicionarRedeSocial = adicionarRedeSocial;
         vm.removerRedeSocial = removerRedeSocial;
+        vm.redesSociais = pacienteNovoData.redesSociais;
+        vm.indicacoes = pacienteNovoData.indicacoes;
 
         activate();
         
@@ -27,7 +29,7 @@
             if(isValid) {
                 PacienteService.salvar(vm.request)
                     .then(function(dados) {
-                        toastr.success(vm.paciente.nome, 'Paciente cadastrado com sucesso!');
+                        toastr.success(vm.request.nome, 'Paciente cadastrado com sucesso!');
                         $location.path("/cadastro/paciente");
                     },function(error) {
                         toastr.error(error.data.mensagem, 'Erro ao cadastrar!');
@@ -45,8 +47,8 @@
         }
 
         function adicionarRedeSocial() {
-            vm.request.redesSociaisPaciente.push(vm.redeSocial);
-            vm.redeSocial = {};
+            vm.request.redesSociaisPaciente.push(vm.redeSocialPacienteRequest);
+            vm.redeSocialPacienteRequest = {};
         }
 
         function removerRedeSocial(index) {

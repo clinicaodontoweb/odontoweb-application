@@ -26,7 +26,7 @@
 				controllerAs: 'vm',
 				requireAdmin: true,
 				resolve: {
-					pacienteNovoData: pacienteNovoData
+					pacienteNovoData: pacienteNovoData 
 				}
 			})
 			.when('/cadastro/paciente/editar/:pacienteId', {
@@ -45,12 +45,19 @@
 		return ApiService.listaTodasEntidades(entidades.paciente);
 	}
 
-	function pacienteNovoData(ApiService, entidades) {
-		return ApiService.listaTodasEntidades(entidades.convenio);
+	function pacienteNovoData(ApiService, entidades, $q) {
+		var redesSociais = ApiService.listaTodasEntidades(entidades.redeSocial);
+		var indicacoes = ApiService.listaTodasEntidades(entidades.indicacao);
+
+		return $q.all({ redesSociais: redesSociais, indicacoes: indicacoes });
 	}
 
-	function pacienteEditarData(ApiService, entidades, $route) {
-		return ApiService.listaTodasEntidades_id(entidades.paciente, $route.current.params.pacienteId);
+	function pacienteEditarData(ApiService, entidades, $route, $q) {
+		var redesSociais = ApiService.listaTodasEntidades(entidades.redeSocial);
+		var indicacoes = ApiService.listaTodasEntidades(entidades.indicacao);
+		var paciente = ApiService.listaTodasEntidades_id(entidades.paciente, $route.current.params.pacienteId);
+
+		return $q.all({ redesSociais: redesSociais, indicacoes: indicacoes, paciente: paciente });
 	}
 
 })();
