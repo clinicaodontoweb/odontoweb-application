@@ -25,6 +25,7 @@
         function activate() {
             listaTiposConsulta();
             listaStatusConsulta();
+            listaConvenios();
         }
 
         /*
@@ -61,7 +62,7 @@
         */
         function listaTiposConsulta() {
             return ApiService
-                    .listaTodasEntidades(entidades.tiposConsulta)
+                    .listaTodasEntidades(entidades.tipoConsulta)
                     .then(function(dados) {
                         vm.tiposConsulta = dados;
                         return dados;
@@ -78,6 +79,20 @@
                 .listaTodasEntidades(entidades.status)
                 .then(function(dados) {
                     vm.statusConsulta = dados;
+                    return dados;
+                },function(error){
+                    console.log(error);
+                });
+        }
+
+        /*
+        * Lista status de consulta
+        */
+       function listaConvenios() {
+            return ApiService
+                .listaTodasEntidades(entidades.convenio)
+                .then(function(dados) {
+                    vm.convenios = dados;
                     return dados;
                 },function(error){
                     console.log(error);
@@ -112,7 +127,11 @@
                 idStatus: vm.agendamento.statusConsulta.idStatus,
                 idTipoConsulta: vm.agendamento.tipoConsulta.idTipoConsulta,
                 idPaciente: vm.agendamento.paciente.idPaciente,
-                idConvenio: vm.agendamento.convenio.idConvenio
+                convenioPaciente: {
+                    idConvenio: vm.agendamento.convenio.idConvenio,
+                    numero: vm.agendamento.convenio.numero,
+                    titularConvenio: vm.agendamento.convenio.titular,
+                }
             }
         }
 

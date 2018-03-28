@@ -46,6 +46,9 @@
 			<label class="botao botao--azul" data-ng-class="{'active': vm.calendarView == 'week'}" data-ng-click="vm.navigateCalendar(undefined, 'week')">Semana</label>
 			<label class="botao botao--azul" data-ng-class="{'active': vm.calendarView == 'day'}" data-ng-click="vm.navigateCalendar(undefined, 'day')">Dia</label>
 		</div>
+		<button class="botao botao--azul btn-agendamento" data-ng-click="vm.cadastrarEvento()">
+			Novo Agendamento
+		</button>
 		<div class="btn-group btn-control">
 			<button class="botao botao--azul botao--icone" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" data-ng-click="vm.navigateCalendar()">
 				&lt;

@@ -169,7 +169,7 @@ mwl-calendar .cal-day-today span[data-cal-date] {
 
 .btn-view {
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
 }
 
@@ -177,7 +177,12 @@ mwl-calendar .cal-day-today span[data-cal-date] {
     position: absolute;
     left: 0;
     right: 0;
+    right: 0;
     margin-left: auto;
     margin-right: auto;
     width: 143px;
+}
+
+.btn-agendamento {
+    float: right;
 }

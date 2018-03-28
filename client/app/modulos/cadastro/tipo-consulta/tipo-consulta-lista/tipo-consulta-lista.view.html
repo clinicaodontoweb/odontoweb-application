@@ -23,8 +23,8 @@
     <div class="row list-item" data-ng-click="go('/cadastro/tipo-consulta/editar/' + tipoConsulta.idTipoConsulta)" data-ng-repeat="tipoConsulta in vm.tipoConsultas | filter:vm.search:strict as resultados">
         <div class="col-xs-2">{{tipoConsulta.idTipoConsulta}}</div>
         <div class="col-xs-4">{{tipoConsulta.nome}}</div>
-        <div class="col-xs-3">{{tipoConsulta.corPrimaria}}</div>
-        <div class="col-xs-3">{{tipoConsulta.corSecundaria}}</div>
+        <div class="col-xs-3">{{tipoConsulta.corPrimaria}} <span class="colorBlock" ng-style="{background: tipoConsulta.corPrimaria}"></span> </div>
+        <div class="col-xs-3">{{tipoConsulta.corSecundaria}} <span class="colorBlock" ng-style="{background: tipoConsulta.corSecundaria}"></span> </div>
     </div>
 
     <div class="row" data-ng-if="resultados.length == 0" class="vazio">

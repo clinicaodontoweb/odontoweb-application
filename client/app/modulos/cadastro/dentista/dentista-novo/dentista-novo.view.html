@@ -33,8 +33,20 @@
 			</div>
 			<div class="col-xs-2">
 				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.conselhoDentista.$invalid && !dentistaForm.conselhoDentista.$pristine }">
-					<label for="conselhoDentista">CRO</label>
-					<input type="text" class="form-control" name="conselhoDentista" data-ng-model="vm.dentista.conselho" placeholder="CRO" required/>
+					<label for="conselhoDentista">Nro Conselho</label>
+					<input type="text" class="form-control" name="conselhoDentista" data-ng-model="vm.dentista.conselho" placeholder="Nro Conselho" required/>
+				</div>
+			</div>
+			<div class="col-xs-2">
+				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.registroDentista.$invalid && !dentistaForm.registroDentista.$pristine }">
+					<label for="registroDentista">Nro Registro</label>
+					<input type="text" class="form-control" name="registroDentista" data-ng-model="vm.dentista.registro" placeholder="Nro Registro" required/>
+				</div>
+			</div>
+			<div class="col-xs-2">
+				<div class="form-group" ng-class="{ 'has-error' : dentistaForm.ocupacaoDentista.$invalid && !dentistaForm.ocupacaoDentista.$pristine }">
+					<label for="ocupacaoDentista">Nro Ocupação</label>
+					<input type="text" class="form-control" name="ocupacaoDentista" data-ng-model="vm.dentista.codigoBrasileiroOcupacao" placeholder="Nro Ocupação" required/>
 				</div>
 			</div>
 			<div class="col-xs-3">

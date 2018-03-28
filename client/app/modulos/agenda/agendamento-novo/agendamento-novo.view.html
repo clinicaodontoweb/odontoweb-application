@@ -37,7 +37,7 @@
 
     <div class="row">
       <fieldset data-ng-disabled="vm.agendamento.paciente == null">
-        <div class="col-xs-4">
+        <div class="col-xs-6">
           <div class="form-group" ng-class="{ 'has-error' : agendamentoForm.tipoConsulta.$invalid && !agendamentoForm.tipoConsulta.$pristine }">
             <label for="tipoConsulta">Tipo do agendameto *</label>
             <select name="tipoConsulta" id="tipoConsulta" class="form-control" data-ng-options="tipo as tipo.nome for tipo in vm.tiposConsulta track by tipo.idTipoConsulta" data-ng-model="vm.agendamento.tipoConsulta" required>
@@ -45,7 +45,7 @@
             </select>
           </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-6">
           <div class="form-group" ng-class="{ 'has-error' : agendamentoForm.statusConsulta.$invalid && !agendamentoForm.statusConsulta.$pristine }">
             <label for="statusConsulta">Status do agendamento *</label>
             <select name="statusConsulta" id="statusConsulta" class="form-control" data-ng-options="status as status.nome for status in vm.statusConsulta track by status.idStatus" data-ng-model="vm.agendamento.statusConsulta" required>
@@ -53,13 +53,30 @@
             </select>
           </div>
         </div>
+      </fieldset>
+    </div>
+
+    <div class="row">
+      <fieldset data-ng-disabled="vm.agendamento.paciente == null">
         <div class="col-xs-4">
             <div class="form-group" ng-class="{ 'has-error' : agendamentoForm.convenio.$invalid && !agendamentoForm.convenio.$pristine }">
               <label for="convenio">Convênio *</label>
-              <select name="convenio" id="convenio" class="form-control" data-ng-options="convenio as convenio.nome for convenio in vm.agendamento.paciente.conveniosResponse track by convenio.idConvenio" data-ng-model="vm.agendamento.convenio" required>
+              <select name="convenio" id="convenio" class="form-control" data-ng-options="convenio as convenio.nome for convenio in vm.convenios track by convenio.idConvenio" data-ng-model="vm.agendamento.convenio" required>
                   <option style="display:none" value="">Convênio</option>
               </select>
             </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label for="matricula">Matrícula</label>
+            <input type="text" name="matricula" class="form-control" data-ng-model="vm.agendamento.convenio.numero" placeholder="Matrícula" data-ng-disabled="vm.agendamento.convenio == null"> 
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label for="titular">Titular</label>
+            <input type="text" name="titular" class="form-control" data-ng-model="vm.agendamento.convenio.titular" placeholder="Titular" data-ng-disabled="vm.agendamento.convenio == null">
+          </div>
         </div>
       </fieldset>
     </div>

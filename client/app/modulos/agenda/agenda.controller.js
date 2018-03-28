@@ -20,7 +20,7 @@
       vm.visualizarEvento = visualizarEvento;
       vm.eventos = [];
       vm.dentistas = [];
-      vm.dentistaAtivo = {};
+      vm.dentistaAtivo;
       vm.autocompletePaciente = autocompletePaciente;
       vm.completing = false;
       vm.clearResults = clearResults;
@@ -109,8 +109,10 @@
       */
       function atualizarAgendaByDentista(dentista) {
         var date = resolveDate();
-        vm.dentistaAtivo = dentista;
-        getEventosByDentista(resolveUsuarioHash(), date.dataInicio, date.dataFim);
+        if(dentista) {
+          vm.dentistaAtivo = dentista;
+          getEventosByDentista(resolveUsuarioHash(), date.dataInicio, date.dataFim);
+        }
       }
 
       /*
@@ -165,28 +167,32 @@
       * hash do usuario logado se for dentista ou do dentista ativo se for recepcionista
       */
       function cadastrarEvento(startDate, endDate) {
-        var modalInstance = $uibModal.open({
-          animation: true,
-          templateUrl: 'partials/modulos/agenda/agendamento-novo/agendamento-novo.view.html',
-          size: 'lg',
-          controller: 'AgendamentoNovoController',
-          controllerAs: 'vm',
-          resolve: {
-            model: function () {
-              return {
-                dataInicio: (startDate) ? startDate : vm.dataInicio,
-                dataFim: (endDate) ? endDate : vm.dataFim,
-                usuarioClinica: resolveUsuarioHash(),
-                viewDate: vm.viewDate,
-                calendarView: vm.calendarView
-              };
+        if(vm.dentistaAtivo) {
+          var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'partials/modulos/agenda/agendamento-novo/agendamento-novo.view.html',
+            size: 'lg',
+            controller: 'AgendamentoNovoController',
+            controllerAs: 'vm',
+            resolve: {
+              model: function () {
+                return {
+                  dataInicio: (startDate) ? startDate : vm.dataInicio,
+                  dataFim: (endDate) ? endDate : vm.dataFim,
+                  usuarioClinica: resolveUsuarioHash(),
+                  viewDate: vm.viewDate,
+                  calendarView: vm.calendarView
+                };
+              }
             }
-          }
-        });
+          });
 
-        modalInstance.result.then(function (eventos) {
-          vm.eventos = eventos;
-        });
+          modalInstance.result.then(function (eventos) {
+            vm.eventos = eventos;
+          });
+        }else {
+          toastr.error('Nenhum profissional selecionado!');
+        }
       }
 
       /*
