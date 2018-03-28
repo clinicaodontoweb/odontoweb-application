@@ -12,13 +12,13 @@
 			<div class="col-xs-3">
 				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.corPrimariaTipoConsulta.$invalid && !cadastroForm.corPrimariaTipoConsulta.$pristine }">
 					<label for="corPrimariaTipoConsulta">Cor Primária</label>
-					<input type="tet" class="form-control" name="corPrimariaTipoConsulta" data-ng-model="vm.request.corPrimaria" placeholder="Cor Primária" required/>
+					<input type="tet" class="form-control" name="corPrimariaTipoConsulta" colorpicker data-ng-model="vm.request.corPrimaria" placeholder="Cor Primária" required/>
 				</div>
 			</div>
 			<div class="col-xs-3">
 				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.corSecundariaTipoConsulta.$invalid && !cadastroForm.corSecundariaTipoConsulta.$pristine }">
 					<label for="corSecundariaTipoConsulta">Cor Secundária</label>
-					<input type="tet" class="form-control" name="corSecundariaTipoConsulta" data-ng-model="vm.request.corSecundaria" placeholder="Cor Secundária" required/>
+					<input type="tet" class="form-control" name="corSecundariaTipoConsulta" colorpicker data-ng-model="vm.request.corSecundaria" placeholder="Cor Secundária" required/>
 				</div>
 			</div>
 		</div>

@@ -30,6 +30,7 @@
     "angular-material": "^1.1.5",
     "angular-br-filters": "^0.7.0",
     "angular-loading-bar": "^0.9.0",
-    "angular-viacep": "^1.1.2"
+    "angular-viacep": "^1.1.2",
+    "angular-bootstrap-colorpicker": "^3.0.32"
   }
 }

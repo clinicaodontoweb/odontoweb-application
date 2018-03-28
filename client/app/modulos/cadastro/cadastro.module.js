@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('odontoweb.cadastro', [
-        'angular.viacep'
+        'angular.viacep',
+        'colorpicker.module'
     ]);
     
 })();

@@ -68,7 +68,8 @@ gulp.task('deps-js', function (){
 					depsFolder + 'angular-br-filters/release/angular-br-filters.js',
 					nodeFolder + 'angular-input-masks/releases/angular-input-masks-standalone.js',
 					depsFolder + 'angular-loading-bar/build/loading-bar.js',
-					depsFolder + 'angular-viacep/dist/angular-viacep.min.js'
+					depsFolder + 'angular-viacep/dist/angular-viacep.min.js',
+					depsFolder + 'angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
 			.pipe(gulp.dest('dist'))
@@ -83,7 +84,8 @@ gulp.task('deps-css', function (){
 					depsFolder + 'angular-bootstrap/ui-bootstrap-csp.css',
 					depsFolder + 'toastr/toastr.css',
 					depsFolder + 'angular-material/angular-material.css',
-					depsFolder + 'angular-loading-bar/build/loading-bar.css'
+					depsFolder + 'angular-loading-bar/build/loading-bar.css',
+					depsFolder + 'angular-bootstrap-colorpicker/css/colorpicker.css'
 					])
 			.pipe(concat('odontoweb-deps.css'))
 			.pipe(gulp.dest('dist'))
