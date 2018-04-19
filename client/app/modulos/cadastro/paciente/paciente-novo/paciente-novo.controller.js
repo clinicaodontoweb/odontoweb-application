@@ -47,6 +47,10 @@
         }
 
         function adicionarRedeSocial() {
+            if(vm.redeSocialPacienteRequest.endereco == null && vm.redeSocialPacienteRequest.redeSocial == null) {
+                toastr.error(error.data.mensagem, 'Erro ao cadastrar!');
+                return false;
+            }
             vm.request.redesSociaisPaciente.push(vm.redeSocialPacienteRequest);
             vm.redeSocialPacienteRequest = {};
         }
