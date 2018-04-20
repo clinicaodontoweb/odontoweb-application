@@ -12,6 +12,7 @@ router.put('/:entidade/:id([0-9])', function (req, res) {
 	var entidade = req.params.entidade;
 	var options = requestBuilder.buildRequest('PUT', url + entidade + '/' + id, req);
 	
+	console.log("Request", options);
 	request(options, response);
 
 	function response(error, response, body) {
@@ -25,8 +26,7 @@ router.put('/:entidade', function (req, res) {
 	var options = requestBuilder.buildRequest('PUT', url + entidade, req);
 	
 	// LOG REQUEST URL
-	console.log(options);
-	
+	console.log("Request", options);	
 	request(options, response);
 
 	function response(error, response, body) {

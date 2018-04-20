@@ -11,6 +11,7 @@ router.post('/:entidade', function (req, res) {
 	var entidade = req.params.entidade;
 	var options = requestBuilder.buildRequest('POST', url + entidade, req);
 	
+	console.log("Request", options);
 	request(options, response);
 
 	function response(error, response, body) {
@@ -24,6 +25,7 @@ router.post('/:entidade/:hash', function (req, res) {
 	var entidade = req.params.entidade;
 	var options = requestBuilder.buildRequest('POST', url + entidade + '/' + id, req);
 	
+	console.log("Request", options);
 	request(options, response);
 
 	function response(error, response, body) {

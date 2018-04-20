@@ -3,6 +3,10 @@ module.exports = {
 }
 
 function buildResponse(error, response, body, res) {
+	console.log("Error - ", error);
+	console.log("Response - ", response.statusCode);
+	console.log("Body - ", body);
+
 	if (!error && response.statusCode) {
 		res.status(response.statusCode);
 		if(response.statusCode === 201)

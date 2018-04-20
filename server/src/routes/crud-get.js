@@ -12,7 +12,7 @@ router.get('/:entidade', function (req, res) {
 	var options = requestBuilder.buildRequest('GET', url + entidade, req);
 
 	// LOG REQUEST URL
-	console.log(options);
+	console.log("Request", options);
 	request(options, response);
 
 	function response(error, response, body) {
@@ -26,6 +26,7 @@ router.get('/:entidade/:hash', function (req, res) {
 	var entidade = req.params.entidade;
 	var options = requestBuilder.buildRequest('GET', url + entidade + '/' + id, req);
 	
+	console.log("Request", options);
 	request(options, response);
 
 	function response(error, response, body) {
@@ -41,7 +42,7 @@ router.get('/:entidade/:entidade2/:hash', function (req, res) {
 	var options = requestBuilder.buildRequest('GET', url + entidade + '/' + entidade2 + '/' + id, req);
 	
 	// LOG REQUEST URL
-	console.log(options);
+	console.log("Request", options);
 
 	request(options, response);
 
@@ -56,8 +57,7 @@ router.get('/evento/paciente/:field/:search', function (req, res) {
 	var options = requestBuilder.buildRequest('GET', url + 'evento/paciente/' + field + '/' + search, req);
 	
 	// LOG REQUEST URL
-	console.log(options);
-
+	console.log("Request", options);
 	request(options, response);
 
 	function response(error, response, body) {
