@@ -37,9 +37,7 @@
             return {
                 nome: vm.dentista.nome,
                 genero: vm.dentista.genero,
-                conselho: vm.dentista.conselho,
                 registro: vm.dentista.registro,
-                codigoBrasileiroOcupacao: vm.dentista.codigoOcupacao,
                 usuarioRequest: {
                     email: vm.dentista.email,
                     senha: vm.dentista.senha,
