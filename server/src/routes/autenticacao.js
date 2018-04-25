@@ -77,7 +77,7 @@ router.get('/dentista/detalhe/:id', function (req, res) {
 	}
 });
 
-router.get('/recepcionista/detalhe/:id', function (req, res) {
+router.get('/recepcionista/:id', function (req, res) {
 	var id = req.params.id;
 	var options = requestBuilder.buildRequest('GET', url + 'recepcionista/' + id, req);
 		
@@ -102,6 +102,18 @@ router.post('/dentista', function (req, res) {
 });
 
 router.post('/recepcionista', function (req, res) {
+	var options = requestBuilder.buildRequest('POST', url + 'recepcionista', req);
+
+	console.log("Request", options);
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+
+});
+
+router.put('/recepcionista', function (req, res) {
 	var options = requestBuilder.buildRequest('POST', url + 'recepcionista', req);
 
 	console.log("Request", options);

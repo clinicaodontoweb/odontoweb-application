@@ -12,22 +12,16 @@
 			<div class="col-xs-4">
 				<div class="form-group" ng-class="{ 'has-error' : recepcionistaForm.emailRecepcionista.$invalid && !recepcionistaForm.emailRecepcionista.$pristine }">
 					<label for="emailRecepcionista">Email</label>
-					<input type="email" class="form-control" name="emailRecepcionista" data-ng-model="vm.recepcionista.email" placeholder="Email" required/>
+					<input type="email" class="form-control" name="emailRecepcionista" data-ng-model="vm.recepcionista.usuarioResponse.email" placeholder="Email" required ng-disabled="true"/>
 				</div>
 			</div>
 			<div class="col-xs-3">
-				<div class="form-group" ng-class="{ 'has-error' : recepcionistaForm.senhaRecepcionista.$invalid && !recepcionistaForm.senhaRecepcionista.$pristine }">
-					<label for="senhaRecepcionista">Senha</label>
-					<input type="password" class="form-control" name="senhaRecepcionista" data-ng-model="vm.recepcionista.senha" placeholder="Senha" ng-minlength="4" ng-maxlength="8" maxlength="8" required/>
-				</div>
-			</div>
-			<div class="col-xs-4">
 				<div class="form-group" ng-class="{ 'has-error' : recepcionistaForm.generoRecepcionista.$invalid && !recepcionistaForm.generoRecepcionista.$pristine }">
 					<label for="generoRecepcionista">Genêro</label>
 					<select class="form-control" name="generoRecepcionista" id="generoRecepcionista" ng-model="vm.recepcionista.genero" required>
 						<option value="">Selecione o genêro</option>
-						<option value="Masculino">Masculino</option>
-						<option value="Feminino">Feminino</option>
+						<option value="MASCULINO">Masculino</option>
+						<option value="FEMININO">Feminino</option>
 					</select>
 				</div>
 			</div>

@@ -52,7 +52,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<md-input-container class="md-block">
-					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica.id, vm.dentista.clinicas)"> 
+					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica, vm.dentista.clinicas)"> 
 						{{clinica.nome}}
 					</md-switch>
 				</md-input-container>

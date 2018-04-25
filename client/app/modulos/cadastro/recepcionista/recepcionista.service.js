@@ -25,8 +25,7 @@
         }
 
         function getRecepcionista(id) {
-            console.log('getRecepcionista', id)
-            return Restangular.one('auth').one('recepcionista/detalhe', id).get();
+            return Restangular.one('auth').one('recepcionista', id).get();
         }
            
     }

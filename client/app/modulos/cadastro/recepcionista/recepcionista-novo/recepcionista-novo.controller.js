@@ -43,7 +43,7 @@
                 nome: vm.recepcionista.nome,
                 genero: vm.recepcionista.genero,
                 dentistas: vm.recepcionista.dentistas,
-                usuarioRequest: {
+                usuario: {
                     email: vm.recepcionista.email,
                     senha: vm.recepcionista.senha,
                     admin: (vm.recepcionista.isAdmin) ? vm.recepcionista.isAdmin : false,

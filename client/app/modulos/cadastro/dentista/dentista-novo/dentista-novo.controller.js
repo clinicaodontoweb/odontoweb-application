@@ -38,7 +38,7 @@
                 nome: vm.dentista.nome,
                 genero: vm.dentista.genero,
                 registro: vm.dentista.registro,
-                usuarioRequest: {
+                usuario: {
                     email: vm.dentista.email,
                     senha: vm.dentista.senha,
                     admin: (vm.dentista.isAdmin) ? vm.dentista.isAdmin : false,

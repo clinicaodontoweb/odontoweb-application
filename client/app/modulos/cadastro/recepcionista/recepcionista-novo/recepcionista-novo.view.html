@@ -44,7 +44,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<md-input-container class="md-block">
-					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica.id, vm.recepcionista.clinicas)"> 
+					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica, vm.recepcionista.clinicas)"> 
 						{{clinica.nome}}
 					</md-switch>
 				</md-input-container>
@@ -55,8 +55,8 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<md-input-container class="md-block">
-                    <md-switch class="md-primary" name="dentista" ng-repeat="dentista in vm.dentistas" ng-click="vm.toggle(dentista.idDentista, vm.recepcionista.dentistas)"> 
-                    {{dentista.nome}} - {{dentista.conselho}} - {{dentista.registo}}
+                    <md-switch class="md-primary" name="dentista" ng-repeat="dentista in vm.dentistas" ng-click="vm.toggle(dentista, vm.recepcionista.dentistas)"> 
+                    {{dentista.nome}} - {{dentista.registo}}
                     </md-switch>
                 </md-input-container>
 			</div>
