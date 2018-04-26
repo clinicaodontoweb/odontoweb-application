@@ -24,6 +24,9 @@
 
         function cadastrar(isValid) {
             if(isValid) {
+                delete vm.recepcionista.usuario.hashKey;
+                delete vm.recepcionista.usuario.roles;
+
                 vm.recepcionista.put().then(function(response) {
                     $scope.recepcionistaForm.$setUntouched();
                     $scope.recepcionistaForm.$setPristine();

@@ -12,7 +12,7 @@
 			<div class="col-xs-4">
 				<div class="form-group" ng-class="{ 'has-error' : recepcionistaForm.emailRecepcionista.$invalid && !recepcionistaForm.emailRecepcionista.$pristine }">
 					<label for="emailRecepcionista">Email</label>
-					<input type="email" class="form-control" name="emailRecepcionista" data-ng-model="vm.recepcionista.usuarioResponse.email" placeholder="Email" required ng-disabled="true"/>
+					<input type="email" class="form-control" name="emailRecepcionista" data-ng-model="vm.recepcionista.usuario.email" placeholder="Email" required ng-disabled="true"/>
 				</div>
 			</div>
 			<div class="col-xs-3">
@@ -38,7 +38,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<md-input-container class="md-block">
-					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica.id, vm.recepcionista.clinicas)"> 
+					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica, vm.recepcionista.clinicas)"> 
 						{{clinica.nome}}
 					</md-switch>
 				</md-input-container>
@@ -49,15 +49,15 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<md-input-container class="md-block">
-                    <md-switch class="md-primary" name="dentista" ng-repeat="dentista in vm.dentistas" ng-click="vm.toggle(dentista.idDentista, vm.recepcionista.dentistas)"> 
-                    {{dentista.nome}} - {{dentista.conselho}} - {{dentista.registo}}
+                    <md-switch class="md-primary" name="dentista" ng-repeat="dentista in vm.dentistas" ng-click="vm.toggle(dentista, vm.recepcionista.dentistas)"> 
+                    {{dentista.nome}} - {{dentista.registo}}
                     </md-switch>
                 </md-input-container>
 			</div>
 		</div>
 		
 		<div class="form-footer">
-			<button type="submit" class="botao botao--azul" ng-disabled="recepcionistaForm.$invalid">Cadastrar Recepcionista</button>
+			<button type="submit" class="botao botao--azul" ng-disabled="recepcionistaForm.$invalid">Atualizar Recepcionista</button>
 		</div>
 	</form>
 </div>

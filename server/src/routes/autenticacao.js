@@ -53,7 +53,7 @@ router.get('/clinicas', function (req, res) {
 	}
 });
 
-router.get('/dentista/:cnpj', function (req, res) {
+/* router.get('/dentista/:cnpj', function (req, res) {
 	var cnpj = req.params.cnpj;
 	var options = requestBuilder.buildRequest('GET', url + 'dentista/clinica/' + cnpj, req);
 		
@@ -63,9 +63,9 @@ router.get('/dentista/:cnpj', function (req, res) {
 	function response(error, response, body) {
 		responseBuilder.buildResponse(error, response, body, res);
 	}
-});
+}); */
 
-router.get('/dentista/detalhe/:id', function (req, res) {
+router.get('/dentista/:id', function (req, res) {
 	var id = req.params.id;
 	var options = requestBuilder.buildRequest('GET', url + 'dentista/' + id, req);
 		
@@ -114,7 +114,20 @@ router.post('/recepcionista', function (req, res) {
 });
 
 router.put('/recepcionista', function (req, res) {
-	var options = requestBuilder.buildRequest('POST', url + 'recepcionista', req);
+	var options = requestBuilder.buildRequest('PUT', url + 'recepcionista', req);
+
+	console.log("Request", options);
+	request(options, response);
+
+	function response(error, response, body) {
+		responseBuilder.buildResponse(error, response, body, res);
+	}
+
+});
+
+
+router.put('/dentista', function (req, res) {
+	var options = requestBuilder.buildRequest('PUT', url + 'dentista', req);
 
 	console.log("Request", options);
 	request(options, response);

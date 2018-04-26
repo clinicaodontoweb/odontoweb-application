@@ -25,7 +25,7 @@
         }
 
         function getDentista(id) {
-            return Restangular.one('auth').one('dentista/detalhe', id).get();
+            return Restangular.one('auth').one('dentista', id).get();
         }
     }
 })();
