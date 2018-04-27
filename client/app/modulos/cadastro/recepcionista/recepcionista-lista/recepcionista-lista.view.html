@@ -22,9 +22,9 @@
 
     <div class="row list-item" data-ng-click="go('/cadastro/recepcionista/editar/' + recepcionista.idRecepcionista)" data-ng-repeat="recepcionista in vm.recepcionistas | filter:vm.search:strict as resultados">
         <div class="col-xs-4">{{recepcionista.nome | captalize}}</div>
-        <div class="col-xs-4">{{recepcionista.usuarioResponse.email}}</div>
+        <div class="col-xs-4">{{recepcionista.usuario.email}}</div>
         <div class="col-xs-2">{{recepcionista.genero}}</div>
-        <div class="col-xs-2">{{recepcionista.usuarioResponse.admin}}</div>
+        <div class="col-xs-2">{{recepcionista.usuario.admin}}</div>
     </div>
 
     <div class="row" data-ng-if="resultados.length == 0" class="vazio">
