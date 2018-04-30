@@ -23,21 +23,21 @@
         function bindToEvento(evento) {
             return {
                 idAgendamento: evento.idEvento,
-                title: evento.pacienteResponse.nome,
+                title: evento.paciente.nome,
                 paciente: {
-                  nome: evento.pacienteResponse.nome,
-                  email: evento.pacienteResponse.contatoResponse.email,
-                  telefone: (evento.pacienteResponse.contatoResponse.telefones.length > 0) ? evento.pacienteResponse.contatoResponse.telefones[0].numero : null
+                  nome: evento.paciente.nome,
+                  email: evento.paciente.contato.email,
+                  telefone: (evento.paciente.contato.telefones.length > 0) ? evento.paciente.contato.telefones[0].numero : null
                 },
-                procedimento: evento.tipoConsultaResponse.nome,
-                convenio: (evento.pacienteResponse.conveniosResponse) ? evento.pacienteResponse.conveniosResponse[0].nome : 'PARTICULAR',
+                procedimento: evento.tipoConsulta.nome,
+                convenio: (evento.paciente.convenioPaciente) ? evento.paciente.convenioPaciente.convenio.nome : 'PARTICULAR',
                 startsAt: new Date(evento.dataInicio),
                 endsAt: new Date(evento.dataFim),
                 status: evento.statusEvento.nome,
                 observacao: evento.observacao,
                 color: {
-                  primary: evento.tipoConsultaResponse.corPrimaria,
-                  secondary: evento.tipoConsultaResponse.corSecundaria
+                  primary: evento.tipoConsulta.corPrimaria,
+                  secondary: evento.tipoConsulta.corSecundaria
                 }
             }
         }

@@ -128,7 +128,7 @@
                 idTipoConsulta: vm.agendamento.tipoConsulta.idTipoConsulta,
                 idPaciente: vm.agendamento.paciente.idPaciente,
                 convenioPaciente: {
-                    idConvenio: vm.agendamento.convenio.idConvenio,
+                    convenio: vm.agendamento.convenio,
                     numero: vm.agendamento.convenio.numero,
                     titularConvenio: vm.agendamento.convenio.titular,
                 }

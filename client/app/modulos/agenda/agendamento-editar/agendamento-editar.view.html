@@ -60,7 +60,7 @@
             <div class="col-xs-4">
                 <div class="form-group">
                 <label for="convenio">Convênio</label>
-                <select name="convenio" id="convenio" class="form-control" data-ng-options="convenio as convenio.nome for convenio in vm.agendamento.paciente.conveniosResponse track by convenio.idConvenio" data-ng-model="vm.agendamento.convenio">
+                <select name="convenio" id="convenio" class="form-control" data-ng-options="convenio as convenio.nome for convenio in vm.convenios track by convenio.idConvenio" data-ng-model="vm.agendamento.convenio">
                     <option style="display:none" value="">Convênio</option>
                 </select>
                 </div>

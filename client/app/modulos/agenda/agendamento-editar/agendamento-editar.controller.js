@@ -25,6 +25,7 @@
             loadAgendamento(vm.idAgendamento);
             listaTiposConsulta();
             listaStatusConsulta();
+            listaConvenios();
         }
 
         /*
@@ -63,7 +64,6 @@
             return AgendamentoService.getAgendamento(idAgendamento)
                         .then(function(evento) {
                             vm.agendamento = buildAgendamentoModel(evento);
-
                         }, function(error) {
                             $uibModalInstance.close();
                             toastr.error('Erro ao buscar agendamento!');
@@ -75,13 +75,27 @@
         */
         function listaTiposConsulta() {
             return ApiService
-                    .listaTodasEntidades(entidades.tiposConsulta)
+                    .listaTodasEntidades(entidades.tipoConsulta)
                     .then(function(dados) {
                         vm.tiposConsulta = dados;
                         return dados;
                     },function(error){
                         console.log(error);
                     });
+        }
+
+        /*
+        * Lista status de consulta
+        */
+       function listaConvenios() {
+            return ApiService
+                .listaTodasEntidades(entidades.convenio)
+                .then(function(dados) {
+                    vm.convenios = dados;
+                    return dados;
+                },function(error){
+                    console.log(error);
+                });
         }
 
         /*
@@ -109,9 +123,9 @@
                 observacao: agendamento.observacao,
                 dataInicio: new Date(agendamento.dataInicio),
                 dataFim: new Date(agendamento.dataFim),
-                tipoConsulta: agendamento.tipoConsultaResponse,
-                paciente: agendamento.pacienteResponse,
-                convenio: agendamento.convenioResponse
+                tipoConsulta: agendamento.tipoConsulta,
+                paciente: agendamento.paciente,
+                convenio: agendamento.convenioPaciente.convenio
             }
         }
 
@@ -134,7 +148,6 @@
         */
         function buildRequestModel() {
             return {
-                idEvento: vm.agendamento.idEvento,
                 encaixe: vm.agendamento.encaixe,
                 observacao: vm.agendamento.observacao,
                 dataInicio: vm.agendamento.dataInicio.getTime(),
@@ -142,7 +155,11 @@
                 idStatus: vm.agendamento.statusConsulta.idStatus,
                 idTipoConsulta: vm.agendamento.tipoConsulta.idTipoConsulta,
                 idPaciente: vm.agendamento.paciente.idPaciente,
-                idConvenio: vm.agendamento.convenio.idConvenio
+                convenioPaciente: {
+                    convenio: vm.agendamento.convenio,
+                    numero: vm.agendamento.convenio.numero,
+                    titularConvenio: vm.agendamento.convenio.titular,
+                }
             }
         }
 

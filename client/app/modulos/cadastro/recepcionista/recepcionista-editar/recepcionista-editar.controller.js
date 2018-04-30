@@ -11,8 +11,6 @@
         var vm = this;
         vm.cadastrar = cadastrar;
         vm.recepcionista = recepcionistaEditarData;
-        vm.recepcionista.clinicas = [];
-        vm.recepcionista.dentistas = [];
 
         activate();
 
@@ -21,9 +19,6 @@
                 vm.clinicas = response.clinicas;
                 vm.dentistas = response.dentistas;
             });
-
-            vm.recepcionista.clinicas = recepcionistaEditarData.usuario.clinicas;
-            vm.recepcionista.dentistas = recepcionistaEditarData.dentistas;
         }
 
         function cadastrar(isValid) {
