@@ -11,5 +11,7 @@
         var vm = this;
         vm.dentistas = dentistaListaData.dentistas;
 
+        console.log(vm.dentistas)
+
     }
 })();

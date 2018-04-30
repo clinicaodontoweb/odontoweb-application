@@ -9,9 +9,10 @@
 
     function RecepcionistaEditarController(DentistaService, recepcionistaEditarData, RecepcionistaService, $scope, $location) {
         var vm = this;
-        vm.toggle = toggle;
         vm.cadastrar = cadastrar;
         vm.recepcionista = recepcionistaEditarData;
+        vm.recepcionista.clinicas = [];
+        vm.recepcionista.dentistas = [];
 
         activate();
 
@@ -20,6 +21,9 @@
                 vm.clinicas = response.clinicas;
                 vm.dentistas = response.dentistas;
             });
+
+            vm.recepcionista.clinicas = recepcionistaEditarData.usuario.clinicas;
+            vm.recepcionista.dentistas = recepcionistaEditarData.dentistas;
         }
 
         function cadastrar(isValid) {
@@ -36,16 +40,6 @@
                 });
             }
         }
-
-        function toggle(item, list) {
-            var idx = list.indexOf(item);
-            if (idx > -1) {
-              list.splice(idx, 1);
-            }
-            else {
-              list.push(item);
-            }
-        };
 
     }
 })();

@@ -37,22 +37,18 @@
 		<h5 class="form-title form-title--sub">Clinicas que atende!</h5>
 		<div class="row">
 			<div class="col-xs-12">
-				<md-input-container class="md-block">
-					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica, vm.recepcionista.clinicas)"> 
-						{{clinica.nome}}
-					</md-switch>
-				</md-input-container>
+				<label ng-repeat="clinica in vm.clinicas">
+					<input type="checkbox" checklist-model="vm.recepcionista.clinicas" checklist-value="clinica"> {{clinica.nome}}
+				</label>
 			</div>
 		</div>
         
         <h5 class="form-title form-title--sub">Dentistas que atende!</h5>
 		<div class="row">
 			<div class="col-xs-12">
-				<md-input-container class="md-block">
-                    <md-switch class="md-primary" name="dentista" ng-repeat="dentista in vm.dentistas" ng-click="vm.toggle(dentista, vm.recepcionista.dentistas)"> 
-                    {{dentista.nome}} - {{dentista.registo}}
-                    </md-switch>
-                </md-input-container>
+				<label ng-repeat="dentista in vm.dentistas">
+					<input type="checkbox" checklist-model="vm.recepcionista.dentistas" checklist-value="dentista"> {{dentista.nome}}
+				</label>
 			</div>
 		</div>
 		

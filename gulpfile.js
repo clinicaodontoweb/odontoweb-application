@@ -69,7 +69,8 @@ gulp.task('deps-js', function (){
 					nodeFolder + 'angular-input-masks/releases/angular-input-masks-standalone.js',
 					depsFolder + 'angular-loading-bar/build/loading-bar.js',
 					depsFolder + 'angular-viacep/dist/angular-viacep.min.js',
-					depsFolder + 'angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js'
+					depsFolder + 'angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js',
+					depsFolder + 'checklist-model/checklist-model.js'
 					])
 			.pipe(concat('odontoweb-deps.js'))
 			.pipe(gulp.dest('dist'))

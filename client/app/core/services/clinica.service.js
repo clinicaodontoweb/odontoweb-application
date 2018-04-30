@@ -15,7 +15,7 @@
         return service;
 
         function getAllDentistasFromClinica(cnpj) {
-    		return Restangular.all('auth').one('dentista', cnpj).getList();
+    		return Restangular.all('auth').one('dentista').one('clinica', cnpj).getList();
         }
 
     }

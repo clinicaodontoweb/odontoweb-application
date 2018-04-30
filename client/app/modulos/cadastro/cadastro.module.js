@@ -3,7 +3,8 @@
 
     angular.module('odontoweb.cadastro', [
         'angular.viacep',
-        'colorpicker.module'
+        'colorpicker.module',
+        'checklist-model'
     ]);
     
 })();

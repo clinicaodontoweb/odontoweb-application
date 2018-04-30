@@ -24,6 +24,7 @@
       vm.autocompletePaciente = autocompletePaciente;
       vm.completing = false;
       vm.clearResults = clearResults;
+      vm.isDentista = false;
 
       activate();
 
@@ -68,6 +69,8 @@
       */
       function loadDentistaData() {
         var date = resolveDate();
+        vm.dentistaAtivo = AutenticacaoService.getCurrentUser();
+        vm.isDentista = true;
         getEventosByDentista(resolveUsuarioHash(), date.dataInicio, date.dataFim);
       }
 
@@ -280,7 +283,7 @@
         if(AutenticacaoService.isDentista())
           return AutenticacaoService.getCurrentUser().hashKey;
         else
-          return vm.dentistaAtivo.usuarioResponse.hashKey
+          return vm.dentistaAtivo.usuario.hashKey
       }
 
       /*

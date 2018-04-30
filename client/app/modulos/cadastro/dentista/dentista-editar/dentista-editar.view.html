@@ -45,11 +45,9 @@
 		
 		<div class="row">
 			<div class="col-xs-12">
-				<md-input-container class="md-block">
-					<md-switch class="md-primary" name="clinica" ng-repeat="clinica in vm.clinicas" ng-click="vm.toggle(clinica, vm.dentista.usuario.clinicas)"> 
-						{{clinica.nome}}
-					</md-switch>
-				</md-input-container>
+				<label ng-repeat="clinica in vm.clinicas">
+					<input type="checkbox" checklist-model="vm.dentista.usuario.clinicas" checklist-value="clinica"> {{clinica.nome}}
+				</label>
 			</div>
 		</div>
 		

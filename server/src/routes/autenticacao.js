@@ -53,7 +53,7 @@ router.get('/clinicas', function (req, res) {
 	}
 });
 
-/* router.get('/dentista/:cnpj', function (req, res) {
+router.get('/dentista/clinica/:cnpj', function (req, res) {
 	var cnpj = req.params.cnpj;
 	var options = requestBuilder.buildRequest('GET', url + 'dentista/clinica/' + cnpj, req);
 		
@@ -63,7 +63,7 @@ router.get('/clinicas', function (req, res) {
 	function response(error, response, body) {
 		responseBuilder.buildResponse(error, response, body, res);
 	}
-}); */
+});
 
 router.get('/dentista/:id', function (req, res) {
 	var id = req.params.id;
