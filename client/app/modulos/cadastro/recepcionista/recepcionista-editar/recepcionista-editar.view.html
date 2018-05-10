@@ -37,8 +37,8 @@
 		<h5 class="form-title form-title--sub">Clinicas que atende!</h5>
 		<div class="row">
 			<div class="col-xs-12">
-				<label ng-repeat="clinica in vm.clinicas">
-					<input type="checkbox" checklist-model="vm.recepcionista.usuario.clinicas" checklist-value="clinica"> {{clinica.nome}}
+				<label ng-repeat="clinica in vm.clinicas" style="width:100%;display:block;float:left;">
+					<input type="checkbox" data-ng-disabled="vm.$storage.currentTenant.cnpj == clinica.cnpj" checklist-model="vm.recepcionista.usuario.clinicas" checklist-value="clinica"> {{clinica.nome}}
 				</label>
 			</div>
 		</div>

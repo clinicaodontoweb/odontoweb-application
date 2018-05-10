@@ -11,8 +11,8 @@
 			</div>
 			<div class="col-xs-6">
 				<div class="form-group" ng-class="{ 'has-error' : cadastroForm.corStatusEvento.$invalid && !cadastroForm.corStatusEvento.$pristine }">
-					<label for="corStatusEvento">Cor do Status</label>
-					<input type="tet" class="form-control" name="corStatusEvento" colorpicker data-ng-model="vm.request.cor" placeholder="Cor do Status" required/>
+					<label for="corStatusEvento" style="width: 100%;">Cor do Status</label>
+					<div class="botao botao--verde" style="width: 150px;float: left;" colorpicker colorpicker-close-on-select data-ng-model="vm.request.cor">Escolher Cor</div>
 				</div>
 			</div>
 		</div>

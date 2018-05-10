@@ -17,6 +17,10 @@
     }
 }
 
+.required {
+    color: #c42525;
+}
+
 .has-error .form-control {
     border-color: $botao-vermelho;
 }

@@ -5,12 +5,13 @@
         .module('odontoweb.cadastro')
         .controller('RecepcionistaEditarController', RecepcionistaEditarController);
 
-    RecepcionistaEditarController.$inject = ['DentistaService', 'recepcionistaEditarData', 'RecepcionistaService', '$scope', '$location'];
+    RecepcionistaEditarController.$inject = ['DentistaService', 'recepcionistaEditarData', 'RecepcionistaService', '$scope', '$location', '$localStorage'];
 
-    function RecepcionistaEditarController(DentistaService, recepcionistaEditarData, RecepcionistaService, $scope, $location) {
+    function RecepcionistaEditarController(DentistaService, recepcionistaEditarData, RecepcionistaService, $scope, $location, $localStorage) {
         var vm = this;
         vm.cadastrar = cadastrar;
         vm.recepcionista = recepcionistaEditarData;
+        vm.$storage = $localStorage;
 
         activate();
 

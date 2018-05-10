@@ -5,14 +5,15 @@
         .module('odontoweb.cadastro')
         .controller('DentistaEditarController', DentistaEditarController);
 
-    DentistaEditarController.$inject = ['dentistaEditarData', 'DentistaService', 'entidades', '$uibModal', '$scope', '$location'];
+    DentistaEditarController.$inject = ['dentistaEditarData', 'DentistaService', 'entidades', '$uibModal', '$scope', '$location', '$localStorage'];
 
-    function DentistaEditarController(dentistaEditarData, DentistaService, entidades, $uibModal, $scope, $location) {
+    function DentistaEditarController(dentistaEditarData, DentistaService, entidades, $uibModal, $scope, $location, $localStorage) {
         var vm = this;
         vm.toggle = toggle;
         vm.cadastrar = cadastrar;
         vm.dentista = dentistaEditarData;
         vm.clinicas = [];
+        vm.$storage = $localStorage;
 
         activate();
 

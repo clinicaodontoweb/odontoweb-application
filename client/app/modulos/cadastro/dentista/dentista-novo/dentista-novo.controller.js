@@ -5,9 +5,9 @@
         .module('odontoweb.cadastro')
         .controller('DentistaNovoController', DentistaNovoController);
 
-    DentistaNovoController.$inject = ['dentistaNovoData', 'DentistaService', 'entidades', '$uibModal', '$scope', '$location'];
+    DentistaNovoController.$inject = ['dentistaNovoData', 'DentistaService', 'entidades', '$uibModal', '$scope', '$location', '$localStorage'];
 
-    function DentistaNovoController(dentistaNovoData, DentistaService, entidades, $uibModal, $scope, $location) {
+    function DentistaNovoController(dentistaNovoData, DentistaService, entidades, $uibModal, $scope, $location, $localStorage) {
         var vm = this;
         vm.toggle = toggle;
         vm.cadastrar = cadastrar;
@@ -16,6 +16,17 @@
         };
         vm.request = {};
         vm.clinicas = dentistaNovoData.clinicas;
+        vm.$storage = $localStorage;
+
+        activate();
+
+        function activate() {
+            vm.clinicas.forEach(function(clinica) {
+                if(vm.$storage.currentTenant.cnpj == clinica.cnpj){
+                    vm.dentista.clinicas.push(clinica);
+                }
+            });
+        }
 
         function cadastrar(isValid) {
             if(isValid) {
