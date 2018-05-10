@@ -52,7 +52,7 @@
         <h5 class="form-title form-title--sub">Dentistas que atende!</h5>
 		<div class="row">
 			<div class="col-xs-12">
-				<label ng-repeat="dentista in vm.dentistas">
+				<label ng-repeat="dentista in vm.dentistas" style="width:100%;display:block;float:left;">
 					<input type="checkbox" checklist-model="vm.recepcionista.dentistas" checklist-value="dentista"> {{dentista.nome}}
 				</label>
 			</div>
