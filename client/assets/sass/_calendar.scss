@@ -68,6 +68,8 @@ mwl-calendar .cal-day-today span[data-cal-date] {
 
 .cal-day-box .cal-day-hour-part .cal-day-hour-part-time {
     width: 45px;
+    position: absolute;
+    left: 10px;
 }
 
 .cal-week-box.cal-day-box .cal-row-head,
@@ -75,9 +77,15 @@ mwl-calendar .cal-day-today span[data-cal-date] {
     padding-left: 0px;
 }
 
+.cal-week-box.cal-day-box .cal-row-head,
+.cal-day-box .cal-day-hour-part-month {
+    padding-left: 50px;
+}
+
 .cal-day-box .cal-day-hour-part .cal-day-hour-part-spacer:last-child{
     border-right: none;
 }
+
 
 .busca-dentistas-container {
     .busca-dentista {
