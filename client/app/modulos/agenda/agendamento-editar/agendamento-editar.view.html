@@ -69,23 +69,14 @@
     </div>
 
     <div class="row">
-        <fieldset data-ng-disabled="vm.agendamento.paciente == null">
+        <fieldset>
             <div class="col-xs-12">
-                <div class="dataAgendamentoContainer">
-                    <span>
-                        <i class="material-icons">date_range</i>
-                        {{vm.agendamento.dataInicio | date:'dd-MM-yyyy'}}
-                    </span>
-                    <span>
-                        <i class="material-icons">access_time</i>
-                        {{vm.agendamento.dataInicio | date:'HH:mm'}}
-                    </span>
-                    <span>
-                        <i class="material-icons">access_time</i>
-                        {{vm.agendamento.dataFim | date:'HH:mm'}}
-                    </span>
-                    <button class="botao botao--azul" ng-click="$close()">Próximo Horário</button>
+                <div class="input-group" style="width: 200px;float: left;margin: 33px 20px 0 0;">
+                    <input type="text" class="form-control" name="dataInicial" placeholder="Data" uib-datepicker-popup="dd/MM/yyyy" ng-model="vm.agendamento.dataInicio" is-open="vm.calendarOpen" close-text="Ok">
+                    <span class="input-group-addon" ng-click="vm.calendarOpen = true"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
+                <div style="width: auto;float: left;margin: 0 20px 0 0;" uib-timepicker ng-model="vm.agendamento.dataInicio" hour-step="1" minute-step="15" show-meridian="ismeridian"></div>
+                <div style="width: auto;float: left;margin: 0 10px 0 0;" uib-timepicker ng-model="vm.agendamento.dataFim" hour-step="1" minute-step="15" show-meridian="ismeridian"></div>
             </div>
         </fieldset>
     </div>
