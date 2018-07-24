@@ -18,6 +18,7 @@
         vm.completing = false;
         vm.selectPaciente = selectPaciente;
         vm.alterar = alterar;
+        vm.encaixe = false;
 
         activate();
 
@@ -64,6 +65,7 @@
             return AgendamentoService.getAgendamento(idAgendamento)
                         .then(function(evento) {
                             vm.agendamento = buildAgendamentoModel(evento);
+                            vm.encaixe = vm.agendamento.encaixe;
                         }, function(error) {
                             $uibModalInstance.close();
                             toastr.error('Erro ao buscar agendamento!');

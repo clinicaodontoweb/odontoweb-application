@@ -19,6 +19,7 @@
         vm.selectPaciente = selectPaciente;
         vm.agendamento = {};
         vm.agendar = agendar;
+        vm.encaixe = false;
 
         activate();
 
@@ -120,7 +121,7 @@
         */
         function buildRequestModel() {
             return {
-                encaixe: false,
+                encaixe: vm.encaixe,
                 observacao: vm.agendamento.observacao,
                 dataInicio: vm.dataInicio.getTime(),
                 dataFim: vm.dataFim.getTime(),

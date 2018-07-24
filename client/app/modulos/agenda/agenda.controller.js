@@ -25,6 +25,7 @@
       vm.completing = false;
       vm.clearResults = clearResults;
       vm.isDentista = false;
+      vm.groupEvents = groupEvents;
 
       activate();
 
@@ -306,5 +307,10 @@
         else
           toastr.success('Você tem ('+quantidade+') agendamentos para o período selecionado!');        
       }
+    }
+
+    function groupEvents(events) {
+      console.log(events)
+      return events;
     }
 })();

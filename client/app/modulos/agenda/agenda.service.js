@@ -23,6 +23,7 @@
         function bindToEvento(evento) {
             return {
                 idAgendamento: evento.idEvento,
+                encaixe: evento.encaixe,
                 title: evento.paciente.nome,
                 paciente: {
                   nome: evento.paciente.nome,

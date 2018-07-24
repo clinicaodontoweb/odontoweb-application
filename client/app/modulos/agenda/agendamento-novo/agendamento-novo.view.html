@@ -90,6 +90,11 @@
           </div>
           <div style="width: auto;float: left;margin: 0 20px 0 0;" uib-timepicker ng-model="vm.dataInicio" hour-step="1" minute-step="15" show-meridian="ismeridian"></div>
           <div style="width: auto;float: left;margin: 0 10px 0 0;" uib-timepicker ng-model="vm.dataFim" hour-step="1" minute-step="15" show-meridian="ismeridian"></div>
+          <div style="float: left;margin: 40px 0 10px 0;">
+            <button style="outline: none;" type="button" class="btn btn-primary" ng-model="vm.encaixe" uib-btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">
+              Encaixe? {{(vm.encaixe) ? 'Sim' : 'Não'}}
+            </button>
+          </div>
         </div>
       </fieldset>
     </div>

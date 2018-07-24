@@ -55,7 +55,8 @@
             ng-style="{
               top: vm.showTimes ? ((eventRow.top) + 'px') : 'auto',
               position: vm.showTimes ? 'absolute' : 'inherit',
-              left: vm.showTimes ? (vm.dayColumnDimensions.width * eventRow.offset + 50) + 'px' : ''
+              left: vm.showTimes ? (vm.dayColumnDimensions.width * eventRow.offset + ((eventRow.event.encaixe) ? 175 : 55)) + 'px' : '',
+              width: (eventRow.event.encaixe) ? '30px' : 'calc(14.28571429% - 30px)'
             }">
             <div
               class="day-highlight"
